@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224155704) do
+ActiveRecord::Schema.define(version: 20150224184005) do
+
+  create_table "family_gallery_group_picture_links", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "picture_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "family_gallery_group_picture_links", ["group_id", "picture_id"], name: "unique_group_and_picture", unique: true, using: :btree
+  add_index "family_gallery_group_picture_links", ["group_id"], name: "index_family_gallery_group_picture_links_on_group_id", using: :btree
+  add_index "family_gallery_group_picture_links", ["picture_id"], name: "index_family_gallery_group_picture_links_on_picture_id", using: :btree
 
   create_table "family_gallery_group_translations", force: true do |t|
     t.integer  "family_gallery_group_id", null: false
@@ -44,11 +55,27 @@ ActiveRecord::Schema.define(version: 20150224155704) do
 
   create_table "family_gallery_pictures", force: true do |t|
     t.integer  "group_id"
+    t.integer  "user_owner_id"
+    t.integer  "user_uploaded_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "family_gallery_pictures", ["group_id"], name: "index_family_gallery_pictures_on_group_id", using: :btree
+
+  create_table "family_gallery_user_roles", force: true do |t|
+    t.integer  "user_id"
+    t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "family_gallery_pictures", ["group_id"], name: "index_family_gallery_pictures_on_group_id", using: :btree
+  add_index "family_gallery_user_roles", ["user_id", "role"], name: "index_family_gallery_user_roles_on_user_id_and_role", unique: true, using: :btree
+  add_index "family_gallery_user_roles", ["user_id"], name: "index_family_gallery_user_roles_on_user_id", using: :btree
 
   create_table "family_gallery_users", force: true do |t|
     t.string   "email",                  default: "", null: false

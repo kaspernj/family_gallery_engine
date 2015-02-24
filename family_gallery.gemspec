@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency "cancancan"
   s.add_dependency "omniauth"
   s.add_dependency "omniauth-facebook"
+  s.add_dependency "paperclip"
 
   s.add_development_dependency "mysql2"
   s.add_development_dependency "rspec-rails"

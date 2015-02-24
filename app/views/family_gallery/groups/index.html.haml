@@ -1,0 +1,15 @@
+- content_for(:header_title) { FamilyGallery::Group.model_name.human(count: 2) }
+
+= link_to t("add_new"), new_group_path
+
+%table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :name
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= link_to_group group
+    - unless @groups.any?
+      %tr
+        %td{colspan: 1}= t("no_results")

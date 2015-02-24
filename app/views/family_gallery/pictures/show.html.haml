@@ -1,0 +1,6 @@
+- content_for(:header_title) { t(".show_picture", title: @picture.title) }
+
+- if can? :edit, @picture
+  = link_to t(".edit_picture"), edit_picture_path(@picture)
+
+= image_tag @picture.image.url, alt: @picture.title, width: "800px"

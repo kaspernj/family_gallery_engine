@@ -1,0 +1,23 @@
+- content_for(:header_title) { t(".show_group", name: @group.name) }
+
+= link_to t(".edit_group"), edit_group_path(@group) if can? :edit, @group
+= link_to t(".new_picture"), new_picture_path(group_id: @group.id) if can? :new, FamilyGallery::Picture
+
+%table.form
+  %tbody
+    %tr
+      %td= FamilyGallery::Group.human_attribute_name(:name)
+      %td= @group.name
+    %tr
+      %td= FamilyGallery::Group.human_attribute_name(:description)
+      %td= simple_format @group.description, nil, wrapper_tag: "div"
+
+%h2= FamilyGallery::Picture.model_name.human(count: 2)
+%table.list
+  %tbody
+    - @group.pictures.each do |picture|
+      %tr
+        %td= image_tag(picture.thumb.url)
+    - unless @group.pictures.any?
+      %tr
+        %td{colspan: 1}= t("no_results")
