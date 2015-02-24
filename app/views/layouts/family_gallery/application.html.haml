@@ -1,0 +1,28 @@
+!!! 5
+%html
+  %head
+    %title FamilyGallery
+
+    = stylesheet_link_tag "family_gallery/application", media: "all"
+    = javascript_include_tag "family_gallery/application"
+    = csrf_meta_tags
+  %body
+    %table.main
+      %tbody
+        %tr
+          %td.main-logo FamilyGallery
+        %tr
+          %td.main-menu
+            = link_to "Frontpage", root_path
+            = link_to FamilyGallery::Group.model_name.human(count: 2), groups_path if can? :index, FamilyGallery::Group
+
+            - if signed_in?
+              = link_to "Sign out", user_session_path, method: :delete
+            - else
+              = link_to "Sign in", new_family_gallery_user_session_path
+        %tr
+          %td.main-content
+            = yield
+        %tr
+          %td.main-bottom
+            Made by Kasper Johansen
