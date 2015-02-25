@@ -6,7 +6,8 @@ class CreateFamilyGalleryPictures < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :family_gallery_pictures, :group_id
+    add_index :family_gallery_pictures, :user_owner_id
+    add_index :family_gallery_pictures, :user_uploaded_id
     add_attachment :family_gallery_pictures, :image
 
     FamilyGallery::Picture.create_translation_table! title: :string, description: :text
