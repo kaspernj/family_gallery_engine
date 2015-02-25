@@ -75,5 +75,6 @@ private
 
   def assign_params_to_resource_instance
     resource_instance.assign_attributes(resource_params) if resource_extracted_params
+    after_assign
   end
 end

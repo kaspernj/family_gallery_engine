@@ -17,7 +17,7 @@
   %tbody
     - @group.pictures.each do |picture|
       %tr
-        %td= image_tag(picture.thumb.url)
+        %td= picture_image_tag(picture, width: "800px")
     - unless @group.pictures.any?
       %tr
         %td{colspan: 1}= t("no_results")

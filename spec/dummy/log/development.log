@@ -21872,3 +21872,564 @@ Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-24 20:11:33 +010
 
 
 Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-24 20:11:33 +0100
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2015-02-25 06:37:47 +0100
+Processing by FamilyGallery::GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mFamilyGallery::Group Load (0.2ms)[0m  SELECT `family_gallery_groups`.* FROM `family_gallery_groups` WHERE `family_gallery_groups`.`id` = 1 LIMIT 1
+  [1m[36mFamilyGallery::User Load (0.2ms)[0m  [1mSELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1[0m
+  [1m[35mFamilyGallery::UserRole Load (0.2ms)[0m  SELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1
+  [1m[36mFamilyGallery::Group::Translation Load (0.2ms)[0m  [1mSELECT `family_gallery_group_translations`.* FROM `family_gallery_group_translations` WHERE `family_gallery_group_translations`.`family_gallery_group_id` = 1[0m
+  [1m[35mFamilyGallery::Picture Load (0.3ms)[0m  SELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_pictures`.`id` = `family_gallery_group_picture_links`.`picture_id` WHERE `family_gallery_group_picture_links`.`group_id` = 1
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml within layouts/family_gallery/application (4.8ms)
+Completed 200 OK in 13ms (Views: 7.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 06:37:47 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-25 06:37:47 +0100
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 06:37:47 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-25 06:37:47 +0100
+
+
+Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-25 06:37:47 +0100
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2015-02-25 07:13:24 +0100
+Processing by FamilyGallery::GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFamilyGallery::Group Load (0.2ms)[0m  [1mSELECT `family_gallery_groups`.* FROM `family_gallery_groups` WHERE `family_gallery_groups`.`id` = 1 LIMIT 1[0m
+  [1m[35mFamilyGallery::User Load (0.2ms)[0m  SELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1
+  [1m[36mFamilyGallery::UserRole Load (0.2ms)[0m  [1mSELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1[0m
+  [1m[35mFamilyGallery::Group::Translation Load (0.2ms)[0m  SELECT `family_gallery_group_translations`.* FROM `family_gallery_group_translations` WHERE `family_gallery_group_translations`.`family_gallery_group_id` = 1
+  [1m[36mFamilyGallery::Picture Load (0.2ms)[0m  [1mSELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_pictures`.`id` = `family_gallery_group_picture_links`.`picture_id` WHERE `family_gallery_group_picture_links`.`group_id` = 1[0m
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml within layouts/family_gallery/application (37.3ms)
+Completed 200 OK in 110ms (Views: 53.7ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 07:13:24 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-25 07:13:24 +0100
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 07:13:24 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-25 07:13:24 +0100
+
+
+Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-25 07:13:24 +0100
+
+
+Started GET "/pictures/new?group_id=1" for 127.0.0.1 at 2015-02-25 07:13:25 +0100
+Processing by FamilyGallery::PicturesController#new as HTML
+  Parameters: {"group_id"=>"1"}
+  [1m[35mFamilyGallery::User Load (0.3ms)[0m  SELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1
+  [1m[36mFamilyGallery::UserRole Load (0.1ms)[0m  [1mSELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1[0m
+  [1m[35mFamilyGallery::Group Load (0.3ms)[0m  SELECT `family_gallery_groups`.* FROM `family_gallery_groups` WHERE `family_gallery_groups`.`id` = 1 LIMIT 1
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/pictures/_form.html.haml (30.2ms)
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/pictures/new.html.haml within layouts/family_gallery/application (33.1ms)
+Completed 200 OK in 54ms (Views: 35.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 07:13:25 +0100
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 07:13:25 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-25 07:13:25 +0100
+
+
+Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-25 07:13:25 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-25 07:13:25 +0100
+
+
+Started POST "/pictures" for 127.0.0.1 at 2015-02-25 07:13:41 +0100
+Processing by FamilyGallery::PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rodqrE31bncAMVOnGxg+o+g1P9neBjyQq6co2/xkSmM=", "group_id"=>"1", "picture"=>{"title"=>"Tets", "description"=>"Test", "image"=>#<ActionDispatch::Http::UploadedFile:0x00000001658168 @tempfile=#<Tempfile:/tmp/RackMultipart20150225-22911-1xoh4x6>, @original_filename="Screenshot.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Screenshot.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/tmp/3afbd9828e011526955ca93b48b5752420150225-22911-sv6ees.png'
+  [1m[36mFamilyGallery::User Load (0.3ms)[0m  [1mSELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1[0m
+  [1m[35mFamilyGallery::UserRole Load (0.2ms)[0m  SELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1
+Command :: file -b --mime '/tmp/3afbd9828e011526955ca93b48b5752420150225-22911-e7p7mm.png'
+  [1m[36mFamilyGallery::Group Load (0.3ms)[0m  [1mSELECT `family_gallery_groups`.* FROM `family_gallery_groups` WHERE `family_gallery_groups`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFamilyGallery::GroupPictureLink Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `family_gallery_group_picture_links` WHERE (`family_gallery_group_picture_links`.`picture_id` IS NULL AND `family_gallery_group_picture_links`.`group_id` = 1) LIMIT 1[0m
+Command :: file -b --mime '/tmp/3afbd9828e011526955ca93b48b5752420150225-22911-1dw7ox6.png'
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `family_gallery_pictures` (`created_at`, `image_content_type`, `image_file_name`, `image_file_size`, `image_updated_at`, `updated_at`) VALUES ('2015-02-25 06:13:41', 'image/png', 'Screenshot.png', 1443553, '2015-02-25 06:13:41', '2015-02-25 06:13:41')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `family_gallery_picture_translations` (`created_at`, `description`, `family_gallery_picture_id`, `locale`, `title`, `updated_at`) VALUES ('2015-02-25 06:13:41', 'Test', 2, 'en', 'Tets', '2015-02-25 06:13:41')[0m
+  [1m[35mFamilyGallery::Picture Load (0.3ms)[0m  SELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` WHERE `family_gallery_pictures`.`id` = 2 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE `family_gallery_pictures` SET `family_gallery_pictures`.`updated_at` = '2015-02-25 06:13:41' WHERE `family_gallery_pictures`.`id` = 2[0m
+  [1m[35mFamilyGallery::GroupPictureLink Exists (0.2ms)[0m  SELECT 1 AS one FROM `family_gallery_group_picture_links` WHERE (`family_gallery_group_picture_links`.`picture_id` = BINARY 2 AND `family_gallery_group_picture_links`.`group_id` = 1) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `family_gallery_group_picture_links` (`created_at`, `group_id`, `picture_id`, `updated_at`) VALUES ('2015-02-25 06:13:41', 1, 2, '2015-02-25 06:13:41')[0m
+  [1m[35mFamilyGallery::Picture Load (0.1ms)[0m  SELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` WHERE `family_gallery_pictures`.`id` = 2 LIMIT 1
+  [1m[36mFamilyGallery::GroupPictureLink Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `family_gallery_group_picture_links` WHERE (`family_gallery_group_picture_links`.`picture_id` = BINARY 2 AND `family_gallery_group_picture_links`.`id` != 1 AND `family_gallery_group_picture_links`.`group_id` = 1) LIMIT 1[0m
+  [1m[35m (7.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures/2
+Completed 302 Found in 79ms (ActiveRecord: 10.2ms)
+
+
+Started GET "/pictures/2" for 127.0.0.1 at 2015-02-25 07:13:41 +0100
+Processing by FamilyGallery::PicturesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mFamilyGallery::Picture Load (0.2ms)[0m  [1mSELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` WHERE `family_gallery_pictures`.`id` = 2 LIMIT 1[0m
+  [1m[35mFamilyGallery::User Load (0.2ms)[0m  SELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1
+  [1m[36mFamilyGallery::UserRole Load (0.2ms)[0m  [1mSELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1[0m
+  [1m[35mFamilyGallery::Picture::Translation Load (0.3ms)[0m  SELECT `family_gallery_picture_translations`.* FROM `family_gallery_picture_translations` WHERE `family_gallery_picture_translations`.`family_gallery_picture_id` = 2
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/pictures/show.html.haml within layouts/family_gallery/application (3.9ms)
+Completed 200 OK in 13ms (Views: 7.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 07:13:41 +0100
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 07:13:41 +0100
+
+
+Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-25 07:13:41 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-25 07:13:41 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-25 07:13:41 +0100
+
+
+Started GET "/pictures/2" for 127.0.0.1 at 2015-02-25 07:14:11 +0100
+Processing by FamilyGallery::PicturesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mFamilyGallery::Picture Load (0.2ms)[0m  [1mSELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` WHERE `family_gallery_pictures`.`id` = 2 LIMIT 1[0m
+  [1m[35mFamilyGallery::User Load (0.1ms)[0m  SELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1
+  [1m[36mFamilyGallery::UserRole Load (0.1ms)[0m  [1mSELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1[0m
+  [1m[35mFamilyGallery::Picture::Translation Load (0.2ms)[0m  SELECT `family_gallery_picture_translations`.* FROM `family_gallery_picture_translations` WHERE `family_gallery_picture_translations`.`family_gallery_picture_id` = 2
+  [1m[36mFamilyGallery::Group Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `family_gallery_groups` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_groups`.`id` = `family_gallery_group_picture_links`.`group_id` WHERE `family_gallery_group_picture_links`.`picture_id` = 2 LIMIT 1[0m
+  [1m[35mFamilyGallery::Group Load (0.2ms)[0m  SELECT `family_gallery_groups`.* FROM `family_gallery_groups` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_groups`.`id` = `family_gallery_group_picture_links`.`group_id` WHERE `family_gallery_group_picture_links`.`picture_id` = 2
+  [1m[36mFamilyGallery::Group::Translation Load (0.2ms)[0m  [1mSELECT `family_gallery_group_translations`.* FROM `family_gallery_group_translations` WHERE `family_gallery_group_translations`.`family_gallery_group_id` = 1[0m
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/pictures/show.html.haml within layouts/family_gallery/application (9.0ms)
+Completed 200 OK in 16ms (Views: 11.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 07:14:11 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-25 07:14:11 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-25 07:14:11 +0100
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 07:14:11 +0100
+
+
+Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-25 07:14:11 +0100
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2015-02-25 07:14:13 +0100
+Processing by FamilyGallery::GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mFamilyGallery::Group Load (0.3ms)[0m  SELECT `family_gallery_groups`.* FROM `family_gallery_groups` WHERE `family_gallery_groups`.`id` = 1 LIMIT 1
+  [1m[36mFamilyGallery::User Load (0.2ms)[0m  [1mSELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1[0m
+  [1m[35mFamilyGallery::UserRole Load (0.2ms)[0m  SELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1
+  [1m[36mFamilyGallery::Group::Translation Load (0.2ms)[0m  [1mSELECT `family_gallery_group_translations`.* FROM `family_gallery_group_translations` WHERE `family_gallery_group_translations`.`family_gallery_group_id` = 1[0m
+  [1m[35mFamilyGallery::Picture Load (0.2ms)[0m  SELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_pictures`.`id` = `family_gallery_group_picture_links`.`picture_id` WHERE `family_gallery_group_picture_links`.`group_id` = 1
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml within layouts/family_gallery/application (5.8ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `thumb' for #<FamilyGallery::Picture:0x000000046c8230>):
+    17:   %tbody
+    18:     - @group.pictures.each do |picture|
+    19:       %tr
+    20:         %td= image_tag(picture.thumb.url)
+    21:     - unless @group.pictures.any?
+    22:       %tr
+    23:         %td{colspan: 1}= t("no_results")
+  activemodel (4.0.13) lib/active_model/attribute_methods.rb:439:in `method_missing'
+  activerecord (4.0.13) lib/active_record/attribute_methods.rb:168:in `method_missing'
+  /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml:20:in `block in __media_storage__ev__ails_family_gallery_app_views_family_gallery_groups_show_html_haml___4601412894505041099_35887960'
+  activerecord (4.0.13) lib/active_record/relation/delegation.rb:13:in `each'
+  activerecord (4.0.13) lib/active_record/relation/delegation.rb:13:in `each'
+  /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml:18:in `__media_storage__ev__ails_family_gallery_app_views_family_gallery_groups_show_html_haml___4601412894505041099_35887960'
+  actionpack (4.0.13) lib/action_view/template.rb:143:in `block in render'
+  activesupport (4.0.13) lib/active_support/notifications.rb:161:in `instrument'
+  actionpack (4.0.13) lib/action_view/template.rb:141:in `render'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+  actionpack (4.0.13) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.0.13) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.13) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.13) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.13) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.13) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.13) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.13) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.13) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.13) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.13) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.13) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.13) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.13) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.13) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/kaspernj/.rvm/rubies/ruby-2.1-head/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.0.13) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.13) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.13) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.13) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.13) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.13) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.13) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.13) lib/active_support/callbacks.rb:383:in `_run__1192880792450622772__process_action__callbacks'
+  activesupport (4.0.13) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.13) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.13) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.13) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.13) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.13) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.13) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.0.13) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.13) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.13) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.13) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.13) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.13) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:676:in `call'
+  railties (4.0.13) lib/rails/engine.rb:511:in `call'
+  railties (4.0.13) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:676:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/builder.rb:59:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.13) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.13) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.13) lib/active_support/callbacks.rb:373:in `_run__4531134758089085226__call__callbacks'
+  activesupport (4.0.13) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.13) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.13) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.13) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.13) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.13) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.13) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.13) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.13) lib/rails/engine.rb:511:in `call'
+  railties (4.0.13) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/kaspernj/.rvm/rubies/ruby-2.1-head/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/kaspernj/.rvm/rubies/ruby-2.1-head/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/kaspernj/.rvm/rubies/ruby-2.1-head/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/kaspernj/.rvm/gems/ruby-2.1-head/gems/actionpack-4.0.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /home/kaspernj/.rvm/gems/ruby-2.1-head/gems/actionpack-4.0.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/kaspernj/.rvm/gems/ruby-2.1-head/gems/actionpack-4.0.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.9ms)
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2015-02-25 07:14:23 +0100
+Processing by FamilyGallery::GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFamilyGallery::Group Load (0.2ms)[0m  [1mSELECT `family_gallery_groups`.* FROM `family_gallery_groups` WHERE `family_gallery_groups`.`id` = 1 LIMIT 1[0m
+  [1m[35mFamilyGallery::User Load (0.2ms)[0m  SELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1
+  [1m[36mFamilyGallery::UserRole Load (0.2ms)[0m  [1mSELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1[0m
+  [1m[35mFamilyGallery::Group::Translation Load (0.2ms)[0m  SELECT `family_gallery_group_translations`.* FROM `family_gallery_group_translations` WHERE `family_gallery_group_translations`.`family_gallery_group_id` = 1
+  [1m[36mFamilyGallery::Picture Load (0.2ms)[0m  [1mSELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_pictures`.`id` = `family_gallery_group_picture_links`.`picture_id` WHERE `family_gallery_group_picture_links`.`group_id` = 1[0m
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml within layouts/family_gallery/application (7.1ms)
+Completed 500 Internal Server Error in 13ms
+
+ActionView::Template::Error (undefined method `url' for #<FamilyGallery::Picture:0x00000006463240>):
+    17:   %tbody
+    18:     - @group.pictures.each do |picture|
+    19:       %tr
+    20:         %td= image_tag(picture.url)
+    21:     - unless @group.pictures.any?
+    22:       %tr
+    23:         %td{colspan: 1}= t("no_results")
+  activemodel (4.0.13) lib/active_model/attribute_methods.rb:439:in `method_missing'
+  activerecord (4.0.13) lib/active_record/attribute_methods.rb:168:in `method_missing'
+  /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml:20:in `block in __media_storage__ev__ails_family_gallery_app_views_family_gallery_groups_show_html_haml___4601412894505041099_52123600'
+  activerecord (4.0.13) lib/active_record/relation/delegation.rb:13:in `each'
+  activerecord (4.0.13) lib/active_record/relation/delegation.rb:13:in `each'
+  /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml:18:in `__media_storage__ev__ails_family_gallery_app_views_family_gallery_groups_show_html_haml___4601412894505041099_52123600'
+  actionpack (4.0.13) lib/action_view/template.rb:143:in `block in render'
+  activesupport (4.0.13) lib/active_support/notifications.rb:161:in `instrument'
+  actionpack (4.0.13) lib/action_view/template.rb:141:in `render'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+  actionpack (4.0.13) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.0.13) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.13) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.13) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.13) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.13) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.13) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.13) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.13) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.13) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.13) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.13) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.13) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.13) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.13) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.13) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/kaspernj/.rvm/rubies/ruby-2.1-head/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.0.13) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.13) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.13) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.13) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.13) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.13) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.13) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.13) lib/active_support/callbacks.rb:383:in `_run__1192880792450622772__process_action__callbacks'
+  activesupport (4.0.13) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.13) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.13) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.13) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.13) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.13) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.13) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.13) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.0.13) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.13) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.13) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.13) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.13) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.13) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:676:in `call'
+  railties (4.0.13) lib/rails/engine.rb:511:in `call'
+  railties (4.0.13) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.13) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.13) lib/action_dispatch/routing/route_set.rb:676:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/builder.rb:59:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.13) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.13) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.13) lib/active_support/callbacks.rb:373:in `_run__4531134758089085226__call__callbacks'
+  activesupport (4.0.13) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.13) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.13) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.13) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.13) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.13) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.13) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.13) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.13) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.13) lib/rails/engine.rb:511:in `call'
+  railties (4.0.13) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/kaspernj/.rvm/rubies/ruby-2.1-head/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/kaspernj/.rvm/rubies/ruby-2.1-head/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/kaspernj/.rvm/rubies/ruby-2.1-head/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/kaspernj/.rvm/gems/ruby-2.1-head/gems/actionpack-4.0.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /home/kaspernj/.rvm/gems/ruby-2.1-head/gems/actionpack-4.0.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/kaspernj/.rvm/gems/ruby-2.1-head/gems/actionpack-4.0.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.8ms)
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2015-02-25 07:14:31 +0100
+Processing by FamilyGallery::GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mFamilyGallery::Group Load (0.3ms)[0m  SELECT `family_gallery_groups`.* FROM `family_gallery_groups` WHERE `family_gallery_groups`.`id` = 1 LIMIT 1
+  [1m[36mFamilyGallery::User Load (0.2ms)[0m  [1mSELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1[0m
+  [1m[35mFamilyGallery::UserRole Load (0.2ms)[0m  SELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1
+  [1m[36mFamilyGallery::Group::Translation Load (0.3ms)[0m  [1mSELECT `family_gallery_group_translations`.* FROM `family_gallery_group_translations` WHERE `family_gallery_group_translations`.`family_gallery_group_id` = 1[0m
+  [1m[35mFamilyGallery::Picture Load (0.2ms)[0m  SELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_pictures`.`id` = `family_gallery_group_picture_links`.`picture_id` WHERE `family_gallery_group_picture_links`.`group_id` = 1
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml within layouts/family_gallery/application (6.6ms)
+Completed 200 OK in 14ms (Views: 9.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 07:14:31 +0100
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 07:14:31 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-25 07:14:31 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-25 07:14:31 +0100
+
+
+Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-25 07:14:31 +0100
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2015-02-25 07:15:37 +0100
+Processing by FamilyGallery::GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFamilyGallery::Group Load (0.2ms)[0m  [1mSELECT `family_gallery_groups`.* FROM `family_gallery_groups` WHERE `family_gallery_groups`.`id` = 1 LIMIT 1[0m
+  [1m[35mFamilyGallery::User Load (0.2ms)[0m  SELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1
+  [1m[36mFamilyGallery::UserRole Load (0.2ms)[0m  [1mSELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1[0m
+  [1m[35mFamilyGallery::Group::Translation Load (0.2ms)[0m  SELECT `family_gallery_group_translations`.* FROM `family_gallery_group_translations` WHERE `family_gallery_group_translations`.`family_gallery_group_id` = 1
+  [1m[36mFamilyGallery::Picture Load (0.3ms)[0m  [1mSELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_pictures`.`id` = `family_gallery_group_picture_links`.`picture_id` WHERE `family_gallery_group_picture_links`.`group_id` = 1[0m
+  [1m[35mFamilyGallery::Picture::Translation Load (0.2ms)[0m  SELECT `family_gallery_picture_translations`.* FROM `family_gallery_picture_translations` WHERE `family_gallery_picture_translations`.`family_gallery_picture_id` = 2
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml within layouts/family_gallery/application (25.0ms)
+Completed 200 OK in 59ms (Views: 25.4ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 07:15:37 +0100
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 07:15:37 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-25 07:15:37 +0100
+
+
+Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-25 07:15:37 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-25 07:15:37 +0100
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 07:15:40 +0100
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 07:15:40 +0100
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2015-02-25 07:16:06 +0100
+Processing by FamilyGallery::GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFamilyGallery::Group Load (0.2ms)[0m  [1mSELECT `family_gallery_groups`.* FROM `family_gallery_groups` WHERE `family_gallery_groups`.`id` = 1 LIMIT 1[0m
+  [1m[35mFamilyGallery::User Load (0.1ms)[0m  SELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1
+  [1m[36mFamilyGallery::UserRole Load (0.2ms)[0m  [1mSELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1[0m
+  [1m[35mFamilyGallery::Group::Translation Load (0.2ms)[0m  SELECT `family_gallery_group_translations`.* FROM `family_gallery_group_translations` WHERE `family_gallery_group_translations`.`family_gallery_group_id` = 1
+  [1m[36mFamilyGallery::Picture Load (0.2ms)[0m  [1mSELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_pictures`.`id` = `family_gallery_group_picture_links`.`picture_id` WHERE `family_gallery_group_picture_links`.`group_id` = 1[0m
+  [1m[35mFamilyGallery::Picture::Translation Load (0.2ms)[0m  SELECT `family_gallery_picture_translations`.* FROM `family_gallery_picture_translations` WHERE `family_gallery_picture_translations`.`family_gallery_picture_id` = 2
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/groups/show.html.haml within layouts/family_gallery/application (22.3ms)
+Completed 200 OK in 55ms (Views: 22.9ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 07:16:06 +0100
+
+
+Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-25 07:16:06 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-25 07:16:06 +0100
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 07:16:06 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-25 07:16:06 +0100
+
+
+Started GET "/pictures/2" for 127.0.0.1 at 2015-02-25 07:16:07 +0100
+Processing by FamilyGallery::PicturesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mFamilyGallery::Picture Load (0.3ms)[0m  [1mSELECT `family_gallery_pictures`.* FROM `family_gallery_pictures` WHERE `family_gallery_pictures`.`id` = 2 LIMIT 1[0m
+  [1m[35mFamilyGallery::User Load (0.2ms)[0m  SELECT `family_gallery_users`.* FROM `family_gallery_users` WHERE `family_gallery_users`.`id` = 1 ORDER BY `family_gallery_users`.`id` ASC LIMIT 1
+  [1m[36mFamilyGallery::UserRole Load (0.2ms)[0m  [1mSELECT `family_gallery_user_roles`.* FROM `family_gallery_user_roles` WHERE `family_gallery_user_roles`.`user_id` = 1[0m
+  [1m[35mFamilyGallery::Picture::Translation Load (0.2ms)[0m  SELECT `family_gallery_picture_translations`.* FROM `family_gallery_picture_translations` WHERE `family_gallery_picture_translations`.`family_gallery_picture_id` = 2
+  [1m[36mFamilyGallery::Group Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `family_gallery_groups` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_groups`.`id` = `family_gallery_group_picture_links`.`group_id` WHERE `family_gallery_group_picture_links`.`picture_id` = 2 LIMIT 1[0m
+  [1m[35mFamilyGallery::Group Load (0.1ms)[0m  SELECT `family_gallery_groups`.* FROM `family_gallery_groups` INNER JOIN `family_gallery_group_picture_links` ON `family_gallery_groups`.`id` = `family_gallery_group_picture_links`.`group_id` WHERE `family_gallery_group_picture_links`.`picture_id` = 2
+  [1m[36mFamilyGallery::Group::Translation Load (0.1ms)[0m  [1mSELECT `family_gallery_group_translations`.* FROM `family_gallery_group_translations` WHERE `family_gallery_group_translations`.`family_gallery_group_id` = 1[0m
+  Rendered /media/storage/Dev/Rails/family_gallery/app/views/family_gallery/pictures/show.html.haml within layouts/family_gallery/application (6.6ms)
+Completed 200 OK in 14ms (Views: 9.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/family_gallery/layout.css?body=1" for 127.0.0.1 at 2015-02-25 07:16:07 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-25 07:16:07 +0100
+
+
+Started GET "/assets/family_gallery/application.css?body=1" for 127.0.0.1 at 2015-02-25 07:16:07 +0100
+
+
+Started GET "/assets/family_gallery/application.js?body=1" for 127.0.0.1 at 2015-02-25 07:16:07 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-25 07:16:07 +0100

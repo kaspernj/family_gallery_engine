@@ -36,4 +36,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "forgery"
   s.add_development_dependency "factory_girl_rails"
+  s.add_development_dependency "codeclimate-test-reporter"
+  s.add_development_dependency "pry"
+
+  # Deploy
+  s.add_development_dependency "capistrano"
+  s.add_development_dependency "capistrano-rails"
+  s.add_development_dependency "capistrano-bundler"
 end

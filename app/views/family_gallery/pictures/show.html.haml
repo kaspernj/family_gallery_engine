@@ -3,4 +3,11 @@
 - if can? :edit, @picture
   = link_to t(".edit_picture"), edit_picture_path(@picture)
 
+- if @picture.groups.any?
+  %table.list
+    %tbody
+      - @picture.groups.each do |group|
+        %tr
+          %td= link_to_group group
+
 = image_tag @picture.image.url, alt: @picture.title, width: "800px"
