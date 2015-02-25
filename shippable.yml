@@ -4,8 +4,10 @@ archive: true
 rvm:
   - 2.1.2
 before_script:
-  - pwd
   - cd spec/dummy
+  - cp config/database.shippable.yml config/database.yml
+  - mysql -e 'DROP DATABASE IF EXISTS family_gallery_test;'
+  - mysql -e 'CREATE DATABASE family_gallery_test;'
   - RAILS_ENV=test bundle exec rake db:migrate
   - RAILS_ENV=test bundle exec rake plugin_migrator:migrate
 script:
