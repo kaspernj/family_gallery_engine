@@ -1,0 +1,10 @@
+---
+da:
+  family_gallery:
+    users:
+      show:
+        show_user: Vis bruger
+        tagged_on: Tagget på
+        user_hasnt_been_tagged_on_any_pictures: Denne bruger er ikke blevet tagget
+          på nogle billeder
+        uploaded_pictures: Uploadede billeder

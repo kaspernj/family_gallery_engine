@@ -1,28 +1,41 @@
 !!! 5
 %html
   %head
-    %title FamilyGallery
+    %title= try(:header_title) || "FamilyGallery"
 
     = stylesheet_link_tag "family_gallery/application", media: "all"
-    = javascript_include_tag "family_gallery/application"
-    = csrf_meta_tags
-  %body
-    %table.main
-      %tbody
-        %tr
-          %td.main-logo FamilyGallery
-        %tr
-          %td.main-menu
-            = link_to "Frontpage", root_path
-            = link_to FamilyGallery::Group.model_name.human(count: 2), groups_path if can? :index, FamilyGallery::Group
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Raleway:400"
 
-            - if signed_in?
-              = link_to "Sign out", destroy_family_gallery_user_session_path, method: :delete
-            - else
-              = link_to "Sign in", new_family_gallery_user_session_path
-        %tr
-          %td.main-content
-            = yield
-        %tr
-          %td.main-bottom
-            Made by Kasper Johansen
+    = javascript_include_tag "family_gallery/application"
+
+    = csrf_meta_tags
+  %body{class: ["controller_#{controller_name}", "action_#{action_name}"]}
+    %center
+      %table.main
+        %tbody
+          %tr
+            %td.main-logo FamilyGallery
+          %tr
+            %td.main-menu
+              = link_to t(".frontpage"), root_path
+              = link_to FamilyGallery::Group.model_name.human(count: 2), groups_path if can? :index, FamilyGallery::Group
+              = link_to t(".translations"), awesome_translations_path if Rails.env.development?
+
+              - if signed_in?
+                = link_to t(".sign_out"), destroy_family_gallery_user_session_path, method: :delete
+              - else
+                = link_to t(".sign_in"), new_family_gallery_user_session_path
+          %tr
+            %td.main-content
+              - flash.each do |flash_type, flash_message|
+                .flash-message{class: "flash-#{flash_type}"}
+                  = flash_message
+
+              - if try(:header_title).present?
+                %h1= header_title
+
+              = yield
+          %tr
+            %td.main-bottom
+              = select_tag "locale", options_for_select(I18n.available_locales.to_a, I18n.locale), data: {url: locales_path}

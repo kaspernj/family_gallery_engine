@@ -1,0 +1,14 @@
+---
+en:
+  activerecord:
+    models:
+      family_gallery/user_tagging:
+        one: User tagging
+        other: User taggins
+    attributes:
+      family_gallery/user_tagging:
+        id: ID
+        picture_id: Picture ID
+        user_id: User ID
+        picture: Picture
+        user: User

@@ -1,0 +1,14 @@
+---
+da:
+  activerecord:
+    models:
+      family_gallery/user_tagging:
+        one: Brugertagging
+        other: Brugertaggings
+    attributes:
+      family_gallery/user_tagging:
+        id: ID
+        picture_id: Billede ID
+        user_id: Bruger ID
+        picture: Billede
+        user: Bruger

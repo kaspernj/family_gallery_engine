@@ -1,0 +1,9 @@
+---
+da:
+  controllers:
+    family_gallery:
+      resources_controller:
+        resource_was_saved: Resource blev gemt.
+        resource_was_updated: Resourcen blev opdateret.
+        resource_was_deleted: Resourcen blev slettet.
+  "@#{StringCases": {}

@@ -1,0 +1,26 @@
+---
+da:
+  activerecord:
+    models:
+      family_gallery:
+        group:
+          one: Gruppe
+          other: Grupper
+      family_gallery/group:
+        one: Gruppe
+        other: Grupper
+    attributes:
+      family_gallery:
+        group:
+          id: ID
+          created_at: Oprettet d.
+          updated_at: Opdateret d.
+          translations: Oversættelser
+          group_picture_links: Gruppebilledelinks
+          pictures: Billeder
+      family_gallery/group:
+        id: ID
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        group_picture_links: Gruppebilledelinks
+        pictures: Billeder

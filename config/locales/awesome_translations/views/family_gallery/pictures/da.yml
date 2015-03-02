@@ -1,0 +1,13 @@
+---
+da:
+  family_gallery:
+    pictures:
+      edit:
+        edit_picture: 'Rediger billede: %{title}'
+      form:
+        delete: Slet
+      new:
+        add_new_picture: Tilføj nyt billede
+      show:
+        show_picture: 'Vis billede: %{title}'
+        edit_picture: Rediger billede

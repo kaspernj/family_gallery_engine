@@ -1,6 +1,9 @@
 class CreateFamilyGalleryUsers < ActiveRecord::Migration
   def change
     create_table :family_gallery_users do |t|
+      t.string :first_name
+      t.string :last_name
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

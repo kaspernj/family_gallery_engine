@@ -1,7 +1,8 @@
 - content_for(:header_title) { t(".show_group", name: @group.name) }
 
-= link_to t(".edit_group"), edit_group_path(@group) if can? :edit, @group
-= link_to t(".new_picture"), new_picture_path(group_id: @group.id) if can? :new, FamilyGallery::Picture
+.actions
+  = link_to t(".edit_group"), edit_group_path(@group), class: "button" if can? :edit, @group
+  = link_to t(".new_picture"), new_picture_path(group_id: @group.id), class: "button" if can? :new, FamilyGallery::Picture
 
 %table.form
   %tbody
@@ -15,9 +16,10 @@
 %h2= FamilyGallery::Picture.model_name.human(count: 2)
 %table.list
   %tbody
-    - @group.pictures.each do |picture|
+    - groups_of_pictures do |pictures|
       %tr
-        %td= picture_image_tag(picture, width: "800px")
+        - pictures.each do |picture|
+          %td= picture_image_tag(picture, width: 100)
     - unless @group.pictures.any?
       %tr
         %td{colspan: 1}= t("no_results")

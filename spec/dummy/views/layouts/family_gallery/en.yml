@@ -1,0 +1,6 @@
+---
+en:
+  views:
+    layouts:
+      family_gallery:
+        application: {}

@@ -1,0 +1,10 @@
+---
+da:
+  family_gallery:
+    groups:
+      show:
+        show_group: Vis gruppe
+        edit_group: Rediger gruppe
+        new_picture: Nyt billede
+      new:
+        new_group: Ny gruppe

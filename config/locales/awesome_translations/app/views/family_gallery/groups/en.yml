@@ -1,0 +1,10 @@
+---
+en:
+  family_gallery:
+    groups:
+      show:
+        show_group: Show group
+        edit_group: Edit group
+        new_picture: New picture
+      new:
+        new_group: New group

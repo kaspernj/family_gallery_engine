@@ -1,0 +1,9 @@
+---
+da:
+  views:
+    family_gallery:
+      groups:
+        edit:
+          edit_group: Rediger gruppe
+        new: {}
+        show: {}

@@ -1,0 +1,12 @@
+- content_for(:header_title) { t(".show_user", user_name: @user.name) }
+
+%h2= t(".tagged_on")
+- @user.pictures_tagged_on.each do |picture|
+  = picture_image_tag picture
+
+- unless @user.pictures_tagged_on.any?
+  = t(".user_hasnt_been_tagged_on_any_pictures")
+
+%h2= t(".uploaded_pictures")
+- @user.uploaded_pictures.each do |picture|
+  = picture_image_tag picture

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224184005) do
+ActiveRecord::Schema.define(version: 20150301144620) do
 
   create_table "family_gallery_group_picture_links", force: true do |t|
     t.integer  "group_id"
@@ -54,9 +54,13 @@ ActiveRecord::Schema.define(version: 20150224184005) do
   add_index "family_gallery_picture_translations", ["locale"], name: "index_family_gallery_picture_translations_on_locale", using: :btree
 
   create_table "family_gallery_pictures", force: true do |t|
-    t.integer  "group_id"
     t.integer  "user_owner_id"
     t.integer  "user_uploaded_id"
+    t.datetime "taken_at"
+    t.integer  "width"
+    t.integer  "height"
+    t.decimal  "latitude",           precision: 12, scale: 3
+    t.decimal  "longitude",          precision: 12, scale: 3
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
@@ -65,7 +69,11 @@ ActiveRecord::Schema.define(version: 20150224184005) do
     t.datetime "image_updated_at"
   end
 
-  add_index "family_gallery_pictures", ["group_id"], name: "index_family_gallery_pictures_on_group_id", using: :btree
+  add_index "family_gallery_pictures", ["latitude"], name: "index_family_gallery_pictures_on_latitude", using: :btree
+  add_index "family_gallery_pictures", ["longitude"], name: "index_family_gallery_pictures_on_longitude", using: :btree
+  add_index "family_gallery_pictures", ["taken_at"], name: "index_family_gallery_pictures_on_taken_at", using: :btree
+  add_index "family_gallery_pictures", ["user_owner_id"], name: "index_family_gallery_pictures_on_user_owner_id", using: :btree
+  add_index "family_gallery_pictures", ["user_uploaded_id"], name: "index_family_gallery_pictures_on_user_uploaded_id", using: :btree
 
   create_table "family_gallery_user_roles", force: true do |t|
     t.integer  "user_id"
@@ -77,7 +85,23 @@ ActiveRecord::Schema.define(version: 20150224184005) do
   add_index "family_gallery_user_roles", ["user_id", "role"], name: "index_family_gallery_user_roles_on_user_id_and_role", unique: true, using: :btree
   add_index "family_gallery_user_roles", ["user_id"], name: "index_family_gallery_user_roles_on_user_id", using: :btree
 
+  create_table "family_gallery_user_taggings", force: true do |t|
+    t.integer  "picture_id"
+    t.integer  "user_id"
+    t.integer  "tagged_by_id"
+    t.decimal  "position_top",  precision: 10, scale: 2
+    t.decimal  "position_left", precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "family_gallery_user_taggings", ["picture_id"], name: "index_family_gallery_user_taggings_on_picture_id", using: :btree
+  add_index "family_gallery_user_taggings", ["tagged_by_id"], name: "index_family_gallery_user_taggings_on_tagged_by_id", using: :btree
+  add_index "family_gallery_user_taggings", ["user_id"], name: "index_family_gallery_user_taggings_on_user_id", using: :btree
+
   create_table "family_gallery_users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

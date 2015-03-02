@@ -17,5 +17,6 @@ private
     can :manage, FamilyGallery::Group
     can :manage, FamilyGallery::Picture
     can :manage, FamilyGallery::User
+    can :manage, FamilyGallery::UserTagging
   end
 end

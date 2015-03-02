@@ -1,6 +1,8 @@
 = simple_form_for picture do |f|
   = hidden_field_tag :group_id, params[:group_id] if params[:group_id].present?
-  = f.input :title
+  = f.input :title, autofocus: true
   = f.input :description
   = f.input :image
-  = f.submit
+  = f.submit t("save"), class: "button"
+
+  = link_to t("delete"), picture, class: "button-danger", method: :delete, data: {confirm: t("are_you_sure")}  unless picture.new_record?

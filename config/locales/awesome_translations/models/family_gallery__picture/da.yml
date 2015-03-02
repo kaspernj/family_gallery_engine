@@ -1,0 +1,13 @@
+---
+da:
+  activerecord:
+    models:
+      family_gallery/picture:
+        one: Billede
+        other: Billeder
+    attributes:
+      family_gallery/picture:
+        width: Bredde
+        height: Højde
+        created_at: Oprettet d.
+        updated_at: Opdateret d.

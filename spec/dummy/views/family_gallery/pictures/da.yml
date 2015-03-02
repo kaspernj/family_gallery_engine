@@ -1,0 +1,9 @@
+---
+da:
+  views:
+    family_gallery:
+      pictures:
+        edit: {}
+        form: {}
+        new: {}
+        show: {}
