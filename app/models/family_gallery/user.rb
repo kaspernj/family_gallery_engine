@@ -14,7 +14,7 @@ class FamilyGallery::User < ActiveRecord::Base
   scope :ordered, -> { order("family_gallery_users.first_name, family_gallery_users.last_name, family_gallery_users.email") }
 
   def name
-    name = first_name
+    name = "#{first_name}" # Needs to be a new string.
     name << " #{last_name}" if last_name?
 
     name = email unless name.present?

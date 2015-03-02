@@ -1,0 +1,10 @@
+---
+en:
+  family_gallery:
+    users:
+      show:
+        show_user: Show user
+        tagged_on: Tagged on
+        user_hasnt_been_tagged_on_any_pictures: This user hasn't been tagged on any
+          pictures
+        uploaded_pictures: Uploaded pictures

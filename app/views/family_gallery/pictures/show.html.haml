@@ -7,6 +7,12 @@
 - if @picture.groups.any?
   %table.list
     %tbody
+      %tr
+        %td= FamilyGallery::Picture.human_attribute_name(:user_owner)
+        %td= link_to_user @picture.user_owner
+      %tr
+        %td= FamilyGallery::Picture.human_attribute_name(:user_uploaded)
+        %td= link_to_user @picture.user_uploaded
       - @picture.groups.each do |group|
         %tr
           %td= FamilyGallery::Group.model_name.human
