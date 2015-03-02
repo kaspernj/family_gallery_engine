@@ -1,0 +1,13 @@
+---
+en:
+  activerecord:
+    models:
+      family_gallery/picture:
+        one: Picture
+        other: Pictures
+    attributes:
+      family_gallery/picture:
+        width: Width
+        height: Height
+        created_at: Created at
+        updated_at: Updated at

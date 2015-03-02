@@ -5,6 +5,7 @@ PATH
       cancancan
       coffee-rails
       devise
+      exifr (= 1.2.0)
       globalize
       haml-rails
       jquery-rails
@@ -46,6 +47,14 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    array_enumerator (0.0.7)
+    awesome_translations (0.0.2)
+      array_enumerator (~> 0.0.7)
+      haml
+      jquery-rails
+      rails (>= 3.1.2)
+      sass-rails
+      string-cases
     bcrypt (3.1.9)
     builder (3.1.4)
     cancancan (1.9.2)
@@ -86,6 +95,7 @@ GEM
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.3.0)
+    exifr (1.2.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -236,6 +246,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_translations (= 0.0.2)
   cancancan
   capistrano
   capistrano-bundler

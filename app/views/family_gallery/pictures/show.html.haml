@@ -1,13 +1,41 @@
 - content_for(:header_title) { t(".show_picture", title: @picture.title) }
 
-- if can? :edit, @picture
-  = link_to t(".edit_picture"), edit_picture_path(@picture)
+.actions
+  = link_to t(".edit_picture"), edit_picture_path(@picture), class: "button" if can? :edit, @picture
+  = link_to t(".add_tagging"), new_picture_user_tagging_path(@picture), class: "button" if can? :new, FamilyGallery::UserTagging
 
 - if @picture.groups.any?
   %table.list
     %tbody
       - @picture.groups.each do |group|
         %tr
+          %td= FamilyGallery::Group.model_name.human
           %td= link_to_group group
 
-= image_tag @picture.image.url, alt: @picture.title, width: "800px"
+%center
+  %table.navigation-links{width: "#{@width}px;"}
+    %tbody
+      %tr
+        %td.previous= link_to t(".previous"), [@group, @previous_picture] if @previous_picture
+        %td.next= link_to t(".next"), [@group, @next_picture] if @next_picture
+  .picture-container{style: "width: #{@width}px; height: #{@height}px; background-size: #{@width}px #{@picture.height_for_width(@width)}px; background-image: url('#{@picture.image.url}');"}
+    - @picture.user_taggings.joins(:user).each do |user_tagging|
+      .tagged-user{class: "tagged-user-#{user_tagging.user.id}", style: "left: #{user_tagging.left_for_width(@width) - 50}px; top: #{user_tagging.top_for_height(@height) - 50}px;"}
+
+%h2= t(".tagged_users")
+.tagged-users-list
+  %table
+    %thead
+      %tr
+        %th= FamilyGallery::UserTagging.human_attribute_name(:user)
+        %th= t("actions")
+    %tbody
+      - @picture.user_taggings.joins(:user).ordered.each do |user_tagging|
+        %tr
+          %td= link_to_user user_tagging.user
+          %td
+            = link_to t("remove"), picture_user_tagging_path(@picture, user_tagging), method: :delete, data: {confirm: t("are_you_sure")} if can? :destroy, user_tagging
+
+      - unless @picture.tagged_users.any?
+        %tr
+          %td{colspan: 2}= t(".no_users_was_tagged")

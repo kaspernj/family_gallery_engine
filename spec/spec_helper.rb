@@ -6,14 +6,16 @@ require "dummy/config/environment"
 require "rspec/rails"
 require "forgery"
 require "factory_girl_rails"
+require "paperclip/matchers"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
-  include ActionDispatch::TestProcess
+  config.include ActionDispatch::TestProcess
   config.include FactoryGirl::Syntax::Methods
+  config.include Paperclip::Shoulda::Matchers
 
   config.expect_with :rspec do |c|
     c.syntax = [:should, :expect]

@@ -1,0 +1,13 @@
+---
+en:
+  family_gallery:
+    pictures:
+      edit:
+        edit_picture: 'Edit picture: %{title}'
+      form:
+        delete: Delete
+      new:
+        add_new_picture: Add new picture
+      show:
+        show_picture: 'Show picture: %{title}'
+        edit_picture: Edit picture

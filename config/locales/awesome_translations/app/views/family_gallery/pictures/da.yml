@@ -1,0 +1,12 @@
+---
+da:
+  family_gallery:
+    pictures:
+      show:
+        show_picture: 'Vis billede: %{title}'
+        edit_picture: Rediger billede
+        add_tagging: Tilføj tagging
+        previous: Forrige
+        next: Næste
+        tagged_users: Taggede brugere
+        no_users_was_tagged: Der er ikke blevet tagget nogle brugere

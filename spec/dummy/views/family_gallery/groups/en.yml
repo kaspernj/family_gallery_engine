@@ -1,0 +1,8 @@
+---
+en:
+  views:
+    family_gallery:
+      groups:
+        edit: {}
+        new: {}
+        show: {}

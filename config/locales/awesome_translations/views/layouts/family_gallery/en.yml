@@ -1,0 +1,9 @@
+---
+en:
+  layouts:
+    family_gallery:
+      application:
+        frontpage: Frontpage
+        sign_in: Sign in
+        sign_out: Sign out
+        translations: Translations

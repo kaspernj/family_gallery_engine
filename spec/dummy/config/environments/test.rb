@@ -36,4 +36,6 @@ Dummy::Application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  Paperclip::Attachment.default_options[:path] = "#{File.realpath("#{Rails.root}/../test_files")}/#{ENV['TEST_ENV_NUMBER'].to_i}/:class/:id_partition/:style.:extension"
 end
