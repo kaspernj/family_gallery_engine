@@ -42,6 +42,12 @@ a:hover, a:active {
   }
 }
 
+.button-danger {
+  @extend .button;
+
+  background-color: darkred;
+}
+
 table > thead > tr > th {
   text-align: left;
 }

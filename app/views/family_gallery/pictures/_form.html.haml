@@ -3,6 +3,6 @@
   = f.input :title, autofocus: true
   = f.input :description
   = f.input :image
-  = f.submit
+  = f.submit t("save"), class: "button"
 
-  = link_to _("Delete"), picture, class: "button-danger", method: :delete, data: {confirm: "Are you sure?"}  unless picture.new_record?
+  = link_to t("delete"), picture, class: "button-danger", method: :delete, data: {confirm: t("are_you_sure")}  unless picture.new_record?
