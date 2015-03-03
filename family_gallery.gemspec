@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency "omniauth-facebook"
   s.add_dependency "paperclip"
   s.add_dependency "exifr", "1.2.0"
+  s.add_dependency "awesome_translations"
 
   s.add_development_dependency "mysql2"
   s.add_development_dependency "rspec-rails"

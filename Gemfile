@@ -5,21 +5,8 @@ source "https://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem "haml-rails"
-gem "devise"
-gem "plugin_migrator"
-gem "globalize"
-gem "coffee-rails"
-gem "jquery-rails"
-gem "cancancan"
-gem "omniauth"
-gem "omniauth-facebook"
-gem "ransack"
-gem "simple_form"
-gem "paperclip"
-
 group :development do
-  gem "awesome_translations", "0.0.2"
+  gem "awesome_translations", "0.0.3"
 end
 
 # Declare any dependencies that are still in development here instead of in

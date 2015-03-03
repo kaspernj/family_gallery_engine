@@ -3,8 +3,8 @@ namespace :family_gallery do
     puts "Creating user: admin@example.com"
     admin_user = FamilyGallery::User.find_or_initialize_by(email: "admin@example.com")
     admin_user.assign_attributes(
-      first_name: Forgery::Name.first_name,
-      last_name: Forgery::Name.last_name,
+      first_name: "Admin",
+      last_name: "User",
       password: "password"
     )
     admin_user.save!
