@@ -1,4 +1,5 @@
 require "omniauth"
+require "omniauth-facebook"
 
 OmniAuth.config.logger = Rails.logger
 
