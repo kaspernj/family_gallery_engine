@@ -1,3 +1,5 @@
+require "omniauth"
+
 OmniAuth.config.logger = Rails.logger
 
 config = YAML.load(File.read(File.join(Rails.root, "config", "family_gallery.yml")))
