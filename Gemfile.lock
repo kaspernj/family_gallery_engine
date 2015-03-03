@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    family_gallery (0.0.2)
+    family_gallery (0.0.3)
       awesome_translations
       cancancan
       coffee-rails
