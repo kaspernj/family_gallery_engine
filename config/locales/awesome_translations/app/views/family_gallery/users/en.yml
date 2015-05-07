@@ -3,8 +3,15 @@ en:
   family_gallery:
     users:
       show:
-        show_user: Show user
+        show_user: 'Show user: %{user_name}'
         tagged_on: Tagged on
         user_hasnt_been_tagged_on_any_pictures: This user hasn't been tagged on any
           pictures
         uploaded_pictures: Uploaded pictures
+        this_user_havent_uploaded_any_pictures: This user haven't uploaded any pictures.
+      edit:
+        edit_user: 'Edit user: %{name}'
+      new:
+        new_user: New user
+      index:
+        no_users_were_found: No users were found

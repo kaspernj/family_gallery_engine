@@ -12,6 +12,9 @@ class FamilyGallery::ResourcesController < FamilyGallery::BaseController
 
   def index
     @ransack = resource_class.ransack(params[:q])
+
+    resources = @ransack.result.page(params[:page])
+    instance_variable_set("@#{resource_plural_name}", resources)
   end
 
   def new
@@ -69,6 +72,10 @@ private
     end
 
     @resource_instance
+  end
+
+  def resource_plural_name
+    resource_class.name.match(/::(.+?)$/)[1].tableize.pluralize
   end
 
   def resource_extracted_params

@@ -1,0 +1,7 @@
+---
+de:
+  activerecord:
+    models:
+      family_gallery/user_tagging: {}
+    attributes:
+      family_gallery/user_tagging: {}

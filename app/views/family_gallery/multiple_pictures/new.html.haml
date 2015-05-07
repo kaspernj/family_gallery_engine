@@ -1,0 +1,5 @@
+- content_for(:header_title) { t(".upload_multiple_pictures") }
+
+= simple_form_for :multiple_pictures, url: group_multiple_pictures_path(@group) do |f|
+  = f.input :files, as: :file, input_html: {multiple: true}
+  = f.submit t("save"), class: "button"

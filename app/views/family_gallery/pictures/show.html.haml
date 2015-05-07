@@ -13,6 +13,12 @@
       %tr
         %td= FamilyGallery::Picture.human_attribute_name(:user_uploaded)
         %td= link_to_user @picture.user_uploaded
+
+      - if @picture.taken_at?
+        %tr
+          %td= FamilyGallery::Picture.human_attribute_name(:taken_at)
+          %td= l(@picture.taken_at, format: :long)
+
       - @picture.groups.each do |group|
         %tr
           %td= FamilyGallery::Group.model_name.human
@@ -45,3 +51,10 @@
       - unless @picture.tagged_users.any?
         %tr
           %td{colspan: 2}= t(".no_users_was_tagged")
+
+- if @picture.location?
+  - content_for(:header_tag) do
+    %script{src: "https://maps.googleapis.com/maps/api/js?v=3.exp"}
+
+  %h1= t(".google_map")
+  #map-canvas{data: {latitude: @picture.latitude, longitude: @picture.longitude}}

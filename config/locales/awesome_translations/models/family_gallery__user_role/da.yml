@@ -1,0 +1,15 @@
+---
+da:
+  activerecord:
+    models:
+      family_gallery/user_role:
+        one: Brugerrolle
+        other: Brugerroller
+    attributes:
+      family_gallery/user_role:
+        id: ID
+        user_id: Bruger ID
+        role: Rolle
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        user: Bruger

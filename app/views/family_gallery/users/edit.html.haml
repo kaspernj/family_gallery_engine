@@ -1,0 +1,3 @@
+- content_for(:header_title) { t(".edit_user", name: @user.name) }
+
+= render "form", user: @user

@@ -12,3 +12,9 @@ en:
         user_id: User ID
         picture: Picture
         user: User
+        tagged_by_id: Tagged by ID
+        position_top: Position top
+        position_left: Position left
+        created_at: Created at
+        updated_at: Updated at
+        tagged_by: Tagged by

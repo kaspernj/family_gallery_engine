@@ -1,0 +1,7 @@
+---
+de:
+  activerecord:
+    models:
+      family_gallery/user_role: {}
+    attributes:
+      family_gallery/user_role: {}

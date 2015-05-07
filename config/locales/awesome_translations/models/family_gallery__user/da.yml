@@ -1,0 +1,18 @@
+---
+da:
+  activerecord:
+    models:
+      family_gallery/user:
+        one: Bruger
+        other: Brugere
+    attributes:
+      family_gallery/user:
+        first_name: Fornavn
+        last_name: Efternavn
+        email: Email
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        owned_pictures: Ejedede billeder
+        pictures_tagged_on: Tagget på billeder
+        user_roles: Brugerroller
+        uploaded_pictures: Uploadede billeder

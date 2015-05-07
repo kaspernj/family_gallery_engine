@@ -1,0 +1,6 @@
+---
+en:
+  controllers:
+    family_gallery:
+      user_taggings_controller:
+        tagging_was_saved: Tagging was saved

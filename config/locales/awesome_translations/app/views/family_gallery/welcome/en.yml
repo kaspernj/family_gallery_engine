@@ -5,3 +5,4 @@ en:
       index:
         welcome: Welcome
         latest_updated_groups: Latest updated groups
+        no_groups_has_been_created_yet: No groups has been created yet

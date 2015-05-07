@@ -45,6 +45,10 @@ class FamilyGallery::Picture < ActiveRecord::Base
       .first
   end
 
+  def location?
+    latitude? && longitude?
+  end
+
 private
 
   def parse_exif

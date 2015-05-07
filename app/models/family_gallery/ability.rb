@@ -4,6 +4,8 @@ class FamilyGallery::Ability
   def initialize(user)
     @user = user
 
+    can :index, FamilyGallery::Group
+
     if @user
       @user.user_roles.each do |user_role|
         __send__(user_role.role)

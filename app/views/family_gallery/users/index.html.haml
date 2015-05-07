@@ -1,0 +1,22 @@
+- content_for(:header_title) { FamilyGallery::User.model_name.human(count: 2) }
+
+.actions
+  = link_to t("add_new"), new_user_path, class: "button" if can? :new, FamilyGallery::User
+
+%table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :first_name
+      %th= sort_link @ransack, :last_name
+      %th= sort_link @ransack, :email
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to_user user, title: user.first_name
+        %td= link_to_user user, title: user.last_name
+        %td= mail_to user.email
+    - unless @users.any?
+      %tr
+        %td{colspan: 3}= t(".no_users_were_found")
+
+= will_paginate @users

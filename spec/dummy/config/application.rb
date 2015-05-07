@@ -23,4 +23,3 @@ module Dummy
     config.i18n.available_locales = [:da, :en]
   end
 end
-

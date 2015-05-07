@@ -1,0 +1,16 @@
+---
+da:
+  activerecord:
+    models:
+      family_gallery/group_picture_link:
+        one: Guppebilledelink
+        other: Gruppebilledelinks
+    attributes:
+      family_gallery/group_picture_link:
+        id: ID
+        group_id: Gruppe ID
+        picture_id: Billede ID
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        group: Gruppe
+        picture: Billede

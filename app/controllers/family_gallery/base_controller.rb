@@ -7,6 +7,8 @@ class FamilyGallery::BaseController < ActionController::Base
 private
 
   def set_locale
+    session[:locale] ||= I18n.default_locale
+
     if session[:locale]
       I18n.locale = session[:locale]
     end

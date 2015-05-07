@@ -1,0 +1,6 @@
+---
+da:
+  controllers:
+    family_gallery:
+      user_taggings_controller:
+        tagging_was_saved: Tagging blev gemt

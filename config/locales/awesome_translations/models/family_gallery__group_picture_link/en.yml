@@ -1,0 +1,16 @@
+---
+en:
+  activerecord:
+    models:
+      family_gallery/group_picture_link:
+        one: Group picture link
+        other: Group picture links
+    attributes:
+      family_gallery/group_picture_link:
+        id: ID
+        group_id: Group ID
+        picture_id: Picture ID
+        created_at: Created at
+        updated_at: Updated at
+        group: Group
+        picture: Picture

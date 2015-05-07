@@ -12,3 +12,9 @@ da:
         user_id: Bruger ID
         picture: Billede
         user: Bruger
+        tagged_by_id: Tagget af ID
+        position_top: Position top
+        position_left: Position venstre
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        tagged_by: Tagget af

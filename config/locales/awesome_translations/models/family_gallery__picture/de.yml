@@ -1,0 +1,7 @@
+---
+de:
+  activerecord:
+    models:
+      family_gallery/picture: {}
+    attributes:
+      family_gallery/picture: {}

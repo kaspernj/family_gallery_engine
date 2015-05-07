@@ -6,8 +6,8 @@ class CreateFamilyGalleryPictures < ActiveRecord::Migration
       t.datetime :taken_at
       t.integer :width
       t.integer :height
-      t.decimal :latitude, precision: 12, scale: 3
-      t.decimal :longitude, precision: 12, scale: 3
+      t.decimal :latitude, precision: 10, scale: 8
+      t.decimal :longitude, precision: 10, scale: 8
       t.timestamps
     end
 

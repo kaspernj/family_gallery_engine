@@ -1,0 +1,7 @@
+---
+de:
+  activerecord:
+    models:
+      family_gallery/group_picture_link: {}
+    attributes:
+      family_gallery/group_picture_link: {}

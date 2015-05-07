@@ -5,3 +5,5 @@ da:
       index:
         welcome: Velkommen
         latest_updated_groups: Seneste opdaterede grupper
+        no_groups_has_been_created_yet: Der er ikke blevet oprettet nogle grupper
+          endnu

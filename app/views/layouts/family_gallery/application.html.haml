@@ -10,6 +10,8 @@
     = javascript_include_tag "family_gallery/application"
 
     = csrf_meta_tags
+
+    = yield(:header_tag)
   %body{class: ["controller_#{controller_name}", "action_#{action_name}"]}
     %center
       %table.main
@@ -21,6 +23,7 @@
               = link_to t(".frontpage"), root_path
               = link_to FamilyGallery::Group.model_name.human(count: 2), groups_path if can? :index, FamilyGallery::Group
               = link_to t(".translations"), awesome_translations_path if Rails.env.development?
+              = link_to FamilyGallery::User.model_name.human(count: 2), users_path if can? :index, FamilyGallery::User
 
               - if signed_in?
                 = link_to t(".sign_out"), destroy_family_gallery_user_session_path, method: :delete

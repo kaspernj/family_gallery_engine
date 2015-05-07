@@ -6,5 +6,6 @@ en:
         show_group: Show group
         edit_group: Edit group
         new_picture: New picture
+        upload_multiple: Upload multiple
       new:
         new_group: New group

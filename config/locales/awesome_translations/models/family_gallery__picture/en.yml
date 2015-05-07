@@ -11,3 +11,21 @@ en:
         height: Height
         created_at: Created at
         updated_at: Updated at
+        id: ID
+        user_owner_id: User owner ID
+        user_uploaded_id: User uploaded ID
+        taken_at: Taken at
+        image_file_name: Picture file name
+        image_content_type: Picture content type
+        image_file_size: Picture file size
+        image_updated_at: Picture updated at
+        image: Image
+        translations: Translations
+        group_picture_links: Group picture links
+        groups: Groups
+        user_taggings: User taggings
+        tagged_users: Tagged users
+        user_owner: User owner
+        user_uploaded: User uploaded
+        latitude: Latitude
+        longitude: Longitude

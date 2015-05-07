@@ -12,6 +12,7 @@ require "omniauth-facebook"
 require "ransack"
 require "simple_form"
 require "paperclip"
+require "will_paginate"
 
 module FamilyGallery
   extend ActiveSupport::Autoload

@@ -6,5 +6,6 @@ da:
         show_group: Vis gruppe
         edit_group: Rediger gruppe
         new_picture: Nyt billede
+        upload_multiple: Upload flere
       new:
         new_group: Ny gruppe

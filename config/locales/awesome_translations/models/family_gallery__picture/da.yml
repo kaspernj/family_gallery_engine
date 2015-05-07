@@ -11,3 +11,21 @@ da:
         height: Højde
         created_at: Oprettet d.
         updated_at: Opdateret d.
+        id: ID
+        user_owner_id: Ejerbruger ID
+        user_uploaded_id: Bruger uploadet ID
+        taken_at: Taget d.
+        image_file_name: Billede filnavn
+        image_content_type: Billede indholdstype
+        image_file_size: Billede filstørrelse
+        image_updated_at: Billede opdateret d.
+        image: Billede
+        translations: Oversættelser
+        group_picture_links: Gruppebilledelinks
+        groups: Grupper
+        user_taggings: Brugertaggings
+        tagged_users: Taggede brugere
+        user_owner: Ejerbruger
+        user_uploaded: Bruger uploadet
+        latitude: Breddegrad
+        longitude: Længdegrad

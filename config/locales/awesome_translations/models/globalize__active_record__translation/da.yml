@@ -1,0 +1,7 @@
+---
+da:
+  activerecord:
+    models:
+      globalize/active_record/translation:
+        one: Oversættelse
+        other: Oversættelser
