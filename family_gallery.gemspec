@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
 
   if RUBY_ENGINE == "jruby"
     s.add_development_dependency "activerecord-jdbc-adapter"
+    s.add_development_dependency "jdbc-mysql"
   else
     s.add_development_dependency "mysql2"
   end
