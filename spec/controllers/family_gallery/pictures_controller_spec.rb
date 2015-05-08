@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe FamilyGallery::PicturesController do
   let(:group) { create :group }
