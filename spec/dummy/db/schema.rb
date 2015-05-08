@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301144620) do
+ActiveRecord::Schema.define(version: 20150508081950) do
 
   create_table "family_gallery_group_picture_links", force: true do |t|
     t.integer  "group_id"
@@ -37,9 +37,12 @@ ActiveRecord::Schema.define(version: 20150301144620) do
   add_index "family_gallery_group_translations", ["locale"], name: "index_family_gallery_group_translations_on_locale", using: :btree
 
   create_table "family_gallery_groups", force: true do |t|
+    t.integer  "user_owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "family_gallery_groups", ["user_owner_id"], name: "index_family_gallery_groups_on_user_owner_id", using: :btree
 
   create_table "family_gallery_picture_translations", force: true do |t|
     t.integer  "family_gallery_picture_id", null: false
@@ -59,8 +62,8 @@ ActiveRecord::Schema.define(version: 20150301144620) do
     t.datetime "taken_at"
     t.integer  "width"
     t.integer  "height"
-    t.decimal  "latitude",           precision: 12, scale: 3
-    t.decimal  "longitude",          precision: 12, scale: 3
+    t.decimal  "latitude",           precision: 10, scale: 8
+    t.decimal  "longitude",          precision: 10, scale: 8
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"

@@ -4,6 +4,7 @@ class FamilyGallery::User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  has_many :owned_groups, class_name: "Group", foreign_key: "user_owner_id", dependent: :restrict_with_error
   has_many :owned_pictures, class_name: "Picture", foreign_key: "user_owner_id", dependent: :restrict_with_error
   has_many :pictures_tagged_on, through: :user_taggings, source: :picture
   has_many :user_roles, dependent: :destroy

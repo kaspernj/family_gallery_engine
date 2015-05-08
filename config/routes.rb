@@ -12,7 +12,7 @@ FamilyGallery::Engine.routes.draw do
   resources :locales, only: :create
 
   resources :pictures do
-    resources :user_taggings
+    resources :user_taggings, only: [:create, :destroy]
   end
 
   resources :users
