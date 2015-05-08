@@ -13,7 +13,7 @@ PATH
       omniauth
       omniauth-facebook
       paperclip
-      plugin_migrator
+      plugin_migrator (~> 0.0.3)
       rails (~> 4.0.10)
       ransack
       sass-rails
@@ -164,7 +164,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    plugin_migrator (0.0.2)
+    plugin_migrator (0.0.3)
       rails (>= 4.0.0)
       string-cases
     polyamorous (1.2.0)
@@ -237,7 +237,7 @@ GEM
     slop (3.6.0)
     sprockets (3.0.3)
       rack (~> 1.0)
-    sprockets-rails (2.2.4)
+    sprockets-rails (2.3.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)

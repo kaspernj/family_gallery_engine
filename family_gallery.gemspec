@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0.10"
   s.add_dependency "haml-rails"
-  s.add_dependency "plugin_migrator"
+  s.add_dependency "plugin_migrator", '~> 0.0.3'
   s.add_dependency "devise"
   s.add_dependency "globalize"
   s.add_dependency "sass-rails"
