@@ -1,13 +1,9 @@
-class FamilyGallery::UserTaggingsController < FamilyGallery::ResourcesController
-  load_and_authorize_resource
-
+class FamilyGallery::UserTaggingsController < FamilyGallery::BaseController
   before_filter :set_picture
 
-  def create
-    @user_tagging.picture = @picture
-    @user_tagging.tagged_by = current_user
-    @user_tagging.assign_attributes(resource_params)
+  load_and_authorize_resource
 
+  def create
     if @user_tagging.save
       flash[:notice] = t(".tagging_was_saved")
       redirect_to @picture
@@ -32,10 +28,14 @@ private
     @width = 1000
     @height = @picture.height_for_width(1000)
 
-    authorize! :edit, @picture
+    if action_name == "create"
+      @user_tagging = @picture.user_taggings.new
+      @user_tagging.tagged_by = current_user
+      @user_tagging.assign_attributes(user_tagging_params)
+    end
   end
 
-  def resource_params
+  def user_tagging_params
     params.require(:user_tagging).permit(:user_id, :position_top, :position_left)
   end
 end

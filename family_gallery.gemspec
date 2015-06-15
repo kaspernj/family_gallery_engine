@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", ">= 4.2.0", "< 5.0.0"
   s.add_dependency "haml-rails"
-  s.add_dependency "plugin_migrator"
+  s.add_dependency "plugin_migrator", '~> 0.0.3'
   s.add_dependency "devise"
   s.add_dependency "globalize"
   s.add_dependency "sass-rails"
@@ -35,7 +35,13 @@ Gem::Specification.new do |s|
   s.add_dependency "awesome_translations", "~> 0.0.17"
   s.add_dependency "will_paginate"
 
-  s.add_development_dependency "mysql2"
+  if RUBY_ENGINE == "jruby"
+    s.add_development_dependency "activerecord-jdbc-adapter"
+    s.add_development_dependency "jdbc-mysql"
+  else
+    s.add_development_dependency "mysql2"
+  end
+
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "forgery"
   s.add_development_dependency "factory_girl_rails"

@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe FamilyGallery::UsersController do
   let(:admin) { create :admin }
-  let(:valid_attributes) do
+  let(:user) { create :user }
+  let(:valid_params) do
     {
       first_name: Forgery::Name.first_name,
       last_name: Forgery::Name.last_name,
-      email: Forgery::Internet.email_address,
-      password: Forgery::LoremIpsum.words(3, random: true)
+      email: Forgery::Internet.email_address
     }
   end
 
@@ -26,7 +26,7 @@ describe FamilyGallery::UsersController do
   end
 
   it '#show' do
-    get :show, id: admin.id
+    get :show, id: user.id
     expect(response).to be_success
   end
 
@@ -36,7 +36,7 @@ describe FamilyGallery::UsersController do
   end
 
   it '#create' do
-    post :create, user: valid_attributes
+    post :create, user: valid_params
 
     created_user = assigns(:user)
 
@@ -45,23 +45,23 @@ describe FamilyGallery::UsersController do
   end
 
   it '#edit' do
-    get :edit, id: admin.id
+    get :edit, id: user.id
     expect(response).to be_success
   end
 
   it '#update' do
-    patch :update, id: admin.id
+    patch :update, id: user.id, user: valid_params
 
-    updated_user = assigns(:user)
+    user_updated = assigns(:user)
+    expect(user_updated).to be_valid
 
-    expect(updated_user).to be_valid
-    expect(response).to redirect_to user_url(updated_user)
+    expect(response).to redirect_to user_url(user)
   end
 
   it '#destroy' do
-    delete :destroy, id: admin.id
+    delete :destroy, id: user.id
 
-    expect { admin.reload }.to raise_error(ActiveRecord::RecordNotFound)
-    expect(response).to redirect_to root_url
+    expect { user.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    expect(response).to redirect_to users_url
   end
 end

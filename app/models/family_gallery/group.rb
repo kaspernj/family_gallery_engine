@@ -1,6 +1,8 @@
 class FamilyGallery::Group < ActiveRecord::Base
   translates :name, :description
 
+  belongs_to :user_owner, class_name: "User"
+
   has_many :group_picture_links, dependent: :destroy
   has_many :pictures, through: :group_picture_links
 
