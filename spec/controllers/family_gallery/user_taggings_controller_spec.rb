@@ -20,6 +20,11 @@ describe FamilyGallery::UserTaggingsController do
     sign_in user
   end
 
+  it '#new' do
+    get :new, picture_id: picture.id
+    expect(response).to be_success
+  end
+
   it '#create' do
     post :create, picture_id: picture.id, user_tagging: valid_params
 

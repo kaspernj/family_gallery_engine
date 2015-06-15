@@ -22,9 +22,7 @@ private
     can [:new, :create], FamilyGallery::Picture
     can [:edit, :update, :destroy], FamilyGallery::Picture, user_owner_id: @user.id
 
-    can [:new, :create, :edit, :update, :destroy], FamilyGallery::UserTagging do |tagging|
-      tagging.picture.user_owner == @user
-    end
+    can [:new, :create, :edit, :update, :destroy], FamilyGallery::UserTagging, picture: {user_owner_id: @user.id}
   end
 
   def administrator
@@ -32,5 +30,6 @@ private
     can :manage, FamilyGallery::Picture
     can :manage, FamilyGallery::User
     can :manage, FamilyGallery::UserTagging
+    can :manage, FamilyGallery::UserRole
   end
 end

@@ -2,6 +2,7 @@ class FamilyGallery::UserTaggingsController < FamilyGallery::BaseController
   before_filter :set_picture
 
   load_and_authorize_resource
+  skip_authorize_resource only: :new
 
   def create
     if @user_tagging.save

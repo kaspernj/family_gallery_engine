@@ -12,10 +12,12 @@ FamilyGallery::Engine.routes.draw do
   resources :locales, only: :create
 
   resources :pictures do
-    resources :user_taggings, only: [:create, :destroy]
+    resources :user_taggings, only: [:new, :create, :destroy]
   end
 
-  resources :users
+  resources :users do
+    resources :user_roles, only: [:new, :create, :destroy]
+  end
 
   root "welcome#index"
 end

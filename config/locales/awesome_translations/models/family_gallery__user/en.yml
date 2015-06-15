@@ -16,3 +16,10 @@ en:
         pictures_tagged_on: Tagged on pictures
         user_roles: User roles
         uploaded_pictures: Uploaded pictures
+        id: ID
+        owned_groups: Owned groups
+        user_taggings: User taggings
+        user_taggings_created: Created user taggings
+        confirmed_at: Confirmed at
+        confirmation_sent_at: Confirmation mail sent at
+        locked_at: Locked at

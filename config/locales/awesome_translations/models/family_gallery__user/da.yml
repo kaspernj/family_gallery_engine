@@ -16,3 +16,10 @@ da:
         pictures_tagged_on: Tagget på billeder
         user_roles: Brugerroller
         uploaded_pictures: Uploadede billeder
+        id: ID
+        owned_groups: Ejede grupper
+        user_taggings: Brugertags
+        user_taggings_created: Oprettede brugertags
+        confirmed_at: Bekræftet d.
+        confirmation_sent_at: Bekræftelsesmail sendt d.
+        locked_at: Låst d.

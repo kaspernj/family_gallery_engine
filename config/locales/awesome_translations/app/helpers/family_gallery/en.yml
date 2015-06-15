@@ -1,0 +1,6 @@
+---
+en:
+  helpers:
+    family_gallery:
+      users_helper:
+        no_user: no user

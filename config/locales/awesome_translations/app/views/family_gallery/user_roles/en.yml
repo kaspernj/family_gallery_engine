@@ -1,0 +1,6 @@
+---
+en:
+  family_gallery:
+    user_roles:
+      new:
+        new_user_role_for: New user role for %{user_name}
