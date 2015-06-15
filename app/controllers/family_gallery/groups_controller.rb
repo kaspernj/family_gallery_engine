@@ -1,4 +1,10 @@
 class FamilyGallery::GroupsController < FamilyGallery::ResourcesController
+  def index
+    @ransack = FamilyGallery::Group.ransack(params[:q])
+
+    @groups = @ransack.result.select { |group| can?(:show, group) }
+  end
+
   def show
   end
 
