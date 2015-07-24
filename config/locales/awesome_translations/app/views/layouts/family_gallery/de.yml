@@ -1,0 +1,9 @@
+---
+de:
+  layouts:
+    family_gallery:
+      application:
+        frontpage: Startseite
+        translations: "Übersetzungen"
+        sign_out: Ausloggen
+        sign_in: Einloggen

@@ -1,0 +1,7 @@
+---
+de:
+  activerecord:
+    models:
+      globalize/active_record/translation:
+        one: "Übersetzung"
+        other: "Übersetzungen"

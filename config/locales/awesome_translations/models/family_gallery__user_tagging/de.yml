@@ -2,6 +2,19 @@
 de:
   activerecord:
     models:
-      family_gallery/user_tagging: {}
+      family_gallery/user_tagging:
+        one: Benutzermarkierung
+        other: Benutzermarkierungen
     attributes:
-      family_gallery/user_tagging: {}
+      family_gallery/user_tagging:
+        id: ID
+        picture_id: Bild ID
+        user_id: Benutzer ID
+        tagged_by_id: Markiert von ID
+        position_top: Position Top
+        position_left: Position links
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+        picture: Bild
+        tagged_by: Markiert von
+        user: Benutzer

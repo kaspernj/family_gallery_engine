@@ -2,6 +2,30 @@
 de:
   activerecord:
     models:
-      family_gallery/picture: {}
+      family_gallery/picture:
+        one: Bild
+        other: Bilder
     attributes:
-      family_gallery/picture: {}
+      family_gallery/picture:
+        id: ID
+        taken_at: Vom
+        width: Breite
+        height: Höhe
+        user_owner_id: Benutzerinhaber ID
+        user_uploaded_id: ID des hochladenden Benutzers
+        latitude: Breitengrad
+        longitude: Längengrad
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+        image_file_name: Bilddateiname
+        image_content_type: Bildinhalttype
+        image_file_size: Bilddateigröße
+        image_updated_at: Bild aktualisiert am
+        image: Bild
+        translations: "Übersetzungen"
+        group_picture_links: Gruppenbild-Links
+        groups: Gruppen
+        user_taggings: Benutzermarkierungen
+        tagged_users: Markierte Benutzer
+        user_owner: Benutzerinhaber
+        user_uploaded: Hochgeladener Benutzer

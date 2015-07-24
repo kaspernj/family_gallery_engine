@@ -1,0 +1,17 @@
+---
+de:
+  family_gallery:
+    users:
+      edit:
+        edit_user: 'Neuer Benutzer: %{name}'
+      index:
+        no_users_were_found: Es wurden keine Benutzer gefunden
+      new:
+        new_user: Neuer Benutzer
+      show:
+        show_user: 'Benutzer anzeigen: %{user_name}'
+        tagged_on: Markiert auf
+        user_hasnt_been_tagged_on_any_pictures: Dieser Benutzer wurde auf keinem Bild
+          markiert
+        uploaded_pictures: Hochgeladene Bilder
+        this_user_havent_uploaded_any_pictures: Dieser Benutzer hat keine Bilder hochgeladen

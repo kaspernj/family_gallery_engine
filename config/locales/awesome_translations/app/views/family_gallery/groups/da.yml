@@ -9,3 +9,5 @@ da:
         upload_multiple: Upload flere
       new:
         new_group: Ny gruppe
+      edit:
+        edit_group: Rediger gruppe

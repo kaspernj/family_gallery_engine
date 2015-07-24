@@ -4,3 +4,7 @@ da:
     family_gallery:
       user_taggings_controller:
         tagging_was_saved: Tagging blev gemt
+      resources_controller:
+        resource_was_saved: Resource blev gemt.
+        resource_was_updated: Resourcen blev opdateret.
+        resource_was_deleted: Resourcen blev slettet.

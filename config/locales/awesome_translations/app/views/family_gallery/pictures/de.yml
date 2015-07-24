@@ -1,0 +1,17 @@
+---
+de:
+  family_gallery:
+    pictures:
+      edit:
+        edit_picture: 'Bild bearbeiten: %{title}'
+      new:
+        add_new_picture: Neues Bild hinzufügen
+      show:
+        show_picture: 'Bild anzeigen: %{title}'
+        edit_picture: Bild bearbeiten
+        add_tagging: Markierungen hinzufügen
+        previous: Vorheriges
+        next: Nächstes
+        tagged_users: Markierte Benutzer
+        no_users_was_tagged: Es wurden keine Benutzer markiert
+        google_map: Google Map
