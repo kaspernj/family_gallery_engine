@@ -9,3 +9,5 @@ en:
         upload_multiple: Upload multiple
       new:
         new_group: New group
+      edit:
+        edit_group: Edit group

@@ -1,0 +1,6 @@
+---
+de:
+  models:
+    family_gallery:
+      user_role:
+        administrator: Administrator

@@ -3,4 +3,4 @@ da:
   family_gallery:
     user_roles:
       new:
-        new_user_role_for: New brugerrolle for %{user_name}
+        new_user_role_for: Ny brugerrolle for %{user_name}

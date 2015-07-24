@@ -11,3 +11,7 @@ da:
         tagged_users: Taggede brugere
         no_users_was_tagged: Der er ikke blevet tagget nogle brugere
         google_map: Google Map
+      edit:
+        edit_picture: 'Rediger billede: %{title}'
+      new:
+        add_new_picture: Tilføj nyt billede

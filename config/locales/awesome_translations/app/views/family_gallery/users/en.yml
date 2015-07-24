@@ -8,7 +8,7 @@ en:
         user_hasnt_been_tagged_on_any_pictures: This user hasn't been tagged on any
           pictures
         uploaded_pictures: Uploaded pictures
-        this_user_havent_uploaded_any_pictures: This user haven't uploaded any pictures.
+        this_user_havent_uploaded_any_pictures: This user hasn't uploaded any pictures
       edit:
         edit_user: 'Edit user: %{name}'
       new:

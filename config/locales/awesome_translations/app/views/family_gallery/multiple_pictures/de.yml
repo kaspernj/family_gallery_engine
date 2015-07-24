@@ -2,4 +2,5 @@
 de:
   family_gallery:
     multiple_pictures:
-      new: {}
+      new:
+        upload_multiple_pictures: Mehrere Bilder hochladen

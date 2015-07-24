@@ -2,6 +2,14 @@
 de:
   activerecord:
     models:
-      family_gallery/user_role: {}
+      family_gallery/user_role:
+        one: Benutzerrolle
+        other: Benutzerrollen
     attributes:
-      family_gallery/user_role: {}
+      family_gallery/user_role:
+        id: ID
+        user_id: Benutzer ID
+        role: Rolle
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+        user: Benutzer

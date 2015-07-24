@@ -2,6 +2,23 @@
 de:
   activerecord:
     models:
-      family_gallery/user: {}
+      family_gallery/user:
+        one: Benutzer
+        other: Benutzer
     attributes:
-      family_gallery/user: {}
+      family_gallery/user:
+        id: ID
+        first_name: Vorname
+        last_name: Nachname
+        email: E-Mail
+        confirmed_at: Bestätigt am
+        confirmation_sent_at: Bestätigungsmail gesendet am
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+        owned_groups: Eigene Gruppe
+        owned_pictures: Eigene Bilder
+        pictures_tagged_on: Markiert auf Bildern
+        user_roles: Benutzerrolle
+        user_taggings: Benutzermarierungen
+        user_taggings_created: Erstellte Benutzermarkierungen
+        uploaded_pictures: Hochgeladene Bilder
