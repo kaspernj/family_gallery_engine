@@ -1,9 +1,0 @@
----
-en:
-  controllers:
-    family_gallery:
-      resources_controller:
-        resource_was_saved: Resource was saved.
-        resource_was_updated: Resource was updated.
-        resource_was_deleted: Resource was deleted.
-  "@#{StringCases": {}

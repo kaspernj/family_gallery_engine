@@ -1,0 +1,28 @@
+- content_for(:header_title) { t(".show_group", name: @group.name) }
+
+- if can? :edit, @group
+  - content_for(:header_right) { link_to t("edit"), edit_group_path(@group), class: "mobile-button-header"  }
+
+.actions
+  = link_to t(".new_picture"), new_picture_path(group_id: @group.id), class: "mobile-button" if can? :new, FamilyGallery::Picture
+  = link_to t('.upload_multiple'), new_group_multiple_picture_path(@group), class: 'mobile-button' if can? :new, FamilyGallery::Picture
+
+%table.mobile-table.form
+  %tbody
+    %tr
+      %td= FamilyGallery::Group.human_attribute_name(:name)
+      %td= @group.name
+    %tr
+      %td= FamilyGallery::Group.human_attribute_name(:description)
+      %td= simple_format @group.description, nil, wrapper_tag: "div"
+
+%h2= FamilyGallery::Picture.model_name.human(count: 2)
+%table.mobile-table.list
+  %tbody
+    - groups_of_pictures do |pictures|
+      %tr
+        - pictures.each do |picture|
+          %td= picture_image_tag(picture, width: 100)
+    - unless @group.pictures.any?
+      %tr
+        %td{colspan: 1}= t("no_results")

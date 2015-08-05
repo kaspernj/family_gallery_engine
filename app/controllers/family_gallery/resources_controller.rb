@@ -25,7 +25,7 @@ class FamilyGallery::ResourcesController < FamilyGallery::BaseController
     assign_params_to_resource_instance
 
     if resource_instance.save
-      flash[:notice] = t(".resource_was_saved")
+      flash[:notice] = controller_t(".resource_was_saved")
       redirect_to resource_instance
     else
       render :new
@@ -43,7 +43,7 @@ class FamilyGallery::ResourcesController < FamilyGallery::BaseController
     assign_params_to_resource_instance
 
     if resource_instance.save
-      flash[:notice] = t(".resource_was_updated")
+      flash[:notice] = controller_t(".resource_was_updated")
       redirect_to resource_instance
     else
       render :edit
@@ -52,7 +52,7 @@ class FamilyGallery::ResourcesController < FamilyGallery::BaseController
 
   def destroy
     if resource_instance.destroy
-      flash[:notice] = t(".resource_was_deleted")
+      flash[:notice] = controller_t(".resource_was_deleted")
       redirect_to root_url
     else
       flash[:error] = resource_instance.errors.full_messages.join(". ")

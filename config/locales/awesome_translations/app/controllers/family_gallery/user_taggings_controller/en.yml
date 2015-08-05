@@ -1,0 +1,6 @@
+---
+en:
+  family_gallery:
+    user_taggings:
+      create:
+        tagging_was_saved: Tagging was saved

@@ -2,7 +2,12 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
   before_filter :set_group
 
   def show
-    @width = 800
+    if view_context.agent_mobile?
+      @width = 400
+    else
+      @width = 800
+    end
+
     @height = @picture.height_for_width(@width)
 
     if @group

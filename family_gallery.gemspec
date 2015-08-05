@@ -30,10 +30,11 @@ Gem::Specification.new do |s|
   s.add_dependency "cancancan"
   s.add_dependency "omniauth"
   s.add_dependency "omniauth-facebook"
-  s.add_dependency "paperclip"
+  s.add_dependency "paperclip", "4.3.0"
   s.add_dependency "exifr", "1.2.0"
-  s.add_dependency "awesome_translations", "~> 0.0.17"
+  s.add_dependency "awesome_translations", "~> 0.0.23"
   s.add_dependency "will_paginate"
+  s.add_dependency "light_mobile", ">= 0.0.11"
 
   if RUBY_ENGINE == "jruby"
     s.add_development_dependency "activerecord-jdbc-adapter"

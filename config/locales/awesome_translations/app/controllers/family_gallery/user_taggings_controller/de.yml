@@ -1,0 +1,6 @@
+---
+da:
+  family_gallery:
+    user_taggings:
+      create:
+        tagging_was_saved: Die Markierung wurde gespeichert

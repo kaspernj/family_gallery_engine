@@ -1,6 +1,9 @@
 class FamilyGallery::BaseController < ActionController::Base
   layout "family_gallery/application"
+
+  include AwesomeTranslations::ControllerTranslateFunctionality
   include FamilyGallery::BaseFamilyGalleryController
+  include LightMobile::DynamicRenderer
 
   before_filter :set_locale
 

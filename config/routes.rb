@@ -9,7 +9,7 @@ FamilyGallery::Engine.routes.draw do
     resources :jquery_file_upload_pictures
   end
 
-  resources :locales, only: :create
+  resources :locales, only: [:new, :create]
 
   resources :pictures do
     resources :user_taggings, only: [:new, :create, :destroy]

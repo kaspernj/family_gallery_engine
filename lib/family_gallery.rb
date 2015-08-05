@@ -13,6 +13,7 @@ require "ransack"
 require "simple_form"
 require "paperclip"
 require "will_paginate"
+require "light_mobile"
 
 module FamilyGallery
   extend ActiveSupport::Autoload

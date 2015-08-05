@@ -1,0 +1,7 @@
+---
+da:
+  family_gallery:
+    resources:
+      resource_was_saved: Ressource wurde gespeichert.
+      resource_was_updated: Ressource wurde aktualisiert.
+      resource_was_deleted: Ressource wurde gelöscht.
