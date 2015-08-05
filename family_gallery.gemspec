@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   end
 
   s.add_dependency "rails", ">= 4.2.0", "< 5.0.0"
+  s.add_dependency "rails-i18n", "~> 4.0.4"
   s.add_dependency "haml-rails"
   s.add_dependency "plugin_migrator", '~> 0.0.3'
   s.add_dependency "devise"

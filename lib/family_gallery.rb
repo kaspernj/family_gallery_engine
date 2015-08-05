@@ -14,6 +14,7 @@ require "simple_form"
 require "paperclip"
 require "will_paginate"
 require "light_mobile"
+require "rails-i18n"
 
 module FamilyGallery
   extend ActiveSupport::Autoload
