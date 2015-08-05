@@ -21,6 +21,12 @@ RSpec.configure do |config|
     c.syntax = [:should, :expect]
   end
 
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/0"])
+    end
+  end
+
   config.include Devise::TestHelpers, type: :controller
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = true

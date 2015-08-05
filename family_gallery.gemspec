@@ -14,7 +14,11 @@ Gem::Specification.new do |s|
   s.description = "A picture gallery supporting tagging, groups and much more."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
-  s.test_files = Dir["spec/**/*"]
+  s.test_files = Dir["spec/**/*"].reject do |path|
+    path.start_with?("spec/dummy/public/system/**/*") ||
+    path.start_with?("spec/test_files") ||
+    path.start_with?("spec/dummy/tmp")
+  end
 
   s.add_dependency "rails", ">= 4.2.0", "< 5.0.0"
   s.add_dependency "haml-rails"

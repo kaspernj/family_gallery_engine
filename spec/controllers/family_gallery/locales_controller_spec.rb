@@ -6,7 +6,7 @@ describe FamilyGallery::LocalesController do
   routes { FamilyGallery::Engine.routes }
 
   it '#create' do
-    post :create, locale: "da"
+    post :create, locale: "da", format: :json
 
     expect(I18n.locale).to eq :da
 
