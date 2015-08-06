@@ -6,9 +6,12 @@ class FamilyGallery::MultiplePicturesController < FamilyGallery::BaseController
 
   def create
     picture_params[:files].each do |file|
-      picture = FamilyGallery::Picture.new
+      picture = FamilyGallery::Picture.new(
+        image: file,
+        user_owner: current_user,
+        user_uploaded: current_user
+      )
       picture.groups << @group
-      picture.image = file
       picture.save!
     end
 
