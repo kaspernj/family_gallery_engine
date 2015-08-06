@@ -1,0 +1,10 @@
+---
+da:
+  layouts:
+    family_gallery:
+      application:
+        frontpage: Forside
+        translations: Oversættelser
+        language: Sprog
+        sign_out: Log ud
+        sign_in: Log ind

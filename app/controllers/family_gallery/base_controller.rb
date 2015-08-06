@@ -12,7 +12,7 @@ private
   def set_locale
     session[:locale] ||= I18n.default_locale
 
-    if session[:locale]
+    if session[:locale].present?
       I18n.locale = session[:locale]
     end
   end

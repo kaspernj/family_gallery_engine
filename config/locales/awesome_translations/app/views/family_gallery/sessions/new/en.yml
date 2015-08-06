@@ -1,0 +1,8 @@
+---
+en:
+  family_gallery:
+    sessions:
+      new:
+        log_in: Log in
+        password: Password
+        remember_me: Remember me
