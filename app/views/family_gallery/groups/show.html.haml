@@ -20,7 +20,7 @@
     - groups_of_pictures do |pictures|
       %tr
         - pictures.each do |picture|
-          %td= picture_image_tag(picture, width: 100)
+          %td= picture_image_tag(picture, size: 100)
     - unless @group.pictures.any?
       %tr
         %td{colspan: 1}= t("no_results")

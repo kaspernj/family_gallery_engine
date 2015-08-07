@@ -4,7 +4,7 @@
   - content_for(:header_right) { link_to t("edit"), edit_picture_path(@picture), class: "mobile-button-header" }
 
 %center
-  %table.navigation-links{width: "#{@width}px;"}
+  %table.navigation-links{width: "#{@smartsize}px;"}
     %tbody
       %tr
         %td.previous= link_to t(".previous"), [@group, @previous_picture] if @previous_picture

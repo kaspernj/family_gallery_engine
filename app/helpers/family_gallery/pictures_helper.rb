@@ -6,15 +6,14 @@ module FamilyGallery::PicturesHelper
       link_object = picture
     end
 
-    image_args = {alt: picture.title, class: "picture-image"}.merge(args)
+    size = args[:size].presence || 200
+    crop_size = size * 2
 
-    width = args[:width].presence || 200
-    width *= 2
+    rounded_corners_size = (crop_size * 0.05).to_i
+    picture_url = rails_imager_p(picture.image, smartsize: crop_size, rounded_corners: rounded_corners_size)
+    width_and_height = picture.smartsize(size)
+    image_args = {alt: picture.title_with_fallback, class: "picture-image", width: width_and_height[:width], height: width_and_height[:height]}
 
-    rounded_corners_size = (width * 0.05).to_i
-
-    picture_url = rails_imager_p(picture.image, maxwidth: width, rounded_corners: rounded_corners_size)
-
-    link_to(image_tag(picture_url, image_args), link_object)
+    return link_to image_tag(picture_url, image_args), link_object
   end
 end

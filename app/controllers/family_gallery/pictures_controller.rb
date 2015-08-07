@@ -3,14 +3,17 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
 
   def show
     if view_context.agent_mobile?
-      @width = 350
-      @picture_url = view_context.rails_imager_p(@picture.image, maxwidth: 800, rounded_corners: (350 * 0.05).to_i)
+      @smartsize = 350
+      @width_and_height = @picture.smartsize(@smartsize)
+      @picture_url = view_context.rails_imager_p(@picture.image, smartsize: 700, rounded_corners: (350 * 0.05).to_i)
     else
-      @width = 800
-      @picture_url = view_context.rails_imager_p(@picture.image, maxwidth: 1600)
+      @smartsize = 800
+      @width_and_height = @picture.smartsize(@smartsize)
+      @picture_url = view_context.rails_imager_p(@picture.image, smartsize: 1600)
     end
 
-    @height = @picture.height_for_width(@width)
+    @width = @width_and_height[:width]
+    @height = @width_and_height[:height]
 
     if @group
       @previous_picture = @picture.previous_picture_in_group(@group)

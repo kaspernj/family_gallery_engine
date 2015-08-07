@@ -5,6 +5,6 @@
   - @groups.each do |group|
     %h3= link_to_group group
     - group.pictures.order(:updated_at).limit(9).reverse_order.each do |picture|
-      = picture_image_tag picture, group: group, width: 100
+      = picture_image_tag picture, group: group, size: 100
 - else
   = t(".no_groups_has_been_created_yet")

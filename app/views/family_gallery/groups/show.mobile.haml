@@ -19,7 +19,7 @@
 %h2= FamilyGallery::Picture.model_name.human(count: 2)
 - groups_of_pictures do |pictures|
   - pictures.each do |picture|
-    = picture_image_tag(picture, width: 100, group: @group)
+    = picture_image_tag(picture, size: 100, group: @group)
 
 - if @pictures.empty?
   %error= t("no_results")
