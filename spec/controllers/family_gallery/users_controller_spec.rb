@@ -30,8 +30,18 @@ describe FamilyGallery::UsersController do
     expect(response).to be_success
   end
 
+  it 'show as mobile' do
+    get :show, id: user.id, mobile: 1
+    expect(response).to be_success
+  end
+
   it '#new' do
     get :new
+    expect(response).to be_success
+  end
+
+  it 'new as mobile' do
+    get :new, mobile: 1
     expect(response).to be_success
   end
 
@@ -46,6 +56,11 @@ describe FamilyGallery::UsersController do
 
   it '#edit' do
     get :edit, id: user.id
+    expect(response).to be_success
+  end
+
+  it 'edit as mobile' do
+    get :edit, id: user.id, mobile: 1
     expect(response).to be_success
   end
 

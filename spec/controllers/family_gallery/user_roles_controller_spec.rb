@@ -23,6 +23,11 @@ describe FamilyGallery::UserRolesController do
     expect(response).to be_success
   end
 
+  it 'new as mobile' do
+    get :new, user_id: user.id, mobile: 1
+    expect(response).to be_success
+  end
+
   it '#create' do
     post :create, user_id: user.id, user_role: valid_params
     expect(response).to redirect_to user_url(user)

@@ -25,6 +25,11 @@ describe FamilyGallery::UserTaggingsController do
     expect(response).to be_success
   end
 
+  it 'new as mobile' do
+    get :new, picture_id: picture.id, mobile: 1
+    expect(response).to be_success
+  end
+
   it '#create' do
     post :create, picture_id: picture.id, user_tagging: valid_params
 

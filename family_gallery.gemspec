@@ -40,7 +40,7 @@ Gem::Specification.new do |s|
   s.add_dependency "awesome_translations", "~> 0.0.23"
   s.add_dependency "will_paginate"
   s.add_dependency "light_mobile", ">= 0.0.11"
-  s.add_dependency "rails_imager", ">= 0.0.28"
+  s.add_dependency "rails_imager", ">= 0.0.29"
   s.add_dependency "rmagick", ">= 2.15.3"
 
   if RUBY_ENGINE == "jruby"

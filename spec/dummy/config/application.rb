@@ -21,5 +21,7 @@ module Dummy
 
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:da, :de, :en]
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

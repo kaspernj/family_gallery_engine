@@ -12,4 +12,9 @@ describe FamilyGallery::LocalesController do
 
     expect(response.body.to_s).to eq JSON.dump(success: true)
   end
+
+  it 'new as mobile' do
+    get :new, mobile: 1
+    expect(response).to be_success
+  end
 end
