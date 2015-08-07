@@ -3,4 +3,10 @@
  *= require light_mobile/menu
  *= require light_mobile/simple_form
  *= require light_mobile/tables
+ *= require family_gallery/pictures
+ *= require family_gallery/user_taggings
 */
+
+table.list, table.form {
+  width: 100%;
+}

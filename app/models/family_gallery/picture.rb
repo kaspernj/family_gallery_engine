@@ -1,5 +1,5 @@
 class FamilyGallery::Picture < ActiveRecord::Base
-  translates :title, :description
+  translates :title, :description, fallbacks_for_empty_translations: true
 
   has_many :group_picture_links, dependent: :destroy
   has_many :groups, through: :group_picture_links

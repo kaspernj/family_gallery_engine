@@ -3,8 +3,15 @@
 - if can? :edit, @picture
   - content_for(:header_right) { link_to t("edit"), edit_picture_path(@picture), class: "mobile-button-header" }
 
-.actions
-  = link_to t(".add_tagging"), new_picture_user_tagging_path(@picture), class: "mobile-button" if can? :new, FamilyGallery::UserTagging
+%center
+  %table.navigation-links{width: "#{@width}px;"}
+    %tbody
+      %tr
+        %td.previous= link_to t(".previous"), [@group, @previous_picture] if @previous_picture
+        %td.next= link_to t(".next"), [@group, @next_picture] if @next_picture
+  .picture-container{style: "width: #{@width}px; height: #{@height}px; background-size: #{@width}px #{@picture.height_for_width(@width)}px; background-image: url('#{@picture_url}');"}
+    - @picture.user_taggings.joins(:user).each do |user_tagging|
+      .tagged-user{class: "tagged-user-#{user_tagging.user.id}", style: "left: #{user_tagging.left_for_width(@width) - 50}px; top: #{user_tagging.top_for_height(@height) - 50}px;"}
 
 - if @picture.groups.any?
   %table.mobile-table.list
@@ -26,17 +33,10 @@
           %td= FamilyGallery::Group.model_name.human
           %td= link_to_group group
 
-%center
-  %table.navigation-links{width: "#{@width}px;"}
-    %tbody
-      %tr
-        %td.previous= link_to t(".previous"), [@group, @previous_picture] if @previous_picture
-        %td.next= link_to t(".next"), [@group, @next_picture] if @next_picture
-  .picture-container{style: "width: #{@width}px; height: #{@height}px; background-size: #{@width}px #{@picture.height_for_width(@width)}px; background-image: url('#{@picture_url}');"}
-    - @picture.user_taggings.joins(:user).each do |user_tagging|
-      .tagged-user{class: "tagged-user-#{user_tagging.user.id}", style: "left: #{user_tagging.left_for_width(@width) - 50}px; top: #{user_tagging.top_for_height(@height) - 50}px;"}
-
 %h2= t(".tagged_users")
+.actions
+  = link_to t(".add_tagging"), new_picture_user_tagging_path(@picture), class: "mobile-button" if can? :new, FamilyGallery::UserTagging
+
 .tagged-users-list
   %table.mobile-table.list
     %thead

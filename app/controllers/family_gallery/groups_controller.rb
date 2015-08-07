@@ -53,7 +53,13 @@ private
 
   helper_method :groups_of_pictures
   def groups_of_pictures
-    @group.pictures.find_in_batches(batch_size: 6) do |pictures|
+    if view_context.agent_mobile?
+      batch_size = 3
+    else
+      batch_size = 6
+    end
+
+    @group.pictures.find_in_batches(batch_size: batch_size) do |pictures|
       yield pictures
     end
   end

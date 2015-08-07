@@ -7,10 +7,12 @@
   %thead
     %tr
       %th= sort_link @ransack, :name
+      %th= FamilyGallery::Picture.model_name.human(count: 2)
   %tbody
     - @groups.each do |group|
       %tr
         %td= link_to_group group
+        %td= group.pictures.count
     - unless @groups.any?
       %tr
-        %td.error{colspan: 1}= t("no_results")
+        %td.error{colspan: 2}= t("no_results")

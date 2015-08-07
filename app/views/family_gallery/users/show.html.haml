@@ -36,4 +36,4 @@
           = link_to t('delete'), user_user_role_path(@user, user_role), method: :delete, data: {confirm: t('are_you_sure')} if can?(:destroy, user_role)
     - if @user.user_roles.empty?
       %tr
-        %td{colspan: 1}= t('no_results')
+        %td{colspan: 2}= t('no_results')

@@ -17,12 +17,9 @@
       %td= simple_format @group.description, nil, wrapper_tag: "div"
 
 %h2= FamilyGallery::Picture.model_name.human(count: 2)
-%table.mobile-table.list
-  %tbody
-    - groups_of_pictures do |pictures|
-      %tr
-        - pictures.each do |picture|
-          %td= picture_image_tag(picture, width: 100)
-    - unless @group.pictures.any?
-      %tr
-        %td{colspan: 1}= t("no_results")
+- groups_of_pictures do |pictures|
+  - pictures.each do |picture|
+    = picture_image_tag(picture, width: 100, group: @group)
+
+- if @group.pictures.empty?
+  %error= t("no_results")
