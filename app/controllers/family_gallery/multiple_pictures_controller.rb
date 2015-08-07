@@ -5,6 +5,7 @@ class FamilyGallery::MultiplePicturesController < FamilyGallery::BaseController
   end
 
   def create
+    errors = []
     picture_params[:files].each do |file|
       picture = FamilyGallery::Picture.new(
         image: file,
@@ -12,9 +13,13 @@ class FamilyGallery::MultiplePicturesController < FamilyGallery::BaseController
         user_uploaded: current_user
       )
       picture.groups << @group
-      picture.save!
+
+      unless picture.save
+        errors << picture.errors.full_messages
+      end
     end
 
+    flash[:error] = errors.join('. ') if errors.any?
     redirect_to @group
   end
 
