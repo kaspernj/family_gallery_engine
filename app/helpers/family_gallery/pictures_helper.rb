@@ -1,14 +1,14 @@
 module FamilyGallery::PicturesHelper
   def picture_image_tag(picture, args = {})
-    image_args = {alt: picture.title, class: "picture-image"}.merge(args)
-
-    if args[:group]
-      link_object = [args[:group], picture]
+    if group = args.delete(:group)
+      link_object = [group, picture]
     else
       link_object = picture
     end
 
-    width = image_args[:width].presence || 200
+    image_args = {alt: picture.title, class: "picture-image"}.merge(args)
+
+    width = args[:width].presence || 200
     width *= 2
 
     picture_url = rails_imager_p(picture.image, maxwidth: width)
