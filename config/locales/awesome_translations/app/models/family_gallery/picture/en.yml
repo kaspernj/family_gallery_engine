@@ -1,0 +1,7 @@
+---
+en:
+  models:
+    family_gallery:
+      picture:
+        picture_with_id: Picture with ID %{id}
+        no_in_group: "%{group_name} %{count}"

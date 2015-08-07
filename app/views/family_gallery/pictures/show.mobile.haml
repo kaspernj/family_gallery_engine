@@ -1,4 +1,4 @@
-- content_for(:header_title) { t(".show_picture", title: @picture.title) }
+- content_for(:header_title) { t(".show_picture", title: @picture.title_with_fallback) }
 
 - if can? :edit, @picture
   - content_for(:header_right) { link_to t("edit"), edit_picture_path(@picture), class: "mobile-button-header" }

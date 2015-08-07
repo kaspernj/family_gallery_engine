@@ -1,0 +1,7 @@
+---
+da:
+  models:
+    family_gallery:
+      picture:
+        picture_with_id: Billede med ID %{id}
+        no_in_group: "%{group_name} %{count}"

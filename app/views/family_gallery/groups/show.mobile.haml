@@ -21,5 +21,10 @@
   - pictures.each do |picture|
     = picture_image_tag(picture, width: 100, group: @group)
 
-- if @group.pictures.empty?
+- if @pictures.empty?
   %error= t("no_results")
+
+%br
+%br
+
+= will_paginate @pictures

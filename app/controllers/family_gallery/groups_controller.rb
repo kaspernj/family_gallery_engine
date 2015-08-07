@@ -12,6 +12,7 @@ class FamilyGallery::GroupsController < FamilyGallery::BaseController
   end
 
   def show
+    @pictures = @group.pictures.paginate(page: params[:page], per_page: 20)
   end
 
   def new
@@ -59,7 +60,7 @@ private
       batch_size = 6
     end
 
-    @group.pictures.find_in_batches(batch_size: batch_size) do |pictures|
+    @pictures.to_a.each_slice(batch_size) do |pictures|
       yield pictures
     end
   end

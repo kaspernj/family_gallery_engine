@@ -51,6 +51,24 @@ class FamilyGallery::Picture < ActiveRecord::Base
     latitude? && longitude?
   end
 
+  def title_with_fallback
+    return title if title.present?
+    return title_no_in_group if groups.count == 1
+    return t('.picture_with_id', id: id)
+  end
+
+  def title_no_in_group
+    group = groups.first
+
+    count = 0
+    group.pictures.select(:id).order(:id).each do |picture|
+      count += 1
+      break if picture.id == id
+    end
+
+    return t('.no_in_group', count: count, group_name: group.name)
+  end
+
 private
 
   def parse_exif

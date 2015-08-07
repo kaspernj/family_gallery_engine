@@ -1,4 +1,4 @@
-- content_for(:header_title) { t(".show_picture", title: @picture.title) }
+- content_for(:header_title) { t(".show_picture", title: @picture.title_with_fallback) }
 
 .actions
   = link_to t(".edit_picture"), edit_picture_path(@picture), class: "button" if can? :edit, @picture
