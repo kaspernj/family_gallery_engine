@@ -3,9 +3,12 @@ require 'spec_helper'
 describe FamilyGallery::GroupsController do
   let(:group) { create :group, user_owner: user }
   let(:user) { create :user }
+  let(:group_name) { Forgery::LoremIpsum.words(2) }
+  let(:group_description) { Forgery::LoremIpsum.words(255) }
   let(:valid_params) do
     {
-      name: Forgery::LoremIpsum.words(2)
+      name: group_name,
+      description: group_description
     }
   end
 
@@ -37,9 +40,11 @@ describe FamilyGallery::GroupsController do
     post :create, group: valid_params
 
     created_group = assigns(:group)
-    expect(created_group).to be_valid
 
+    expect(created_group).to be_valid
     expect(response).to redirect_to created_group
+    expect(created_group.name).to eq group_name
+    expect(created_group.description).to eq group_description
   end
 
   it '#edit' do
@@ -51,9 +56,11 @@ describe FamilyGallery::GroupsController do
     put :update, id: group.id, group: valid_params
 
     updated_group = assigns(:group)
-    expect(updated_group).to be_valid
 
+    expect(updated_group).to be_valid
     expect(response).to redirect_to updated_group
+    expect(updated_group.name).to eq group_name
+    expect(updated_group.description).to eq group_description
   end
 
   it '#destroy' do

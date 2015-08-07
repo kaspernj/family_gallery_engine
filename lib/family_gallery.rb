@@ -16,6 +16,7 @@ require "will_paginate"
 require "light_mobile"
 require "rails-i18n"
 require "rails_imager"
+require "exception_notification"
 
 module FamilyGallery
   extend ActiveSupport::Autoload

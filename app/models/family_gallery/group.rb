@@ -1,5 +1,5 @@
 class FamilyGallery::Group < ActiveRecord::Base
-  translates :name, :description, fallbacks_for_empty_translations: true
+  translates :name, :description #, fallbacks_for_empty_translations: true
 
   belongs_to :user_owner, class_name: "User"
 

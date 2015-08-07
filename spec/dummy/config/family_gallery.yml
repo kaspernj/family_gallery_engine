@@ -1,3 +1,6 @@
 facebook:
   app_id: 123
   app_secret: 321
+robot_email: familygallery@kaspernj.org
+notification_emails:
+  - k@spernj.org
