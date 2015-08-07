@@ -1,5 +1,6 @@
 FamilyGallery::Engine.routes.draw do
   mount AwesomeTranslations::Engine => '/awesome_translations' if Rails.env.development?
+  mount RailsImager::Engine => "/rails_imager"
 
   devise_for "family_gallery/users"
 

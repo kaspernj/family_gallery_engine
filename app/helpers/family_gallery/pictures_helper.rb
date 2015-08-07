@@ -8,6 +8,11 @@ module FamilyGallery::PicturesHelper
       link_object = picture
     end
 
-    link_to(image_tag(picture.image.url, image_args), link_object)
+    width = image_args[:width].presence || 200
+    width *= 2
+
+    picture_url = rails_imager_p(picture.image, maxwidth: width)
+
+    link_to(image_tag(picture_url, image_args), link_object)
   end
 end

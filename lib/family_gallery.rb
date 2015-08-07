@@ -15,6 +15,7 @@ require "paperclip"
 require "will_paginate"
 require "light_mobile"
 require "rails-i18n"
+require "rails_imager"
 
 module FamilyGallery
   extend ActiveSupport::Autoload

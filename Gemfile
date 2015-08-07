@@ -8,6 +8,8 @@ gemspec
 # Fixes permission issue. Should work in 4.3.1
 gem 'paperclip', github: 'thoughtbot/paperclip'
 
+gem 'rails_imager', path: '/home/kaspernj/Dev/Rails/rails_imager'
+
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing

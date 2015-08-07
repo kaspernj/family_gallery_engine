@@ -4,8 +4,10 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
   def show
     if view_context.agent_mobile?
       @width = 400
+      @picture_url = view_context.rails_imager_p(@picture.image, maxwidth: 800)
     else
       @width = 800
+      @picture_url = view_context.rails_imager_p(@picture.image, maxwidth: 1600)
     end
 
     @height = @picture.height_for_width(@width)
