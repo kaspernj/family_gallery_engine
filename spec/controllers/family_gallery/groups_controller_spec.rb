@@ -2,13 +2,17 @@ require 'spec_helper'
 
 describe FamilyGallery::GroupsController do
   let(:group) { create :group, user_owner: user }
-  let(:user) { create :user }
+  let(:picture_1) { create :picture, groups: [group], taken_at: '1985-06-17 10:30' }
+  let(:picture_2) { create :picture, groups: [group], taken_at: '1985-06-18 9:00' }
+  let(:user) { create :admin }
   let(:group_name) { Forgery::LoremIpsum.words(2) }
   let(:group_description) { Forgery::LoremIpsum.words(255) }
   let(:valid_params) do
     {
       name: group_name,
-      description: group_description
+      description: group_description,
+      date_from: '1985/06/17 10:30',
+      date_to: '1985/06/18 9:00'
     }
   end
 
@@ -67,7 +71,18 @@ describe FamilyGallery::GroupsController do
     delete :destroy, id: group.id
 
     expect { group.reload }.to raise_error(ActiveRecord::RecordNotFound)
-
     expect(response).to redirect_to groups_url
+  end
+
+  it '#set_dates_from_pictures' do
+    picture_1
+    picture_2
+
+    post :set_dates_from_pictures, id: group.id
+    group.reload
+
+    expect(group.date_from).to eq Time.zone.parse('1985-06-17 10:30')
+    expect(group.date_to).to eq Time.zone.parse('1985-06-18 9:00')
+    expect(response).to redirect_to group
   end
 end

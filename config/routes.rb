@@ -8,6 +8,10 @@ FamilyGallery::Engine.routes.draw do
     resources :pictures
     resources :multiple_pictures, only: [:new, :create]
     resources :jquery_file_upload_pictures
+
+    member do
+      post :set_dates_from_pictures
+    end
   end
 
   resources :locales, only: [:new, :create]

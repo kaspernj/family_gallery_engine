@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508081950) do
+ActiveRecord::Schema.define(version: 20150809091741) do
 
   create_table "family_gallery_group_picture_links", force: :cascade do |t|
     t.integer  "group_id",   limit: 4
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20150508081950) do
   create_table "family_gallery_group_translations", force: :cascade do |t|
     t.integer  "family_gallery_group_id", limit: 4,     null: false
     t.string   "locale",                  limit: 255,   null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name",                    limit: 255
     t.text     "description",             limit: 65535
   end
@@ -38,17 +38,21 @@ ActiveRecord::Schema.define(version: 20150508081950) do
 
   create_table "family_gallery_groups", force: :cascade do |t|
     t.integer  "user_owner_id", limit: 4
+    t.datetime "date_from"
+    t.datetime "date_to"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "family_gallery_groups", ["date_from"], name: "index_family_gallery_groups_on_date_from", using: :btree
+  add_index "family_gallery_groups", ["date_to"], name: "index_family_gallery_groups_on_date_to", using: :btree
   add_index "family_gallery_groups", ["user_owner_id"], name: "index_family_gallery_groups_on_user_owner_id", using: :btree
 
   create_table "family_gallery_picture_translations", force: :cascade do |t|
     t.integer  "family_gallery_picture_id", limit: 4,     null: false
     t.string   "locale",                    limit: 255,   null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "title",                     limit: 255
     t.text     "description",               limit: 65535
   end

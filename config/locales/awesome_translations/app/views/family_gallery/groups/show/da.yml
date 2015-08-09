@@ -1,0 +1,10 @@
+---
+da:
+  family_gallery:
+    groups:
+      show:
+        show_group: Vis gruppe
+        edit_group: Rediger gruppe
+        new_picture: Nyt billede
+        upload_multiple: Upload flere
+        set_dates_from_pictures: Sæt dato fra billeder

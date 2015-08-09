@@ -1,4 +1,5 @@
 module FamilyGallery::LayoutHelper
+  include AwesomeTranslations::ApplicationHelper
   include LightMobile::ApplicationHelper
   include RailsImager::ImagesHelper
 

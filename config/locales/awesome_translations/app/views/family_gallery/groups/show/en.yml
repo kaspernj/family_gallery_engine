@@ -1,0 +1,10 @@
+---
+en:
+  family_gallery:
+    groups:
+      show:
+        show_group: Show group
+        edit_group: Edit group
+        new_picture: New picture
+        upload_multiple: Upload multiple
+        set_dates_from_pictures: Set dates form pictures

@@ -1,6 +1,6 @@
 module FamilyGallery::UsersHelper
   def link_to_user(user, args = {})
-    return "[#{t('.no_user')}]" unless user
+    return "[#{helper_t('.no_user')}]" unless user
 
     if args[:title].present?
       title = args[:title]

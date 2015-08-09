@@ -25,3 +25,6 @@ da:
         group_picture_links: Gruppebilledelinks
         pictures: Billeder
         translations: Oversættelser
+        date_from: Dato fra
+        date_to: Dato til
+        user_owner: Bruger der ejer gruppe

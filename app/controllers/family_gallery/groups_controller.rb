@@ -46,10 +46,15 @@ class FamilyGallery::GroupsController < FamilyGallery::BaseController
     end
   end
 
+  def set_dates_from_pictures
+    @group.set_dates_from_pictures
+    redirect_to @group
+  end
+
 private
 
   def group_params
-    params.require(:group).permit(:name, :description)
+    params.require(:group).permit(:name, :description, :date_from, :date_to)
   end
 
   helper_method :groups_of_pictures

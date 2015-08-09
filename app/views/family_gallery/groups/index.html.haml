@@ -8,10 +8,18 @@
   %thead
     %tr
       %th= sort_link @ransack, :name
+      %th= sort_link @ransack, :user_owner_first_name, FamilyGallery::Group.human_attribute_name(:user_owner)
+      %th= sort_link @ransack, :date_from
+      %th= sort_link @ransack, :date_to
+      %th= FamilyGallery::Picture.model_name.human(count: 2)
   %tbody
     - @groups.each do |group|
       %tr
         %td= link_to_group group
+        %td= link_to_user group.user_owner
+        %td= l(group.date_from) if group.date_from?
+        %td= l(group.date_to) if group.date_to?
+        %td= group.pictures.count
     - unless @groups.any?
       %tr
-        %td{colspan: 1}= t("no_results")
+        %td{colspan: 5}= t("no_results")

@@ -15,6 +15,15 @@
     %tr
       %td= FamilyGallery::Group.human_attribute_name(:description)
       %td= simple_format @group.description, nil, wrapper_tag: "div"
+    %tr
+      %td= FamilyGallery::Group.human_attribute_name(:date_from)
+      %td= l(@group.date_from) if @group.date_from?
+    %tr
+      %td= FamilyGallery::Group.human_attribute_name(:date_to)
+      %td= l(@group.date_to) if @group.date_to?
+    %tr
+      %td= FamilyGallery::Group.human_attribute_name(:pictures)
+      %td= @group.pictures.count
 
 %h2= FamilyGallery::Picture.model_name.human(count: 2)
 - groups_of_pictures do |pictures|

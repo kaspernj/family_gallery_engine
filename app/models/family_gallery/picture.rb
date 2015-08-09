@@ -82,12 +82,14 @@ private
       height: exif.height
     }
 
-    if exif.date_time
-      updates[:taken_at] = exif.date_time
-    elsif exif.date_time_digitized
-      updates[:taken_at] = exif.date_time_digitized
-    elsif exif.date_time_original
-      updates[:taken_at] = exif.date_time_original
+    unless taken_at?
+      if exif.date_time
+        updates[:taken_at] = exif.date_time
+      elsif exif.date_time_digitized
+        updates[:taken_at] = exif.date_time_digitized
+      elsif exif.date_time_original
+        updates[:taken_at] = exif.date_time_original
+      end
     end
 
     if exif.gps

@@ -34,6 +34,6 @@ private
   end
 
   def resource_params
-    params.require(:picture).permit(:title, :description, :image)
+    params.require(:picture).permit(:title, :description, :image, :taken_at)
   end
 end

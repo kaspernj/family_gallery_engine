@@ -4,6 +4,14 @@ describe FamilyGallery::PicturesController do
   let(:group) { create :group }
   let(:admin) { create :admin }
   let(:picture) { create :picture }
+  let(:valid_params) do
+    {
+      title: "Test title",
+      description: "Test test",
+      taken_at: '1985/06/17 10:30',
+      image: fixture_file_upload(Rails.root.join('..', '..', 'spec', 'test_pictures', 'sigrid.jpg'), 'image/jpeg')
+    }
+  end
 
   routes { FamilyGallery::Engine.routes }
 
@@ -34,13 +42,14 @@ describe FamilyGallery::PicturesController do
   end
 
   it "#create" do
-    post :create, picture: {title: "Test title", description: "Test test", image: fixture_file_upload(Rails.root.join('..', '..', 'spec', 'test_pictures', 'sigrid.jpg'), "image/jpeg")}, group_id: group.id
-    last_picture = assigns(:picture)
-    last_picture.errors.to_a.should eq []
-    response.should redirect_to last_picture
-    last_picture.width.should_not eq nil
-    last_picture.groups.should eq [group]
-    last_picture.user_uploaded.should eq admin
+    post :create, picture: valid_params, group_id: group.id
+    created_picture = assigns(:picture)
+    created_picture.errors.to_a.should eq []
+    response.should redirect_to created_picture
+    created_picture.width.should_not eq nil
+    created_picture.groups.should eq [group]
+    created_picture.user_uploaded.should eq admin
+    expect(created_picture.taken_at).to eq Time.zone.parse('1985-06-17 10:30')
   end
 
   it '#edit' do

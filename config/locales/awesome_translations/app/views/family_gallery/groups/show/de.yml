@@ -1,0 +1,9 @@
+---
+de:
+  family_gallery:
+    groups:
+      show:
+        show_group: Gruppe anzeigen
+        edit_group: Gruppe bearbeiten
+        new_picture: Neues Bild
+        upload_multiple: Mehr hochladen
