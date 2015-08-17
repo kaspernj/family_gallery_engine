@@ -8,7 +8,6 @@ class FamilyGallery::GroupsController < FamilyGallery::BaseController
     @groups = @ransack.result.accessible_by(current_ability)
     @groups = @groups.order(:id) unless @ransack_values[:s]
     @groups = @groups.page(params[:page])
-    @groups = @groups.select { |group| can?(:show, group) }
   end
 
   def show

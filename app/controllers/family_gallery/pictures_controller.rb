@@ -2,18 +2,21 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
   before_filter :set_group
 
   def show
-    if view_context.agent_mobile?
-      @smartsize = 350
-      @width_and_height = @picture.smartsize(@smartsize)
-      @picture_url = view_context.rails_imager_p(@picture.image, smartsize: 700, rounded_corners: (350 * 0.05).to_i)
-    else
-      @smartsize = 800
-      @width_and_height = @picture.smartsize(@smartsize)
-      @picture_url = view_context.rails_imager_p(@picture.image, smartsize: 1600)
-    end
+    @sizes = {
+      small: {
+        size: @picture.smartsize(600),
+        smartsize: 600,
+        url: view_context.rails_imager_p(@picture.image, smartsize: 1200, rounded_corners: (350 * 0.05).to_i)
+      },
+      big: {
+        size: @picture.smartsize(1100),
+        smartsize: 1100,
+        url: view_context.rails_imager_p(@picture.image, smartsize: 2200, rounded_corners: (1100 * 0.05).to_i)
+      }
+    }
 
-    @width = @width_and_height[:width]
-    @height = @width_and_height[:height]
+    @width = @sizes[:big][:size][:width]
+    @height = @sizes[:big][:size][:height]
 
     if @group
       @previous_picture = @picture.previous_picture_in_group(@group)

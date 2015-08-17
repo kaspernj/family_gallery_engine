@@ -23,3 +23,8 @@
     - unless @groups.any?
       %tr
         %td{colspan: 5}= t("no_results")
+
+%br
+%br
+
+= will_paginate @groups

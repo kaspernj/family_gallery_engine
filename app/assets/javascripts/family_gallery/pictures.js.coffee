@@ -2,6 +2,50 @@ $ ->
   return if $("body.controller_pictures").length == 0
 
   if $("body.action_show").length > 0
+    if $("body.mobile").length > 0
+      update_picture_width = ->
+        window_width = $(window).width()
+        window_height = $(window).height()
+
+        orig_width = $('.picture-container').data('picture-width')
+        orig_height = $('.picture-container').data('picture-height')
+        sizes = $('.picture-container').data('picture-sizes')
+
+        max_width = window_width - 60
+        max_height = window_height - 110
+
+        picture_width = max_width
+        picture_height = orig_height / (orig_width / picture_width)
+
+        if picture_height > max_height
+          picture_height = max_height
+          picture_width = orig_width / (orig_height / picture_height)
+
+        picture_width = parseInt(picture_width)
+        picture_height = parseInt(picture_height)
+
+        if picture_width > picture_height
+          smartsize = picture_width
+        else
+          smartsize = picture_height
+
+        if smartsize >= parseInt($('.picture-container').data('sizes-small-smartsize'))
+          picture_url = $('.picture-container').data('sizes-big-url')
+        else
+          picture_url = $('.picture-container').data('sizes-small-url')
+
+        $('.picture-container').css({
+          "width": picture_width + "px",
+          "height": picture_height + "px",
+          "background-size": picture_width + "px " + picture_height + "px",
+          "background-image": "url('" + picture_url + "')"
+        })
+
+      $(window).resize ->
+        update_picture_width()
+
+      update_picture_width()
+
     # Makes the markers of the tagged users appear / disappear.
     $(".tagged-users-list .link-to-user").hover ->
       user_link = $(this)

@@ -3,6 +3,7 @@ class FamilyGallery::WelcomeController < FamilyGallery::BaseController
     @groups = FamilyGallery::Group
       .accessible_by(current_ability)
       .ordered_by_latest_update
-      .limit(25)
+      .limit(15)
+      .page(params[:page])
   end
 end

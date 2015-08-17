@@ -8,3 +8,8 @@
       = picture_image_tag picture, group: group, size: 100
 - else
   = t(".no_groups_has_been_created_yet")
+
+%br
+%br
+
+= will_paginate @groups
