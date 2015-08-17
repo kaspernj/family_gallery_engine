@@ -43,7 +43,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails_imager", ">= 0.0.29"
   s.add_dependency "rmagick", ">= 2.15.3"
   s.add_dependency "exception_notification", ">= 4.1.1"
-  s.add_dependency "simple_form_ransack"
 
   if RUBY_ENGINE == "jruby"
     s.add_development_dependency "activerecord-jdbc-adapter"
