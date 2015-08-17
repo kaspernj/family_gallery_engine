@@ -3,6 +3,11 @@
 - if can? :new, FamilyGallery::Group
   - content_for(:header_right) { link_to t("add_new"), new_group_path, class: "mobile-button-header" }
 
+= simple_search_form_for @ransack, @ransack_values do |f|
+  = f.input :name_cont
+  = f.input :description_cont
+  = f.submit t('search')
+
 %table.mobile-table.list
   %thead
     %tr

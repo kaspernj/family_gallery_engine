@@ -13,7 +13,7 @@ PATH
   remote: .
   specs:
     family_gallery (0.0.8)
-      awesome_translations (~> 0.0.23)
+      awesome_translations (~> 0.0.24)
       cancancan
       coffee-rails
       devise
@@ -34,6 +34,7 @@ PATH
       rmagick (>= 2.15.3)
       sass-rails
       simple_form
+      simple_form_ransack
       simple_form_ransack (>= 0.0.6)
       will_paginate
 
@@ -80,7 +81,7 @@ GEM
       string-cases
     arel (6.0.3)
     array_enumerator (0.0.10)
-    awesome_translations (0.0.23)
+    awesome_translations (0.0.24)
       array_enumerator (~> 0.0.7)
       rails (>= 3.0.0, < 5.0.0)
       string-cases
@@ -113,7 +114,7 @@ GEM
     coffee-script-source (1.9.1.1)
     colorize (0.7.7)
     datet (0.0.25)
-    devise (3.5.1)
+    devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -126,7 +127,7 @@ GEM
     exception_notification (4.1.1)
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
-    execjs (2.5.2)
+    execjs (2.6.0)
     exifr (1.2.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -141,7 +142,7 @@ GEM
     globalize (5.0.1)
       activemodel (>= 4.2.0, < 4.3)
       activerecord (>= 4.2.0, < 4.3)
-    haml (4.0.6)
+    haml (4.0.7)
       tilt
     haml-rails (0.9.0)
       actionpack (>= 4.0.1)
@@ -239,7 +240,7 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.6)
+    rails-dom-testing (1.0.7)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -267,7 +268,7 @@ GEM
       polyamorous (~> 1.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rmagick (2.15.3)
+    rmagick (2.15.4)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -310,7 +311,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    sprockets (3.2.0)
+    sprockets (3.3.1)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)

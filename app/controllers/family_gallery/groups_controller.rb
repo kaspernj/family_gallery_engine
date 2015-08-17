@@ -6,6 +6,15 @@ class FamilyGallery::GroupsController < FamilyGallery::BaseController
     @ransack = FamilyGallery::Group.ransack(@ransack_values)
 
     @groups = @ransack.result.accessible_by(current_ability)
+
+    if @ransack_values[:name_cont].present?
+      @groups = @groups.with_translations.where("family_gallery_group_translations.name LIKE ?", "%#{@ransack_values.fetch(:name_cont)}%")
+    end
+
+    if @ransack_values[:description_cont].present?
+      @groups = @groups.with_translations.where("family_gallery_group_translations.description LIKE ?", "%#{@ransack_values.fetch(:description_cont)}%")
+    end
+
     @groups = @groups.order(:id) unless @ransack_values[:s]
     @groups = @groups.page(params[:page])
   end

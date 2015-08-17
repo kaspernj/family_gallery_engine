@@ -17,6 +17,7 @@ require "light_mobile"
 require "rails-i18n"
 require "rails_imager"
 require "exception_notification"
+require "simple_form_ransack"
 
 module FamilyGallery
   extend ActiveSupport::Autoload

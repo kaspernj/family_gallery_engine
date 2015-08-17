@@ -1,29 +1,5 @@
 - content_for(:header_title) { t(".show_picture", title: @picture.title_with_fallback) }
 
-.actions
-  = link_to t(".edit_picture"), edit_picture_path(@picture), class: "button" if can? :edit, @picture
-  = link_to t(".add_tagging"), new_picture_user_tagging_path(@picture), class: "button" if can? :new, FamilyGallery::UserTagging
-
-- if @picture.groups.any?
-  %table.list
-    %tbody
-      %tr
-        %td= FamilyGallery::Picture.human_attribute_name(:user_owner)
-        %td= link_to_user @picture.user_owner
-      %tr
-        %td= FamilyGallery::Picture.human_attribute_name(:user_uploaded)
-        %td= link_to_user @picture.user_uploaded
-
-      - if @picture.taken_at?
-        %tr
-          %td= FamilyGallery::Picture.human_attribute_name(:taken_at)
-          %td= l(@picture.taken_at, format: :long)
-
-      - @picture.groups.each do |group|
-        %tr
-          %td= FamilyGallery::Group.model_name.human
-          %td= link_to_group group
-
 %center
   %table.navigation-links{width: "#{@sizes.fetch(:big).fetch(:smartsize)}px;"}
     %tbody
@@ -52,6 +28,30 @@
       - unless @picture.tagged_users.any?
         %tr
           %td{colspan: 2}= t(".no_users_was_tagged")
+
+.actions
+  = link_to t(".edit_picture"), edit_picture_path(@picture), class: "button" if can? :edit, @picture
+  = link_to t(".add_tagging"), new_picture_user_tagging_path(@picture), class: "button" if can? :new, FamilyGallery::UserTagging
+
+- if @picture.groups.any?
+  %table.list
+    %tbody
+      %tr
+        %td= FamilyGallery::Picture.human_attribute_name(:user_owner)
+        %td= link_to_user @picture.user_owner
+      %tr
+        %td= FamilyGallery::Picture.human_attribute_name(:user_uploaded)
+        %td= link_to_user @picture.user_uploaded
+
+      - if @picture.taken_at?
+        %tr
+          %td= FamilyGallery::Picture.human_attribute_name(:taken_at)
+          %td= l(@picture.taken_at, format: :long)
+
+      - @picture.groups.each do |group|
+        %tr
+          %td= FamilyGallery::Group.model_name.human
+          %td= link_to_group group
 
 - if @picture.location?
   - content_for(:header_tag) do

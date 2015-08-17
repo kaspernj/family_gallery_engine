@@ -11,6 +11,7 @@ class FamilyGallery::UsersController < FamilyGallery::BaseController
   end
 
   def show
+    @uploaded_pictures = @user.uploaded_pictures.page(params[:page])
   end
 
   def new

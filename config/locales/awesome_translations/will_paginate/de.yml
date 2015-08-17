@@ -1,0 +1,7 @@
+---
+de:
+  will_paginate:
+    page_gap: "&hellip;"
+    page_entries_info:
+      single_page: {}
+      single_page_html: {}

@@ -11,8 +11,13 @@
   = t(".user_hasnt_been_tagged_on_any_pictures")
 
 %h2= t(".uploaded_pictures")
-- @user.uploaded_pictures.each do |picture|
+- @uploaded_pictures.each do |picture|
   = picture_image_tag picture
+
+%br
+%br
+
+= will_paginate @uploaded_pictures
 
 - unless @user.uploaded_pictures.any?
   = t(".this_user_havent_uploaded_any_pictures")

@@ -9,7 +9,7 @@ gemspec
 gem 'paperclip', github: 'thoughtbot/paperclip'
 
 #gem 'rails_imager', path: '/home/kaspernj/Dev/Rails/rails_imager'
-#gem 'light_mobile', github: 'kaspernj/light_mobile' #path: '/Users/kaspernj/Dev/Rails/light_mobile'
+#gem 'light_mobile', path: '/Users/kaspernj/Dev/Rails/light_mobile'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

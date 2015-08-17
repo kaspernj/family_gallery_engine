@@ -4,6 +4,13 @@
   .actions
     = link_to t("add_new"), new_group_path, class: "button"
 
+= simple_search_form_for @ransack, @ransack_values do |f|
+  = f.input :name_cont
+  = f.input :description_cont
+  = f.submit t('search')
+
+%br
+
 %table.list
   %thead
     %tr

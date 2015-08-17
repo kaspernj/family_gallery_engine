@@ -14,7 +14,7 @@ class FamilyGallery::Picture < ActiveRecord::Base
 
   validates_presence_of :user_owner, :image
 
-  after_create :parse_exif
+  after_create :queue_parse_picture_info
 
   def width_for_height(new_height)
     return (width.to_f / (height.to_f / new_height.to_f)).to_i
@@ -69,13 +69,41 @@ class FamilyGallery::Picture < ActiveRecord::Base
     return t('.no_in_group', count: count, group_name: group.name)
   end
 
+  def parse_picture_info(args = {})
+    @image_path = args[:path]
+
+    begin
+      parse_exif
+    rescue EXIFR::MalformedJPEG
+      # Picture does not contain any EXIF data - read sizes with RMagick instead
+      parse_rmagick
+    end
+  end
+
 private
+
+  # This helps reads from special paths which is due to Paperclip may store files in temp locations
+  def image_path
+    return @image_path if @image_path && File.exists?(@image_path)
+
+    path = image.queued_for_write[:original].path
+    return path if File.exists?(path)
+
+    path = image.path
+    return path if File.exists?(path)
+
+    raise "Couldn't find image"
+  end
+
+  def queue_parse_picture_info
+    PictureParserJob.new(id, image_path).enqueue
+  end
 
   def parse_exif
     raise "No image was given" unless image.present?
 
     require "exifr"
-    exif = EXIFR::JPEG.new(image.queued_for_write[:original].path)
+    exif = EXIFR::JPEG.new(image_path)
 
     updates = {
       width: exif.width,
@@ -98,5 +126,14 @@ private
     end
 
     update_attributes!(updates)
+  end
+
+  def parse_rmagick
+    image = ::Magick::Image.read(image_path).first
+
+    update_attributes!(
+      width: image.columns,
+      height: image.rows
+    )
   end
 end

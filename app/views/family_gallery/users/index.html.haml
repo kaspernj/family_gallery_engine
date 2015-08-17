@@ -3,6 +3,14 @@
 .actions
   = link_to t("add_new"), new_user_path, class: "button" if can? :new, FamilyGallery::User
 
+= simple_search_form_for @ransack, @ransack_values do |f|
+  = f.input :first_name_cont
+  = f.input :last_name_cont
+  = f.input :email_cont
+  = f.submit t('search')
+
+%br
+
 %table.list
   %thead
     %tr
