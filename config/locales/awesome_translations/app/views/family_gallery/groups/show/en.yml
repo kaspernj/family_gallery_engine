@@ -7,4 +7,5 @@ en:
         edit_group: Edit group
         new_picture: New picture
         upload_multiple: Upload multiple
-        set_dates_from_pictures: Set dates form pictures
+        set_dates_from_pictures: Set dates from pictures
+        jquery_uploader: jQuery uploader

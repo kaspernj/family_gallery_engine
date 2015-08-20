@@ -80,6 +80,16 @@ class FamilyGallery::Picture < ActiveRecord::Base
     end
   end
 
+  def to_jq_upload
+    {
+      "name" => image_file_name,
+      "size" => image_file_size,
+      "url" => image.url(:original),
+      "delete_url" => FamilyGallery::Engine.routes.url_helpers.group_uploads_path(groups.first, self),
+      "delete_type" => "DELETE"
+    }
+  end
+
 private
 
   # This helps reads from special paths which is due to Paperclip may store files in temp locations

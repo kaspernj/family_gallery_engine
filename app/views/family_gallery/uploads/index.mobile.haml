@@ -1,0 +1,11 @@
+- content_for(:header_title) { t('.jquery_uploader') }
+
+%h2= t('.upload_file')
+= simple_form_for FamilyGallery::Picture.new, url: group_uploads_path(@group), html: {id: "fileupload"}, data: {group_path: group_path(@group)} do |f|
+  = f.input :image, input_html: {multiple: true}
+
+%br
+%br
+
+#progress
+  .bar

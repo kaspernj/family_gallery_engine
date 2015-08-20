@@ -18,6 +18,7 @@ require "rails-i18n"
 require "rails_imager"
 require "exception_notification"
 require "simple_form_ransack"
+require "jquery-fileupload-rails"
 
 module FamilyGallery
   extend ActiveSupport::Autoload
