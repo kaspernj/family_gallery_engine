@@ -14,13 +14,13 @@
 - @uploaded_pictures.each do |picture|
   = picture_image_tag picture
 
+- if @user.uploaded_pictures.empty?
+  = t(".this_user_havent_uploaded_any_pictures")
+
 %br
 %br
 
 = will_paginate @uploaded_pictures
-
-- unless @user.uploaded_pictures.any?
-  = t(".this_user_havent_uploaded_any_pictures")
 
 %h2= FamilyGallery::UserRole.model_name.human(count: 2)
 = link_to t('add_new'), new_user_user_role_path(@user), class: 'button' if can?(:new, FamilyGallery::UserRole)
