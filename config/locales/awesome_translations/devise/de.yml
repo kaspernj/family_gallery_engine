@@ -1,0 +1,17 @@
+---
+de:
+  devise:
+    confirmations: {}
+    failure: {}
+    mailer:
+      confirmation_instructions: {}
+      reset_password_instructions: {}
+      unlock_instructions: {}
+    omniauth_callbacks: {}
+    passwords: {}
+    registrations: {}
+    sessions: {}
+    unlocks: {}
+  errors:
+    messages:
+      not_saved: {}
