@@ -4,3 +4,4 @@ en:
     uploads:
       index:
         jquery_uploader: jQuery uploader
+        upload_file: Upload file

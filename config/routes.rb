@@ -19,6 +19,10 @@ FamilyGallery::Engine.routes.draw do
 
   resources :pictures do
     resources :user_taggings, only: [:new, :create, :destroy]
+
+    member do
+      post :rotate
+    end
   end
 
   resources :users do

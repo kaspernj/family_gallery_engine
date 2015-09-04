@@ -32,6 +32,8 @@
 .actions
   = link_to t(".edit_picture"), edit_picture_path(@picture), class: "button" if can? :edit, @picture
   = link_to t(".add_tagging"), new_picture_user_tagging_path(@picture), class: "button" if can? :new, FamilyGallery::UserTagging
+  = link_to t(".rotate_clockwise"), rotate_picture_path(@picture, degrees: 90), method: :post, class: "button" if can? :rorate, @picture
+  = link_to t(".rotate_counter_clockwise"), rotate_picture_path(@picture, degrees: 270), method: :post, class: "button" if can? :rotate, @picture
 
 - if @picture.groups.any?
   %table.list

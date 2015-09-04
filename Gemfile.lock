@@ -23,7 +23,7 @@ PATH
       haml-rails
       jquery-fileupload-rails
       jquery-rails
-      light_mobile (>= 0.0.11)
+      light_mobile (>= 0.0.12)
       omniauth
       omniauth-facebook
       paperclip (= 4.3.0)
@@ -178,7 +178,7 @@ GEM
       ruby_process
       tsafe
       wref (>= 0.0.8)
-    light_mobile (0.0.11)
+    light_mobile (0.0.12)
       agent_helpers (>= 0.0.5)
       html_gen (>= 0.0.6)
       rails (>= 4.0.0)
@@ -296,7 +296,7 @@ GEM
       string-cases
       tsafe
       wref
-    sass (3.4.16)
+    sass (3.4.17)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -315,7 +315,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    sprockets (3.3.2)
+    sprockets (3.3.3)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)

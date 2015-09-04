@@ -1,0 +1,13 @@
+---
+de:
+  family_gallery:
+    pictures:
+      show:
+        show_picture: 'Bild anzeigen: %{title}'
+        previous: Vorheriges
+        next: Nächstes
+        tagged_users: Markierte Benutzer
+        no_users_was_tagged: Es wurden keine Benutzer markiert
+        edit_picture: Bild bearbeiten
+        add_tagging: Markierungen hinzufügen
+        google_map: Google Map

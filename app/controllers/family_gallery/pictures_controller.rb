@@ -6,12 +6,12 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
       small: {
         size: @picture.smartsize(600),
         smartsize: 600,
-        url: view_context.rails_imager_p(@picture.image, smartsize: 1200, rounded_corners: (350 * 0.05).to_i)
+        url: view_context.rails_imager_p(@picture.image_to_use, smartsize: 1200, rounded_corners: (350 * 0.05).to_i)
       },
       big: {
         size: @picture.smartsize(1100),
         smartsize: 1100,
-        url: view_context.rails_imager_p(@picture.image, smartsize: 2200, rounded_corners: (1100 * 0.05).to_i)
+        url: view_context.rails_imager_p(@picture.image_to_use, smartsize: 2200, rounded_corners: (1100 * 0.05).to_i)
       }
     }
 
@@ -22,6 +22,11 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
       @previous_picture = @picture.previous_picture_in_group(@group)
       @next_picture = @picture.next_picture_in_group(@group)
     end
+  end
+
+  def rotate
+    @picture.rotate(params[:degrees].to_f)
+    redirect_to @picture
   end
 
 private
