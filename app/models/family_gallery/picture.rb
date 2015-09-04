@@ -9,12 +9,15 @@ class FamilyGallery::Picture < ActiveRecord::Base
   belongs_to :user_owner, class_name: "User"
   belongs_to :user_uploaded, class_name: "User"
 
-  has_attached_file :image, style: {medium: "900x900", thumb: "120x120"}
+  has_attached_file :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  validates_presence_of :user_owner, :image
+  has_attached_file :image_to_show, style: {medium: "900x900", thumb: "120x120"}
+  validates_attachment_content_type :image_to_show, content_type: /\Aimage\/.*\Z/
 
+  validates_presence_of :user_owner, :image
   after_create :queue_parse_picture_info
+  before_save :set_image_to_show_if_changed
 
   def width_for_height(new_height)
     return (width.to_f / (height.to_f / new_height.to_f)).to_i
@@ -90,14 +93,22 @@ class FamilyGallery::Picture < ActiveRecord::Base
     }
   end
 
+  def image_to_use
+    if image_to_show.present?
+      return image_to_show
+    else
+      return image
+    end
+  end
+
 private
 
   # This helps reads from special paths which is due to Paperclip may store files in temp locations
   def image_path
     return @image_path if @image_path && File.exists?(@image_path)
 
-    path = image.queued_for_write[:original].path
-    return path if File.exists?(path)
+    path = image.queued_for_write[:original].try(:path)
+    return path if path && File.exists?(path)
 
     path = image.path
     return path if File.exists?(path)
@@ -145,5 +156,14 @@ private
       width: image.columns,
       height: image.rows
     )
+  end
+
+  def clone_image_to_show
+    self.image_to_show = File.open(image_path)
+    self.save!
+  end
+
+  def set_image_to_show_if_changed
+    self.image_to_show = nil if image_updated_at_changed?
   end
 end

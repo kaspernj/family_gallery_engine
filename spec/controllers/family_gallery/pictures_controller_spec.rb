@@ -46,10 +46,12 @@ describe FamilyGallery::PicturesController do
     created_picture = assigns(:picture)
     created_picture.errors.to_a.should eq []
     response.should redirect_to created_picture
-    created_picture.width.should_not eq nil
     created_picture.groups.should eq [group]
     created_picture.user_uploaded.should eq admin
     expect(created_picture.taken_at).to eq Time.zone.parse('1985-06-17 10:30')
+    expect(created_picture.image_to_show_file_name).to eq nil
+
+    created_picture.width.should_not eq nil
   end
 
   it '#edit' do
