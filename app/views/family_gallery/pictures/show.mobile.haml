@@ -36,6 +36,8 @@
 %h2= t(".tagged_users")
 .actions
   = link_to t(".add_tagging"), new_picture_user_tagging_path(@picture), class: "mobile-button" if can? :new, FamilyGallery::UserTagging
+  = link_to t(".rotate_clockwise"), rotate_picture_path(@picture, degrees: 90), method: :post, class: "mobile-button" if can? :rorate, @picture
+  = link_to t(".rotate_counter_clockwise"), rotate_picture_path(@picture, degrees: 270), method: :post, class: "mobile-button" if can? :rotate, @picture
 
 .tagged-users-list
   %table.mobile-table.list
