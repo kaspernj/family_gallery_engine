@@ -1,0 +1,15 @@
+---
+da:
+  family_gallery:
+    pictures:
+      show:
+        show_picture: 'Vis billede: %{title}'
+        previous: Forrige
+        next: Næste
+        tagged_users: Taggede brugere
+        no_users_was_tagged: Der er ikke blevet tagget nogle brugere
+        edit_picture: Rediger billede
+        add_tagging: Tilføj tagging
+        rotate_clockwise: Vend med uret
+        rotate_counter_clockwise: Vend mod uret
+        google_map: Google Map
