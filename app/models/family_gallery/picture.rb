@@ -123,14 +123,19 @@ class FamilyGallery::Picture < ActiveRecord::Base
 private
 
   # This helps reads from special paths which is due to Paperclip may store files in temp locations
-  def image_path_to_use
+  def image_path_to_use(args = {})
     return @image_path_to_use if @image_path_to_use && File.exists?(@image_path_to_use)
 
     path = image.queued_for_write[:original].try(:path)
     return path if path && File.exists?(path)
 
-    path = image_to_use.path
-    return path if File.exists?(path)
+    if args[:original]
+      path = image.path
+      return path if File.exists?(path)
+    else
+      path = image_to_use.path
+      return path if File.exists?(path)
+    end
 
     raise "Couldn't find image"
   end
@@ -143,12 +148,16 @@ private
     raise "No image was given" unless image.present?
 
     require "exifr"
-    exif = EXIFR::JPEG.new(image_path_to_use)
+    exif = EXIFR::JPEG.new(image_path_to_use(original: true))
 
-    updates = {
-      width: exif.width,
-      height: exif.height
-    }
+    if image_to_show_present?
+      parse_rmagick
+    else
+      updates = {
+        width: exif.width,
+        height: exif.height
+      }
+    end
 
     unless taken_at?
       if exif.date_time
@@ -184,5 +193,9 @@ private
 
   def set_image_to_show_if_changed
     self.image_to_show = nil if image_updated_at_changed?
+  end
+
+  def image_to_show_present?
+    image_to_show_file_name? && image_to_show_file_size.to_i > 0
   end
 end
