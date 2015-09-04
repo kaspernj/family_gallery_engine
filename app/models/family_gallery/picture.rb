@@ -109,13 +109,15 @@ class FamilyGallery::Picture < ActiveRecord::Base
     image.write(tempfile.path)
     tempfile.close
 
-    image.destroy!
-
     File.open(tempfile.path) do |fp|
-      update_attributes!(image_to_show: fp)
+      update_attributes!(
+        image_to_show: fp,
+        width: image.columns,
+        height: image.rows
+      )
     end
 
-    parse_rmagick
+    image.destroy!
 
     return true
   end
