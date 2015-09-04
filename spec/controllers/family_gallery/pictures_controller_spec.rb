@@ -75,7 +75,9 @@ describe FamilyGallery::PicturesController do
   end
 
   it "#rotate" do
+    picture.groups << group
+    request.env["HTTP_REFERER"] = group_picture_path(picture.groups.first, picture)
     post :rotate, id: picture.id, degrees: 90
-    expect(response).to redirect_to picture
+    expect(response).to redirect_to [group, picture]
   end
 end

@@ -26,7 +26,7 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
 
   def rotate
     @picture.rotate(params[:degrees].to_f)
-    redirect_to @picture
+    redirect_to :back
   end
 
 private
