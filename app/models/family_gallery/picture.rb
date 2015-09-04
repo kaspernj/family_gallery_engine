@@ -73,7 +73,7 @@ class FamilyGallery::Picture < ActiveRecord::Base
   end
 
   def parse_picture_info(args = {})
-    @image_path = args[:path]
+    @image_path_to_use = args[:path]
 
     begin
       parse_exif
@@ -101,30 +101,49 @@ class FamilyGallery::Picture < ActiveRecord::Base
     end
   end
 
+  def rotate(degrees)
+    image = ::Magick::Image.read(image_to_use.path).first
+    image.rotate!(degrees)
+
+    tempfile = Tempfile.new(["family_gallery_picture_rotate", ".png"])
+    image.write(tempfile.path)
+    tempfile.close
+
+    image.destroy!
+
+    File.open(tempfile.path) do |fp|
+      update_attributes!(image_to_show: fp)
+    end
+
+    parse_rmagick
+
+    return true
+  end
+
 private
 
   # This helps reads from special paths which is due to Paperclip may store files in temp locations
-  def image_path
-    return @image_path if @image_path && File.exists?(@image_path)
+  def image_path_to_use
+    return @image_path_to_use if @image_path_to_use && File.exists?(@image_path_to_use)
 
     path = image.queued_for_write[:original].try(:path)
     return path if path && File.exists?(path)
 
-    path = image.path
+    path = image_to_use.path
     return path if File.exists?(path)
 
     raise "Couldn't find image"
   end
 
   def queue_parse_picture_info
-    PictureParserJob.new(id, image_path).enqueue
+    PictureParserJob.new(id, image_path_to_use).enqueue
   end
 
   def parse_exif
     raise "No image was given" unless image.present?
 
     require "exifr"
-    exif = EXIFR::JPEG.new(image_path)
+    exif = EXIFR::JPEG.new(image_path_to_use)
 
     updates = {
       width: exif.width,
@@ -150,7 +169,7 @@ private
   end
 
   def parse_rmagick
-    image = ::Magick::Image.read(image_path).first
+    image = ::Magick::Image.read(image_path_to_use).first
 
     update_attributes!(
       width: image.columns,
@@ -159,7 +178,7 @@ private
   end
 
   def clone_image_to_show
-    self.image_to_show = File.open(image_path)
+    self.image_to_show = File.open(image_path_to_use)
     self.save!
   end
 

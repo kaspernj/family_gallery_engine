@@ -30,7 +30,7 @@ PATH
       plugin_migrator (~> 0.0.3)
       rails (>= 4.2.0, < 5.0.0)
       rails-i18n (~> 4.0.4)
-      rails_imager (>= 0.0.29)
+      rails_imager (>= 0.0.30)
       ransack
       rmagick (>= 2.15.3)
       sass-rails
@@ -182,7 +182,7 @@ GEM
       agent_helpers (>= 0.0.5)
       html_gen (>= 0.0.6)
       rails (>= 4.0.0)
-    loofah (2.0.2)
+    loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
