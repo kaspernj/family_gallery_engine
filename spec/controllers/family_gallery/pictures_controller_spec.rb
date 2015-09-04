@@ -73,4 +73,9 @@ describe FamilyGallery::PicturesController do
     delete :destroy, id: picture.id
     expect(response).to redirect_to root_url
   end
+
+  it "#rotate" do
+    post :rotate, id: picture.id, degrees: 90
+    expect(response).to redirect_to picture
+  end
 end
