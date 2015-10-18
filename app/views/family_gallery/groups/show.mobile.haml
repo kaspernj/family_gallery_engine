@@ -6,6 +6,7 @@
 .actions
   = link_to t(".new_picture"), new_picture_path(group_id: @group.id), class: "mobile-button" if can? :new, FamilyGallery::Picture
   = link_to t('.upload_multiple'), new_group_multiple_picture_path(@group), class: 'mobile-button' if can? :new, FamilyGallery::Picture
+  = link_to t('.jquery_uploader'), group_uploads_path(@group), class: 'mobile-button' if can? :new, FamilyGallery::Picture
   = link_to t('.set_dates_from_pictures'), set_dates_from_pictures_group_path(@group), method: :post, class: 'mobile-button', data: {confirm: t('are_you_sure')} if can? :set_dates_from_pictures, @group
 
 %table.mobile-table.form
