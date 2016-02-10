@@ -13,5 +13,6 @@ before_script:
   - RAILS_ENV=test bundle exec rake plugin_migrator:migrate
 script:
   - CODECLIMATE_REPO_TOKEN=98be4784646ecc5ff3a90f23a3c625acf1e1a8b9786b089d2729f1f33c2eab05 bundle exec rspec
+  - bundle exec rake best_practice_project:run
 notifications:
    email: false
