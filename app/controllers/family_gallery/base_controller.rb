@@ -4,7 +4,7 @@ class FamilyGallery::BaseController < ActionController::Base
   include AwesomeTranslations::ControllerTranslateFunctionality
   include FamilyGallery::BaseFamilyGalleryController
 
-  before_filter :set_locale
+  before_action :set_locale
 
 private
 

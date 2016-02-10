@@ -5,7 +5,10 @@ class FamilyGallery::GroupsController < FamilyGallery::BaseController
     @ransack_values = params[:q] || {}
     @ransack = FamilyGallery::Group.ransack(@ransack_values)
 
-    @groups = @ransack.result.accessible_by(current_ability)
+    @groups = @ransack
+      .result
+      .accessible_by(current_ability)
+      .page(params[:page])
 
     if @ransack_values[:name_cont].present?
       @groups = @groups.with_translations.where("family_gallery_group_translations.name LIKE ?", "%#{@ransack_values.fetch(:name_cont)}%")
@@ -16,11 +19,10 @@ class FamilyGallery::GroupsController < FamilyGallery::BaseController
     end
 
     @groups = @groups.order(:id) unless @ransack_values[:s]
-    @groups = @groups.page(params[:page])
   end
 
   def show
-    @pictures = @group.pictures.paginate(page: params[:page], per_page: 20)
+    @pictures = @group.pictures.page(params[:page])
   end
 
   def new

@@ -5,9 +5,11 @@ class FamilyGallery::UsersController < FamilyGallery::BaseController
     @ransack_values = params[:q] || {}
     @ransack = FamilyGallery::User.ransack(@ransack_values)
 
-    @users = @ransack.result
+    @users = @ransack
+      .result
+      .page(params[:page])
+
     @users = @users.order(:id).reverse_order unless @ransack_values[:s]
-    @users = @users.page(params[:page])
   end
 
   def show

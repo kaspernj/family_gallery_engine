@@ -1,7 +1,7 @@
 - content_for(:header_title) { t(".show_group", name: @group.name) }
 - content_for(:header_right) do
   = bb_new_btn [@group, :uploads], t(".new_picture"), small: true, can: FamilyGallery::Picture
-  = bb_btn set_dates_from_pictures_group_path(@group), t('.set_dates_from_pictures'), small: true, method: :post, data: {confirm: t('are_you_sure')} if can? :set_dates_from_pictures, @group
+  = bb_btn set_dates_from_pictures_group_path(@group), t(".set_dates_from_pictures"), small: true, method: :post, data: {confirm: t("are_you_sure")}
 
 = bb_panel t("details"), table: true, controls: bb_edit_btn([:edit, @group], mini: true) do
   %tbody

@@ -15,7 +15,7 @@ class FamilyGallery::Picture < ActiveRecord::Base
   has_attached_file :image_to_show, style: {medium: "900x900", thumb: "120x120"}
   validates_attachment_content_type :image_to_show, content_type: %r{\Aimage/.*\Z}
 
-  validates_presence_of :user_owner, :image
+  validates :user_owner, :image, presence: true
   after_create :queue_parse_picture_info
   before_save :set_image_to_show_if_changed
 
@@ -180,16 +180,7 @@ private
     )
   end
 
-  def clone_image_to_show
-    self.image_to_show = File.open(image_path_to_use)
-    save!
-  end
-
   def set_image_to_show_if_changed
     self.image_to_show = nil if image_updated_at_changed?
-  end
-
-  def image_to_show_present?
-    image_to_show_file_name? && image_to_show_file_size.to_i > 0
   end
 end

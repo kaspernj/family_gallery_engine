@@ -48,10 +48,10 @@ $ ->
       })
 
     height_from_width = (width) ->
-      parseInt(parseFloat(image_height) / (parseFloat(image_width) / parseFloat(width)))
+      parseInt(image_height / (image_width / width))
 
     width_from_height = (height) ->
-      parseInt(parseFloat(image_width) / (parseFloat(image_height) / parseFloat(height)))
+      parseInt(image_width / (image_height / height))
 
     $(window).resize -> update_picture_width()
     update_picture_width()
@@ -86,7 +86,8 @@ $ ->
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
 
-        google_map = new google.maps.Map(document.getElementById('map-canvas'), map_options)
+        map_canvas = document.getElementById('map-canvas')
+        google_map = new google.maps.Map(map_canvas, map_options)
 
         marker = new google.maps.Marker(
           position: position_latlng,

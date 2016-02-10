@@ -7,7 +7,7 @@
       .col-md-4= f.input :last_name_cont
       .col-md-4= f.input :email_cont
 
-    = f.button :submit, t('search')
+    = f.button :submit, t("search")
 
 = bb_panel t("results"), table: true, controls: bb_new_btn([:new, :user], mini: true, can: FamilyGallery::User) do
   %thead

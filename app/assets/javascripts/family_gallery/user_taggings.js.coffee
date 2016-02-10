@@ -1,7 +1,7 @@
 $ ->
   return unless $("body.controller_user_taggings").length > 0
 
-  if $("body.controller_user_taggings.action_new, body.controller_user_taggings.action_edit").length > 0
+  if $("body.action_new, body.action_edit").length > 0
     $(".picture").mousemove (event) ->
       position = $(this)[0].getBoundingClientRect()
       picture = $(this)

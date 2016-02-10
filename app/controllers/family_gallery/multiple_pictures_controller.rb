@@ -1,5 +1,5 @@
 class FamilyGallery::MultiplePicturesController < FamilyGallery::BaseController
-  before_filter :set_group_and_auth
+  before_action :set_group_and_auth
 
   def new
   end

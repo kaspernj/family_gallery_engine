@@ -1,6 +1,6 @@
 class FamilyGallery::UploadsController < FamilyGallery::BaseController
-  before_filter :authorize_uploads
-  before_filter :set_group
+  before_action :authorize_uploads
+  before_action :set_group
 
   def index
     @uploads = FamilyGallery::Picture.all
@@ -44,12 +44,12 @@ class FamilyGallery::UploadsController < FamilyGallery::BaseController
     end
   rescue => e
     respond_to do |format|
-      format.html { render action: "new" }
+      format.html { render :new }
       format.json { render json: e.message, status: :unprocessable_entity }
     end
 
-    puts e.inspect
-    puts e.backtrace
+    logger.error e.inspect
+    logger.error e.backtrace
   end
 
   def update
@@ -60,7 +60,7 @@ class FamilyGallery::UploadsController < FamilyGallery::BaseController
         format.html { redirect_to @upload, notice: "FamilyGallery::Picture was successfully updated." }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { render json: @upload.errors, status: :unprocessable_entity }
       end
     end

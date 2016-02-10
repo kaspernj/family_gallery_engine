@@ -1,14 +1,11 @@
 class FamilyGallery::UserRolesController < FamilyGallery::ResourcesController
-  load_and_authorize_resource
-
-  before_filter :set_user
+  load_and_authorize_resource :user
+  load_and_authorize_resource :user_role, through: :user
 
   def new
   end
 
   def create
-    @user_role.user = @user
-
     if @user_role.save
       redirect_to @user_role.user
     else
@@ -29,9 +26,5 @@ private
 
   def user_role_params
     params.require(:user_role).permit(:role)
-  end
-
-  def set_user
-    @user = FamilyGallery::User.find(params[:user_id])
   end
 end

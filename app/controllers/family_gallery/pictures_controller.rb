@@ -1,5 +1,5 @@
 class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
-  before_filter :set_group
+  before_action :set_group
 
   def show
     @sizes = {
