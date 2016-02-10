@@ -1,11 +1,13 @@
 class FamilyGallery::UserRolesController < FamilyGallery::ResourcesController
-  load_and_authorize_resource :user
-  load_and_authorize_resource :user_role, through: :user
+  load_resource :user, class: "FamilyGallery::User"
+  load_and_authorize_resource :user_role, class: "FamilyGallery::UserRole", through: :user
 
   def new
   end
 
   def create
+    @user_role.user = @user
+
     if @user_role.save
       redirect_to @user_role.user
     else
