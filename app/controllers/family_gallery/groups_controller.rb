@@ -67,11 +67,7 @@ private
 
   helper_method :groups_of_pictures
   def groups_of_pictures
-    if view_context.agent_mobile?
-      batch_size = 3
-    else
-      batch_size = 6
-    end
+    batch_size = 6
 
     @pictures.to_a.each_slice(batch_size) do |pictures|
       yield pictures

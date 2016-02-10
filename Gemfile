@@ -5,11 +5,13 @@ source "https://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-# Fixes permission issue. Should work in 4.3.1
-gem 'paperclip', github: 'thoughtbot/paperclip'
+gem "bootstrap_builders", github: "kaspernj/bootstrap_builders"
 
-#gem 'rails_imager', path: '/home/kaspernj/Dev/Rails/rails_imager'
-#gem 'light_mobile', path: '/Users/kaspernj/Dev/Rails/light_mobile'
+group :test, :development do
+  gem "best_practice_project", github: "kaspernj/best_practice_project", require: false
+end
+
+# gem 'rails_imager', path: '/home/kaspernj/Dev/Rails/rails_imager'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

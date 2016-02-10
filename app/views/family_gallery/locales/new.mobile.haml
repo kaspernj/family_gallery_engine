@@ -1,5 +1,0 @@
-- content_for(:header_title) { t('.language') }
-
-= simple_form_for :locales, url: locales_path do |f|
-  = f.input :locale, collection: I18n.available_locales, label: t('.language'), selected: I18n.locale, input_html: {name: 'locale'}
-  = f.submit t('save')

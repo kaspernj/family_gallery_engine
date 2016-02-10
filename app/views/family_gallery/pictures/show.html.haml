@@ -1,63 +1,49 @@
-- content_for(:header_title) { t(".show_picture", title: @picture.title_with_fallback) }
+- content_for(:header_title) { @picture.title_with_fallback }
+- content_for(:header_right) do
+  = bb_btn([:rotate, @picture, degrees: 270], icon: "backward", method: :post, small: true) if can? :rorate, @picture
+  = bb_btn([:rotate, @picture, degrees: 90], icon: "forward", method: :post, small: true) if can? :rorate, @picture
 
-%center
-  %table.navigation-links{width: "#{@sizes.fetch(:big).fetch(:smartsize)}px;"}
+.picture-panel-container
+  = bb_panel class: "picture-panel", table: true do
     %tbody
-      %tr
-        %td.previous= link_to t(".previous"), [@group, @previous_picture] if @previous_picture
-        %td.next= link_to t(".next"), [@group, @next_picture] if @next_picture
-
-  .picture-container{style: "width: #{@width}px; height: #{@height}px; background-size: #{@width}px #{@picture.height_for_width(@width)}px; background-image: url('#{@sizes.fetch(:big).fetch(:url)}');"}
-    - @picture.user_taggings.joins(:user).each do |user_tagging|
-      .tagged-user{class: "tagged-user-#{user_tagging.user.id}", style: "left: #{user_tagging.left_for_width(@width) - 50}px; top: #{user_tagging.top_for_height(@height) - 50}px;"}
-
-%h2= t(".tagged_users")
-.tagged-users-list
-  %table
-    %thead
-      %tr
-        %th= FamilyGallery::UserTagging.human_attribute_name(:user)
-        %th= t("actions")
-    %tbody
-      - @picture.user_taggings.joins(:user).ordered.each do |user_tagging|
+      - if @previous_picture || @next_picture
         %tr
-          %td= link_to_user user_tagging.user
-          %td
-            = link_to t("remove"), picture_user_tagging_path(@picture, user_tagging), method: :delete, data: {confirm: t("are_you_sure")} if can? :destroy, user_tagging
+          %td.previous= bb_btn [@group, @previous_picture], mini: true, icon: "chevron-left" if @previous_picture
+          %td.next= bb_btn [@group, @next_picture], mini: true, icon: "chevron-right" if @next_picture
+      %tr
+        %td{colspan: 2, align: "center"}
+          .picture-container{data: {sizes: @sizes}}
+            - @picture.user_taggings.joins(:user).each do |user_tagging|
+              .tagged-user{class: "tagged-user-#{user_tagging.user.id}", style: "left: #{user_tagging.position_left.to_i}%; top: #{user_tagging.position_top.to_i}%;"}
+            %img{data: {width: @picture.width, height: @picture.height}}
 
-      - unless @picture.tagged_users.any?
-        %tr
-          %td{colspan: 2}= t(".no_users_was_tagged")
-
-.actions
-  = link_to t(".edit_picture"), edit_picture_path(@picture), class: "button" if can? :edit, @picture
-  = link_to t(".add_tagging"), new_picture_user_tagging_path(@picture), class: "button" if can? :new, FamilyGallery::UserTagging
-  = link_to t(".rotate_clockwise"), rotate_picture_path(@picture, degrees: 90), method: :post, class: "button" if can? :rorate, @picture
-  = link_to t(".rotate_counter_clockwise"), rotate_picture_path(@picture, degrees: 270), method: :post, class: "button" if can? :rotate, @picture
+= bb_panel t(".tagged_users"), table: true, class: "tagged-users-list", controls: bb_new_btn([:new, @picture, :user_tagging], mini: true, can: FamilyGallery::UserTagging) do
+  %thead
+    %tr
+      %th= FamilyGallery::UserTagging.human_attribute_name(:user)
+      %th
+  %tbody
+    - @picture.user_taggings.joins(:user).ordered.each do |user_tagging|
+      %tr
+        %td= link_to_user user_tagging.user
+        %td.text-right= bb_destroy_btn [@picture, user_tagging], mini: true
+    - if @picture.tagged_users.empty?
+      %tr
+        %td{colspan: 2}= t(".no_users_was_tagged")
 
 - if @picture.groups.any?
-  %table.list
+  = bb_panel t("details"), table: true, controls: bb_edit_btn([:edit, @picture], mini: true) do
     %tbody
-      %tr
-        %td= FamilyGallery::Picture.human_attribute_name(:user_owner)
-        %td= link_to_user @picture.user_owner
-      %tr
-        %td= FamilyGallery::Picture.human_attribute_name(:user_uploaded)
-        %td= link_to_user @picture.user_uploaded
-
-      - if @picture.taken_at?
-        %tr
-          %td= FamilyGallery::Picture.human_attribute_name(:taken_at)
-          %td= l(@picture.taken_at, format: :long)
+      = bb_attribute_rows @picture, [:user_owner, :user_uploaded, :taken_at]
 
       - @picture.groups.each do |group|
         %tr
-          %td= FamilyGallery::Group.model_name.human
+          %th= FamilyGallery::Group.model_name.human
           %td= link_to_group group
 
 - if @picture.location?
   - content_for(:header_tag) do
     %script{src: "https://maps.googleapis.com/maps/api/js?v=3.exp"}
 
-  %h1= t(".google_map")
-  #map-canvas{data: {latitude: @picture.latitude, longitude: @picture.longitude}}
+  = bb_panel t(".google_map") do
+    #map-canvas{data: {latitude: @picture.latitude, longitude: @picture.longitude}}

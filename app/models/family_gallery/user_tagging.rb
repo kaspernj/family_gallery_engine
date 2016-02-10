@@ -9,10 +9,18 @@ class FamilyGallery::UserTagging < ActiveRecord::Base
   scope :ordered, -> { joins(:user).order("family_gallery_users.first_name, family_gallery_users.last_name, family_gallery_users.email") }
 
   def left_for_width(width)
-    return (width * (position_left.to_f / 100)).to_i
+    (width * (position_left.to_f / 100)).to_i
+  end
+
+  def left_percentage
+    (position_left.to_f / picture.width.to_f) * 100
   end
 
   def top_for_height(height)
-    return (height * (position_top.to_f / 100)).to_i
+    (height * (position_top.to_f / 100)).to_i
+  end
+
+  def top_percentage
+    (position_top.to_f / picture.height.to_f) * 100
   end
 end

@@ -12,14 +12,14 @@ class FamilyGallery::UserRolesController < FamilyGallery::ResourcesController
     if @user_role.save
       redirect_to @user_role.user
     else
-      flash[:error] = @user_role.errors.full_messages.join('. ')
+      flash[:error] = @user_role.errors.full_messages.join(". ")
       render :new
     end
   end
 
   def destroy
     unless @user_role.destroy
-      flash[:errror] = @user_role.errors.full_messages.join('. ')
+      flash[:errror] = @user_role.errors.full_messages.join(". ")
     end
 
     redirect_to @user_role.user

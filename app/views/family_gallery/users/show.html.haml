@@ -1,7 +1,7 @@
 - content_for(:header_title) { t(".show_user", user_name: @user.name) }
 
-= link_to t('edit'), edit_user_path(@user), class: 'button' if can? :edit, @user
-= link_to t('delete'), user_path(@user), method: :delete, class: 'button-danger', data: {confirm: t('are_you_sure')} if can? :destroy, @user
+= bb_edit_btn [:edit, @user]
+= bb_destroy_btn @user
 
 %h2= t(".tagged_on")
 - @user.pictures_tagged_on.each do |picture|
@@ -22,13 +22,7 @@
 
 = will_paginate @uploaded_pictures
 
-%h2= FamilyGallery::UserRole.model_name.human(count: 2)
-= link_to t('add_new'), new_user_user_role_path(@user), class: 'button' if can?(:new, FamilyGallery::UserRole)
-
-%br
-%br
-
-%table
+= bb_panel FamilyGallery::UserRole.model_name.human(count: 2), table: true, controls: bb_new_btn([:new, @user, :user_role], mini: true, can: FamilyGallery::UserRole) do
   %thead
     %tr
       %th= FamilyGallery::UserRole.human_attribute_name(:role)

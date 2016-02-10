@@ -7,7 +7,7 @@ class FamilyGallery::UploadsController < FamilyGallery::BaseController
 
     respond_to do |format|
       format.html
-      format.json { render json: @uploads.map{|upload| upload.to_jq_upload } }
+      format.json { render json: @uploads.map(&:to_jq_upload) }
     end
   end
 
@@ -44,7 +44,7 @@ class FamilyGallery::UploadsController < FamilyGallery::BaseController
     end
 
     respond_to do |format|
-      format.html { render json: [@upload.to_jq_upload].to_json, content_type: 'text/html', layout: false }
+      format.html { render json: [@upload.to_jq_upload].to_json, content_type: "text/html", layout: false }
       format.json { render json: {files: [@upload.to_jq_upload]}, status: :created, location: @upload }
     end
   rescue => e
@@ -62,7 +62,7 @@ class FamilyGallery::UploadsController < FamilyGallery::BaseController
 
     respond_to do |format|
       if @upload.update_attributes(resource_params)
-        format.html { redirect_to @upload, notice: 'FamilyGallery::Picture was successfully updated.' }
+        format.html { redirect_to @upload, notice: "FamilyGallery::Picture was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

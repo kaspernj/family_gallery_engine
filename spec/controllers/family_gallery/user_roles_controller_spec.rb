@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe FamilyGallery::UserRolesController do
   let(:admin) { create :admin }
@@ -6,7 +6,7 @@ describe FamilyGallery::UserRolesController do
   let(:user_role) { create :user_role, user: user }
   let(:valid_params) do
     {
-      role: 'administrator'
+      role: "administrator"
     }
   end
 
@@ -20,11 +20,6 @@ describe FamilyGallery::UserRolesController do
 
   it '#new' do
     get :new, user_id: user.id
-    expect(response).to be_success
-  end
-
-  it 'new as mobile' do
-    get :new, user_id: user.id, mobile: 1
     expect(response).to be_success
   end
 

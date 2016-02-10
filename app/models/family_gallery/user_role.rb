@@ -7,7 +7,7 @@ class FamilyGallery::UserRole < ActiveRecord::Base
 
   def self.role_options
     {
-      t('.administrator') => 'administrator'
+      t(".administrator") => "administrator"
     }
   end
 end

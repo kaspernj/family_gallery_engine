@@ -1,17 +1,12 @@
 - content_for(:header_title) { FamilyGallery::Group.model_name.human(count: 2) }
 
-- if can? :new, FamilyGallery::Group
-  .actions
-    = link_to t("add_new"), new_group_path, class: "button"
+= bb_panel t("filter"), controls: bb_new_btn([:new, :group], mini: true, can: FamilyGallery::Group) do
+  = simple_search_form_for @ransack, @ransack_values do |f|
+    = f.input :name_cont
+    = f.input :description_cont
+    = f.button :submit, t('search')
 
-= simple_search_form_for @ransack, @ransack_values do |f|
-  = f.input :name_cont
-  = f.input :description_cont
-  = f.submit t('search')
-
-%br
-
-%table.list
+= bb_panel FamilyGallery::Group.model_name.human(count: 2), table: true do
   %thead
     %tr
       %th= sort_link @ransack, :name
@@ -30,8 +25,5 @@
     - unless @groups.any?
       %tr
         %td{colspan: 5}= t("no_results")
-
-%br
-%br
 
 = will_paginate @groups

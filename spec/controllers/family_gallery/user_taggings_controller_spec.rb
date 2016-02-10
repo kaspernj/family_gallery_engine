@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe FamilyGallery::UserTaggingsController do
   let(:user) { create :user }
@@ -22,11 +22,6 @@ describe FamilyGallery::UserTaggingsController do
 
   it '#new' do
     get :new, picture_id: picture.id
-    expect(response).to be_success
-  end
-
-  it 'new as mobile' do
-    get :new, picture_id: picture.id, mobile: 1
     expect(response).to be_success
   end
 

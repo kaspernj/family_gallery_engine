@@ -6,22 +6,19 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
       small: {
         size: @picture.smartsize(600),
         smartsize: 600,
-        url: view_context.rails_imager_p(@picture.image_to_use, smartsize: 1200, rounded_corners: (350 * 0.05).to_i)
+        url: view_context.rails_imager_p(@picture.image_to_use, maxwidth: 1200, maxheight: 1200)
       },
       big: {
         size: @picture.smartsize(1100),
         smartsize: 1100,
-        url: view_context.rails_imager_p(@picture.image_to_use, smartsize: 2200, rounded_corners: (1100 * 0.05).to_i)
+        url: view_context.rails_imager_p(@picture.image_to_use, maxwidth: 2200, maxheight: 2200)
       }
     }
 
-    @width = @sizes[:big][:size][:width]
-    @height = @sizes[:big][:size][:height]
+    return unless @group
 
-    if @group
-      @previous_picture = @picture.previous_picture_in_group(@group)
-      @next_picture = @picture.next_picture_in_group(@group)
-    end
+    @previous_picture = @picture.previous_picture_in_group(@group)
+    @next_picture = @picture.next_picture_in_group(@group)
   end
 
   def rotate

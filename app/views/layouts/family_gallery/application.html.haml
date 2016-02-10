@@ -1,44 +1,53 @@
-!!! 5
+!!! %
 %html
   %head
-    %title= try(:header_title) || "FamilyGallery"
+    %title= content_for(:header_title) || "FamilyGallery"
 
     = stylesheet_link_tag "family_gallery/application", media: "all"
-    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans:400"
-    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Raleway:400"
-
-    = javascript_include_tag "family_gallery/application"
+    = javascript_include_tag "family_gallery/application", defer: true
 
     = csrf_meta_tags
 
-    = yield(:header_tag)
-  %body{class: ["desktop", "controller_#{controller_name}", "action_#{action_name}"]}
-    %center
-      %table.main
-        %tbody
-          %tr
-            %td.main-logo FamilyGallery
-          %tr
-            %td.main-menu
-              = link_to t(".frontpage"), root_path
-              = link_to FamilyGallery::Group.model_name.human(count: 2), groups_path if can? :index, FamilyGallery::Group
-              = link_to t(".translations"), awesome_translations_path if Rails.env.development?
-              = link_to FamilyGallery::User.model_name.human(count: 2), users_path if can? :index, FamilyGallery::User
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1"}
+  %body{class: ["controller_#{controller_name}", "action_#{action_name}"]}
+    %div{style: "height: 100%;"}
+      %nav.navbar.navbar-inverse
+        .container
+          .navbar-header
+            %button.navbar-toggle.collapsed{type: "btn btn-default", data: {toggle: "collapse", target: "#navbar"}, aria: {expanded: "false", controls: "navbar"}}
+              %span.sr-only= t(".toggle_navigation")
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            = link_to "FamilyGallery", root_path, class: "navbar-brand"
+          .collapse.navbar-collapse#navbar
+            %ul.nav.navbar-nav
+              = menu_link t(".frontpage"), root_path
+              = menu_link FamilyGallery::Group.model_name.human(count: 2), groups_path if can? :index, FamilyGallery::Group
+              = menu_link t(".translations"), awesome_translations_path if Rails.env.development?
+              = menu_link FamilyGallery::User.model_name.human(count: 2), users_path if can? :index, FamilyGallery::User
 
               - if signed_in?
-                = link_to t(".sign_out"), destroy_family_gallery_user_session_path, method: :delete
+                = menu_link t(".sign_out"), destroy_family_gallery_user_session_path, method: :delete
               - else
-                = link_to t(".sign_in"), new_family_gallery_user_session_path
-          %tr
-            %td.main-content
-              - flash.each do |flash_type, flash_message|
-                .flash-message{class: "flash-#{flash_type}"}
-                  = flash_message
+                = menu_link t(".sign_in"), new_family_gallery_user_session_path
+      .container
+        - flash.to_hash.each_value do |value|
+          .alert.alert-dismissible.alert-danger= value
 
-              - if try(:header_title).present?
-                %h1= header_title
+        - if content_for?(:header_title) || content_for?(:header_right)
+          .row
+            .col-md-9
+              %h1.ellipsis= content_for(:header_title)
+            .col-md-3
+              .pull-right= content_for(:header_right)
 
-              = yield
-          %tr
-            %td.main-bottom
-              = select_tag "locale", options_for_select(I18n.available_locales.to_a, I18n.locale), data: {url: locales_path}
+        .row
+          .col-md-12
+            = yield
+
+      %footer.footer
+        .container
+          %p
+            Language:
+            = select_tag "locale", options_for_select(I18n.available_locales.to_a, I18n.locale), data: {url: locales_path}

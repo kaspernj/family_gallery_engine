@@ -17,16 +17,14 @@ class FamilyGallery::MultiplePicturesController < FamilyGallery::BaseController
       picture.groups << @group
 
       begin
-        unless picture.save
-          errors << picture.errors.full_messages
-        end
+        errors << picture.errors.full_messages unless picture.save
       rescue => e
         exceptions << e
       end
     end
 
     raise exceptions.first if exceptions.any?
-    flash[:error] = errors.join('. ') if errors.any?
+    flash[:error] = errors.join(". ") if errors.any?
     redirect_to @group
   end
 

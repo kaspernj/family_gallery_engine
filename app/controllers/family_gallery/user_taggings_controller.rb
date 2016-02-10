@@ -26,13 +26,7 @@ private
 
   def set_picture
     @picture = FamilyGallery::Picture.find(params[:picture_id])
-
-    if view_context.agent_mobile?
-      @width = 300
-    else
-      @width = 1000
-    end
-
+    @width = 1000
     @height = @picture.height_for_width(@width)
 
     if action_name == "create"

@@ -7,8 +7,6 @@ FactoryGirl.define do
     association :user_owner, factory: :user
     association :user_uploaded, factory: :user
 
-    after :create do |picture|
-      picture.reload
-    end
+    after :create, &:reload
   end
 end

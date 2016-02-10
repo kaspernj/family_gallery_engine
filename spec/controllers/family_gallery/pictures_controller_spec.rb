@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe FamilyGallery::PicturesController do
   let(:group) { create :group }
@@ -8,8 +8,8 @@ describe FamilyGallery::PicturesController do
     {
       title: "Test title",
       description: "Test test",
-      taken_at: '1985/06/17 10:30',
-      image: fixture_file_upload(Rails.root.join('..', '..', 'spec', 'test_pictures', 'sigrid.jpg'), 'image/jpeg')
+      taken_at: "1985/06/17 10:30",
+      image: fixture_file_upload(Rails.root.join("..", "..", "spec", "test_pictures", "sigrid.jpg"), "image/jpeg")
     }
   end
 
@@ -26,18 +26,8 @@ describe FamilyGallery::PicturesController do
     expect(response).to be_success
   end
 
-  it 'new as mobile' do
-    get :new, mobile: 1
-    expect(response).to be_success
-  end
-
   it '#show' do
     get :show, id: picture.id, group_id: group.id
-    expect(response).to be_success
-  end
-
-  it 'show as mobile' do
-    get :show, id: picture.id, group_id: group.id, mobile: 1
     expect(response).to be_success
   end
 
@@ -49,7 +39,7 @@ describe FamilyGallery::PicturesController do
     response.should redirect_to created_picture
     created_picture.groups.should eq [group]
     created_picture.user_uploaded.should eq admin
-    expect(created_picture.taken_at).to eq Time.zone.parse('1985-06-17 10:30')
+    expect(created_picture.taken_at).to eq Time.zone.parse("1985-06-17 10:30")
     expect(created_picture.image_to_show_file_name).to eq nil
     created_picture.width.should_not eq nil
   end
@@ -59,13 +49,8 @@ describe FamilyGallery::PicturesController do
     expect(response).to be_success
   end
 
-  it 'edit as mobile' do
-    get :edit, id: picture.id, mobile: 1
-    expect(response).to be_success
-  end
-
   it '#update' do
-    patch :update, id: picture.id, picture: {title: 'Test'}
+    patch :update, id: picture.id, picture: {title: "Test"}
     expect(response).to redirect_to picture_url(picture)
   end
 
