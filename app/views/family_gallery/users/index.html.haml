@@ -1,7 +1,7 @@
 - content_for(:header_title) { FamilyGallery::User.model_name.human(count: 2) }
 
 = bb_panel t("filter") do
-  = simple_search_form_for @ransack, @ransack_values do |f|
+  = simple_search_form_for @ransack do |f|
     .row
       .col-md-4= f.input :first_name_cont
       .col-md-4= f.input :last_name_cont
@@ -21,7 +21,7 @@
         %td= link_to_user user, title: user.first_name
         %td= link_to_user user, title: user.last_name
         %td= mail_to user.email
-    - unless @users.any?
+    - if @users.empty?
       %tr
         %td{colspan: 3}= t(".no_users_were_found")
 

@@ -3,6 +3,8 @@ class FamilyGallery::UserTaggingsController < FamilyGallery::BaseController
   load_and_authorize_resource :user_tagging, class: "FamilyGallery::UserTagging", through: :picture
   skip_authorize_resource only: :new
 
+  before_action :set_picture
+
   def create
     @user_tagging.tagged_by = current_user
 

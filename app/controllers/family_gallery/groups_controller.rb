@@ -2,23 +2,23 @@ class FamilyGallery::GroupsController < FamilyGallery::BaseController
   load_and_authorize_resource
 
   def index
-    @ransack_values = params[:q] || {}
-    @ransack = FamilyGallery::Group.ransack(@ransack_values)
+    ransack_values = params[:q] || {}
+    ransack_values ||= "id asc"
+
+    @ransack = FamilyGallery::Group.ransack(ransack_values)
 
     @groups = @ransack
       .result
       .accessible_by(current_ability)
       .page(params[:page])
 
-    if @ransack_values[:name_cont].present?
-      @groups = @groups.with_translations.where("family_gallery_group_translations.name LIKE ?", "%#{@ransack_values.fetch(:name_cont)}%")
+    if ransack_values[:name_cont].present?
+      @groups = @groups.with_translations.where("family_gallery_group_translations.name LIKE ?", "%#{ransack_values.fetch(:name_cont)}%")
     end
 
-    if @ransack_values[:description_cont].present?
-      @groups = @groups.with_translations.where("family_gallery_group_translations.description LIKE ?", "%#{@ransack_values.fetch(:description_cont)}%")
+    if ransack_values[:description_cont].present?
+      @groups = @groups.with_translations.where("family_gallery_group_translations.description LIKE ?", "%#{ransack_values.fetch(:description_cont)}%")
     end
-
-    @groups = @groups.order(:id) unless @ransack_values[:s]
   end
 
   def show
