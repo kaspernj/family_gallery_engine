@@ -10,10 +10,10 @@ class FamilyGallery::Picture < ActiveRecord::Base
   belongs_to :user_uploaded, class_name: "User"
 
   has_attached_file :image
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
 
   has_attached_file :image_to_show, style: {medium: "900x900", thumb: "120x120"}
-  validates_attachment_content_type :image_to_show, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :image_to_show, content_type: %r{\Aimage/.*\Z}
 
   validates_presence_of :user_owner, :image
   after_create :queue_parse_picture_info
@@ -94,11 +94,8 @@ class FamilyGallery::Picture < ActiveRecord::Base
   end
 
   def image_to_use
-    if image_to_show.present?
-      return image_to_show
-    else
-      return image
-    end
+    return image_to_show if image_to_show.present?
+    image
   end
 
   def rotate(degrees)
@@ -151,14 +148,10 @@ private
     require "exifr"
     exif = EXIFR::JPEG.new(image_path_to_use(original: true))
 
-    if image_to_show_present?
-      parse_rmagick
-    else
-      updates = {
-        width: exif.width,
-        height: exif.height
-      }
-    end
+    updates = {
+      width: exif.width,
+      height: exif.height
+    }
 
     unless taken_at?
       if exif.date_time

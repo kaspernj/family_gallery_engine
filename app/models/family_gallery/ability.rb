@@ -3,13 +3,12 @@ class FamilyGallery::Ability
 
   def initialize(user)
     @user = user
+    return unless @user
 
-    if @user
-      user_access
+    user_access
 
-      @user.user_roles.each do |user_role|
-        __send__(user_role.role)
-      end
+    @user.user_roles.each do |user_role|
+      __send__(user_role.role)
     end
   end
 

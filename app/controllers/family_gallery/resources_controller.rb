@@ -88,7 +88,7 @@ private
 
     begin
       after_assign
-    rescue NameError
+    rescue NameError # rubocop:disable Lint/HandleExceptions
     end
   end
 end

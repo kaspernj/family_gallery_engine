@@ -35,12 +35,7 @@ class FamilyGallery::UploadsController < FamilyGallery::BaseController
 
   def create
     params[:picture][:image].each do |image|
-      @upload = FamilyGallery::Picture.create!(
-        groups: [@group],
-        image: image,
-        user_owner: current_user,
-        user_uploaded: current_user
-      )
+      @upload = picture_from_image_params(image)
     end
 
     respond_to do |format|
@@ -89,5 +84,14 @@ private
 
   def set_group
     @group = FamilyGallery::Group.find(params[:group_id])
+  end
+
+  def picture_from_image_params(image)
+    FamilyGallery::Picture.create!(
+      groups: [@group],
+      image: image,
+      user_owner: current_user,
+      user_uploaded: current_user
+    )
   end
 end
