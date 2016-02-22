@@ -6,7 +6,10 @@ source "https://rubygems.org"
 gemspec
 
 gem "bootstrap_builders", github: "kaspernj/bootstrap_builders"
-gem "best_practice_project", github: "kaspernj/best_practice_project", require: false
+
+group :test, :development do
+  gem "best_practice_project", github: "kaspernj/best_practice_project", require: false
+end
 
 # gem 'rails_imager', path: '/home/kaspernj/Dev/Rails/rails_imager'
 

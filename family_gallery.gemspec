@@ -56,6 +56,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "factory_girl_rails"
   s.add_development_dependency "codeclimate-test-reporter"
   s.add_development_dependency "pry"
+  s.add_development_dependency "best_practice_project"
   s.add_development_dependency "rubocop", "0.36.0"
   # s.add_development_dependency "scss_lint", "0.43.2"
   s.add_development_dependency "coffeelint", "1.14.0"
