@@ -3,7 +3,6 @@ cache: bundler
 archive: true
 rvm:
   - ruby-2.1.2
-  - jruby-head
 before_script:
   - cd spec/dummy
   - cp config/database.shippable.yml config/database.yml
