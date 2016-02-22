@@ -16,6 +16,6 @@ script:
   - bundle exec rubocop --rails --display-cop-names
   - bundle exec rails_best_practices
   - bundle exec haml-lint app/
-  - scss-lint
+  - scss-lint app/assets/stylesheets
 notifications:
    email: false
