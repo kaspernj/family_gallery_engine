@@ -2,12 +2,14 @@ class FamilyGallery::UsersController < FamilyGallery::BaseController
   load_and_authorize_resource
 
   def index
-    @ransack_values = params[:q] || {}
-    @ransack = FamilyGallery::User.ransack(@ransack_values)
+    ransack_values = params[:q] || {}
+    ransack_values[:s] ||= "id desc"
 
-    @users = @ransack.result
-    @users = @users.order(:id).reverse_order unless @ransack_values[:s]
-    @users = @users.page(params[:page])
+    @ransack = FamilyGallery::User.ransack(ransack_values)
+
+    @users = @ransack
+      .result
+      .page(params[:page])
   end
 
   def show

@@ -1,8 +1,8 @@
 class FamilyGallery::User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable
 
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates :email, presence: true
+  validates :email, uniqueness: true
 
   has_many :owned_groups, class_name: "Group", foreign_key: "user_owner_id", dependent: :restrict_with_error
   has_many :owned_pictures, class_name: "Picture", foreign_key: "user_owner_id", dependent: :restrict_with_error
@@ -15,11 +15,11 @@ class FamilyGallery::User < ActiveRecord::Base
   scope :ordered, -> { order("family_gallery_users.first_name, family_gallery_users.last_name, family_gallery_users.email") }
 
   def name
-    name = "#{first_name}" # Needs to be a new string.
+    name = first_name.to_s # Needs to be a new string.
     name << " #{last_name}" if last_name?
 
     name = email unless name.present?
 
-    return name
+    name
   end
 end

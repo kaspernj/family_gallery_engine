@@ -1,7 +1,7 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
-ENV["RAILS_ENV"] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 require "dummy/config/environment"
 require "rspec/rails"
 require "forgery"
@@ -10,7 +10,7 @@ require "paperclip/matchers"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-#ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+# ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
   config.include ActionDispatch::TestProcess
@@ -22,9 +22,7 @@ RSpec.configure do |config|
   end
 
   config.after(:all) do
-    if Rails.env.test?
-      FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/0"])
-    end
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/0"]) if Rails.env.test?
   end
 
   config.include Devise::TestHelpers, type: :controller

@@ -1,9 +1,9 @@
-= simple_form_for [@picture, @user_tagging] do |f|
+= simple_form_for [user_tagging.picture, user_tagging] do |f|
   = f.association :user, collection: FamilyGallery::User.order(:email)
   = f.input :position_top, as: :hidden
   = f.input :position_left, as: :hidden
-  = f.submit t("save"), class: "button"
+  = f.button :submit, t("save")
 
 .picture-container
   .tagging-marker
-  .picture{style: "background-image: url('#{@picture.image.url}'); width: #{@width}px; height: #{@height}px; background-size: #{@width}px #{@height}px;", data: {width: @width, height: @height}}
+  .picture{style: "background-image: url('#{user_tagging.picture.image.url}'); width: #{@width}px; height: #{@height}px; background-size: #{@width}px #{@height}px;", data: {width: @width, height: @height}}

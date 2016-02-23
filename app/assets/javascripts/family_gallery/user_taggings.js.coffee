@@ -1,7 +1,7 @@
 $ ->
   return unless $("body.controller_user_taggings").length > 0
 
-  if $("body.controller_user_taggings.action_new, body.controller_user_taggings.action_edit").length > 0
+  if $("body.action_new, body.action_edit").length > 0
     $(".picture").mousemove (event) ->
       position = $(this)[0].getBoundingClientRect()
       picture = $(this)
@@ -15,8 +15,8 @@ $ ->
       width = parseInt(picture.data("width"))
       height = parseInt(picture.data("height"))
 
-      left = parseInt(picture.data("pos-left"))
-      top = parseInt(picture.data("pos-top"))
+      left = parseInt(picture.data("pos-left")) - 50
+      top = parseInt(picture.data("pos-top")) - 50
 
       left_percentage = (left / width) * 100
       top_percentage = (top / height) * 100
@@ -24,7 +24,4 @@ $ ->
       $("#user_tagging_position_left").val(left_percentage)
       $("#user_tagging_position_top").val(top_percentage)
 
-      marker = $(".tagging-marker")
-      marker_left = left - 50
-      marker_top = top - 50
-      marker.css({left: marker_left, top: marker_top})
+      $(".tagging-marker").css({"left": left, "top": top})

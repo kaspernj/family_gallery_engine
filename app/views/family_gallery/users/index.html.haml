@@ -1,17 +1,15 @@
 - content_for(:header_title) { FamilyGallery::User.model_name.human(count: 2) }
 
-.actions
-  = link_to t("add_new"), new_user_path, class: "button" if can? :new, FamilyGallery::User
+= bb_panel t("filter") do
+  = simple_search_form_for @ransack do |f|
+    .row
+      .col-md-4= f.input :first_name_cont
+      .col-md-4= f.input :last_name_cont
+      .col-md-4= f.input :email_cont
 
-= simple_search_form_for @ransack, @ransack_values do |f|
-  = f.input :first_name_cont
-  = f.input :last_name_cont
-  = f.input :email_cont
-  = f.submit t('search')
+    = f.button :submit, t("search")
 
-%br
-
-%table.list
+= bb_panel t("results"), table: true, controls: bb_new_btn([:new, :user], mini: true, can: FamilyGallery::User) do
   %thead
     %tr
       %th= sort_link @ransack, :first_name
@@ -23,7 +21,7 @@
         %td= link_to_user user, title: user.first_name
         %td= link_to_user user, title: user.last_name
         %td= mail_to user.email
-    - unless @users.any?
+    - if @users.empty?
       %tr
         %td{colspan: 3}= t(".no_users_were_found")
 

@@ -2,25 +2,27 @@ class FamilyGallery::GroupsController < FamilyGallery::BaseController
   load_and_authorize_resource
 
   def index
-    @ransack_values = params[:q] || {}
-    @ransack = FamilyGallery::Group.ransack(@ransack_values)
+    ransack_values = params[:q] || {}
+    ransack_values ||= "id asc"
 
-    @groups = @ransack.result.accessible_by(current_ability)
+    @ransack = FamilyGallery::Group.ransack(ransack_values)
 
-    if @ransack_values[:name_cont].present?
-      @groups = @groups.with_translations.where("family_gallery_group_translations.name LIKE ?", "%#{@ransack_values.fetch(:name_cont)}%")
+    @groups = @ransack
+      .result
+      .accessible_by(current_ability)
+      .page(params[:page])
+
+    if ransack_values[:name_cont].present?
+      @groups = @groups.with_translations.where("family_gallery_group_translations.name LIKE ?", "%#{ransack_values.fetch(:name_cont)}%")
     end
 
-    if @ransack_values[:description_cont].present?
-      @groups = @groups.with_translations.where("family_gallery_group_translations.description LIKE ?", "%#{@ransack_values.fetch(:description_cont)}%")
+    if ransack_values[:description_cont].present?
+      @groups = @groups.with_translations.where("family_gallery_group_translations.description LIKE ?", "%#{ransack_values.fetch(:description_cont)}%")
     end
-
-    @groups = @groups.order(:id) unless @ransack_values[:s]
-    @groups = @groups.page(params[:page])
   end
 
   def show
-    @pictures = @group.pictures.paginate(page: params[:page], per_page: 20)
+    @pictures = @group.pictures.page(params[:page])
   end
 
   def new
@@ -67,11 +69,7 @@ private
 
   helper_method :groups_of_pictures
   def groups_of_pictures
-    if view_context.agent_mobile?
-      batch_size = 3
-    else
-      batch_size = 6
-    end
+    batch_size = 6
 
     @pictures.to_a.each_slice(batch_size) do |pictures|
       yield pictures

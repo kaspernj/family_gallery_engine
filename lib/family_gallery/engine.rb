@@ -1,5 +1,3 @@
-module FamilyGallery
-  class Engine < ::Rails::Engine
-    isolate_namespace FamilyGallery
-  end
+class FamilyGallery::Engine < ::Rails::Engine
+  isolate_namespace FamilyGallery
 end

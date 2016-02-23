@@ -10,28 +10,28 @@ class FamilyGallery::Picture < ActiveRecord::Base
   belongs_to :user_uploaded, class_name: "User"
 
   has_attached_file :image
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
 
   has_attached_file :image_to_show, style: {medium: "900x900", thumb: "120x120"}
-  validates_attachment_content_type :image_to_show, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :image_to_show, content_type: %r{\Aimage/.*\Z}
 
-  validates_presence_of :user_owner, :image
+  validates :user_owner, :image, presence: true
   after_create :queue_parse_picture_info
   before_save :set_image_to_show_if_changed
 
   def width_for_height(new_height)
-    return (width.to_f / (height.to_f / new_height.to_f)).to_i
+    (width.to_f / (height.to_f / new_height.to_f)).to_i
   end
 
   def height_for_width(new_width)
-    return (height.to_f / (width.to_f / new_width.to_f)).to_i
+    (height.to_f / (width.to_f / new_width.to_f)).to_i
   end
 
   def smartsize(size)
     if height > width
-      return {width: width_for_height(size), height: size}
+      {width: width_for_height(size), height: size}
     else
-      return {width: size, height: height_for_width(size)}
+      {width: size, height: height_for_width(size)}
     end
   end
 
@@ -57,7 +57,7 @@ class FamilyGallery::Picture < ActiveRecord::Base
   def title_with_fallback
     return title if title.present?
     return title_no_in_group if groups.count == 1
-    return t('.picture_with_id', id: id)
+    t(".picture_with_id", id: id)
   end
 
   def title_no_in_group
@@ -69,7 +69,7 @@ class FamilyGallery::Picture < ActiveRecord::Base
       break if picture.id == id
     end
 
-    return t('.no_in_group', count: count, group_name: group.name)
+    t(".no_in_group", count: count, group_name: group.name)
   end
 
   def parse_picture_info(args = {})
@@ -94,50 +94,46 @@ class FamilyGallery::Picture < ActiveRecord::Base
   end
 
   def image_to_use
-    if image_to_show.present?
-      return image_to_show
-    else
-      return image
-    end
+    return image_to_show if image_to_show.present?
+    image
   end
 
   def rotate(degrees)
-    image = ::Magick::Image.read(image_to_use.path).first
-    image.rotate!(degrees)
+    magick_image = ::Magick::Image.read(image_to_use.path).first
+    magick_image.rotate!(degrees)
 
     tempfile = Tempfile.new(["family_gallery_picture_rotate", ".png"])
-    image.write(tempfile.path)
+    magick_image.write(tempfile.path)
     tempfile.close
 
     File.open(tempfile.path) do |fp|
       update_attributes!(
         image_to_show: fp,
-        width: image.columns,
-        height: image.rows
+        width: magick_image.columns,
+        height: magick_image.rows
       )
     end
 
-    image.destroy!
+    magick_image.destroy!
+    parse_rmagick
 
-    return true
+    true
   end
 
 private
 
   # This helps reads from special paths which is due to Paperclip may store files in temp locations
   def image_path_to_use(args = {})
-    return @image_path_to_use if @image_path_to_use && File.exists?(@image_path_to_use)
+    return @image_path_to_use if @image_path_to_use && File.exist?(@image_path_to_use)
 
     path = image.queued_for_write[:original].try(:path)
-    return path if path && File.exists?(path)
+    return path if path && File.exist?(path)
 
-    if args[:original]
-      path = image.path
-      return path if File.exists?(path)
-    else
-      path = image_to_use.path
-      return path if File.exists?(path)
-    end
+    path = image.path if args[:original]
+    return path if path && File.exist?(path)
+
+    path = image_to_use.path
+    return path if path && File.exist?(path)
 
     raise "Couldn't find image"
   end
@@ -152,14 +148,10 @@ private
     require "exifr"
     exif = EXIFR::JPEG.new(image_path_to_use(original: true))
 
-    if image_to_show_present?
-      parse_rmagick
-    else
-      updates = {
-        width: exif.width,
-        height: exif.height
-      }
-    end
+    updates = {
+      width: exif.width,
+      height: exif.height
+    }
 
     unless taken_at?
       if exif.date_time
@@ -188,16 +180,7 @@ private
     )
   end
 
-  def clone_image_to_show
-    self.image_to_show = File.open(image_path_to_use)
-    self.save!
-  end
-
   def set_image_to_show_if_changed
     self.image_to_show = nil if image_updated_at_changed?
-  end
-
-  def image_to_show_present?
-    image_to_show_file_name? && image_to_show_file_size.to_i > 0
   end
 end

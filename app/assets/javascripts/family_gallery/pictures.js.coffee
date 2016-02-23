@@ -2,49 +2,59 @@ $ ->
   return if $("body.controller_pictures").length == 0
 
   if $("body.action_show").length > 0
-    if $("body.mobile").length > 0
-      update_picture_width = ->
-        window_width = $(window).width()
-        window_height = $(window).height()
+    body = $("body")
+    panel = $(".picture-panel")
+    container = $(".picture-container")
+    tagged_users = $(".tagged-users-list")
+    img = $(".picture-container img")
 
-        orig_width = $('.picture-container').data('picture-width')
-        orig_height = $('.picture-container').data('picture-height')
-        sizes = $('.picture-container').data('picture-sizes')
+    sizes = container.data("picture-sizes")
 
-        max_width = window_width - 60
-        max_height = window_height - 110
+    image_width = parseInt(img.data("width"))
+    image_height = parseInt(img.data("height"))
 
-        picture_width = max_width
-        picture_height = orig_height / (orig_width / picture_width)
+    big_smartsize = parseInt(container.data('sizes-small-smartsize'))
 
-        if picture_height > max_height
-          picture_height = max_height
-          picture_width = orig_width / (orig_height / picture_height)
+    if image_width >= image_height
+      panel.addClass("picture-horizontal")
+    else
+      panel.addClass("picture-vertical")
 
-        picture_width = parseInt(picture_width)
-        picture_height = parseInt(picture_height)
+    update_picture_width = ->
+      window_width = $(window).width()
+      window_height = $(window).height()
 
-        if picture_width > picture_height
-          smartsize = picture_width
-        else
-          smartsize = picture_height
+      if big_smartsize <= window_width
+        picture_url = $(container).data('sizes-big-url')
+      else
+        picture_url = $(container).data('sizes-small-url')
 
-        if smartsize >= parseInt($('.picture-container').data('sizes-small-smartsize'))
-          picture_url = $('.picture-container').data('sizes-big-url')
-        else
-          picture_url = $('.picture-container').data('sizes-small-url')
+      img.attr("src", picture_url) unless img.attr("src") == picture_url
 
-        $('.picture-container').css({
-          "width": picture_width + "px",
-          "height": picture_height + "px",
-          "background-size": picture_width + "px " + picture_height + "px",
-          "background-image": "url('" + picture_url + "')"
-        })
+      max_height = window_height - 70
+      min_height = 250
 
-      $(window).resize ->
-        update_picture_width()
+      width = tagged_users.width() - 35
+      height = height_from_width(width)
 
-      update_picture_width()
+      if height > max_height
+        height = max_height
+        height = min_height if height < min_height
+        width = width_from_height(height)
+
+      img.css({
+        "width": width,
+        "height": height
+      })
+
+    height_from_width = (width) ->
+      parseInt(image_height / (image_width / width))
+
+    width_from_height = (height) ->
+      parseInt(image_width / (image_height / height))
+
+    $(window).resize -> update_picture_width()
+    update_picture_width()
 
     # Makes the markers of the tagged users appear / disappear.
     $(".tagged-users-list .link-to-user").hover ->
@@ -76,7 +86,8 @@ $ ->
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
 
-        google_map = new google.maps.Map(document.getElementById('map-canvas'), map_options)
+        map_canvas = document.getElementById('map-canvas')
+        google_map = new google.maps.Map(map_canvas, map_options)
 
         marker = new google.maps.Marker(
           position: position_latlng,

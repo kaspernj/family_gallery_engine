@@ -2,8 +2,7 @@
   = hidden_field_tag :group_id, params[:group_id] if params[:group_id].present?
   = f.input :title, autofocus: true
   = f.input :description
-  = f.input :taken_at, as: :string, placeholder: 'yyyy/mm/dd hh:mm:ss'
+  = f.input :taken_at, as: :string, placeholder: "yyyy/mm/dd hh:mm:ss"
   = f.input :image
-  = f.submit t("save"), class: "button"
-
-  = link_to t("delete"), picture, class: "button-danger", method: :delete, data: {confirm: t("are_you_sure")}  unless picture.new_record?
+  = f.button :submit, t("save")
+  = bb_destroy_btn picture

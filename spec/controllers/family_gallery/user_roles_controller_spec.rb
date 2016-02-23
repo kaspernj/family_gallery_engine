@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe FamilyGallery::UserRolesController do
   let(:admin) { create :admin }
@@ -6,7 +6,7 @@ describe FamilyGallery::UserRolesController do
   let(:user_role) { create :user_role, user: user }
   let(:valid_params) do
     {
-      role: 'administrator'
+      role: "something"
     }
   end
 
@@ -23,20 +23,15 @@ describe FamilyGallery::UserRolesController do
     expect(response).to be_success
   end
 
-  it 'new as mobile' do
-    get :new, user_id: user.id, mobile: 1
-    expect(response).to be_success
-  end
-
   it '#create' do
     post :create, user_id: user.id, user_role: valid_params
-    expect(response).to redirect_to user_url(user)
+    expect(response).to redirect_to user
   end
 
   it '#destroy' do
     delete :destroy, user_id: user.id, id: user_role.id
 
     expect { user_role.reload }.to raise_error(ActiveRecord::RecordNotFound)
-    expect(response).to redirect_to user_url(user)
+    expect(response).to redirect_to user
   end
 end

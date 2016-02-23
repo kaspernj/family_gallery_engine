@@ -9,6 +9,6 @@ namespace :family_gallery do
     )
     admin_user.save!
 
-    admin_role = admin_user.user_roles.find_or_initialize_by(role: "administrator").save!
+    admin_user.user_roles.find_or_initialize_by(role: "administrator").save!
   end
 end

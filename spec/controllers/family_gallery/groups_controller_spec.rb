@@ -1,9 +1,9 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe FamilyGallery::GroupsController do
   let(:group) { create :group, user_owner: user }
-  let(:picture_1) { create :picture, groups: [group], taken_at: '1985-06-17 10:30' }
-  let(:picture_2) { create :picture, groups: [group], taken_at: '1985-06-18 9:00' }
+  let(:picture_1) { create :picture, groups: [group], taken_at: "1985-06-17 10:30" }
+  let(:picture_2) { create :picture, groups: [group], taken_at: "1985-06-18 9:00" }
   let(:user) { create :admin }
   let(:group_name) { Forgery::LoremIpsum.words(2) }
   let(:group_description) { Forgery::LoremIpsum.words(255) }
@@ -11,8 +11,8 @@ describe FamilyGallery::GroupsController do
     {
       name: group_name,
       description: group_description,
-      date_from: '1985/06/17 10:30',
-      date_to: '1985/06/18 9:00'
+      date_from: "1985/06/17 10:30",
+      date_to: "1985/06/18 9:00"
     }
   end
 
@@ -81,8 +81,8 @@ describe FamilyGallery::GroupsController do
     post :set_dates_from_pictures, id: group.id
     group.reload
 
-    expect(group.date_from).to eq Time.zone.parse('1985-06-17 10:30')
-    expect(group.date_to).to eq Time.zone.parse('1985-06-18 9:00')
+    expect(group.date_from).to eq Time.zone.parse("1985-06-17 10:30")
+    expect(group.date_to).to eq Time.zone.parse("1985-06-18 9:00")
     expect(response).to redirect_to group
   end
 end

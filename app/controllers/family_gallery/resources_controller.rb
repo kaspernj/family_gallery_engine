@@ -80,7 +80,7 @@ private
 
   def resource_extracted_params
     key_name = StringCases.camel_to_snake(resource_name)
-    return params[key_name]
+    params[key_name]
   end
 
   def assign_params_to_resource_instance
@@ -88,7 +88,7 @@ private
 
     begin
       after_assign
-    rescue NameError
+    rescue NameError # rubocop:disable Lint/HandleExceptions
     end
   end
 end

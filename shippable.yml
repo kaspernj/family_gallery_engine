@@ -3,7 +3,6 @@ cache: bundler
 archive: true
 rvm:
   - ruby-2.1.2
-  - jruby-head
 before_script:
   - cd spec/dummy
   - cp config/database.shippable.yml config/database.yml
@@ -11,7 +10,12 @@ before_script:
   - mysql -e 'CREATE DATABASE family_gallery_test;'
   - RAILS_ENV=test bundle exec rake db:migrate
   - RAILS_ENV=test bundle exec rake plugin_migrator:migrate
+  - gem install scss_lint
 script:
   - CODECLIMATE_REPO_TOKEN=98be4784646ecc5ff3a90f23a3c625acf1e1a8b9786b089d2729f1f33c2eab05 bundle exec rspec
+  - bundle exec rubocop --rails --display-cop-names
+  - bundle exec rails_best_practices
+  - bundle exec haml-lint app/
+  - scss-lint app/assets/stylesheets
 notifications:
    email: false

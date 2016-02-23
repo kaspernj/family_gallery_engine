@@ -1,8 +1,6 @@
 class CreateFamilyGalleryGroups < ActiveRecord::Migration
   def up
-    create_table :family_gallery_groups do |t|
-      t.timestamps
-    end
+    create_table :family_gallery_groups, &:timestamps
 
     FamilyGallery::Group.create_translation_table! name: :string, description: :text
   end

@@ -1,7 +1,0 @@
-= simple_form_for user do |f|
-  = f.input :first_name, autofocus: true
-  = f.input :last_name
-  = f.input :email
-  = f.input :password
-  = f.submit
-  = link_to t('delete'), user_path(@user), method: :delete, class: 'mobile-button-danger', data: {confirm: t('are_you_sure')} if @user.persisted? && can?(:destroy, user)

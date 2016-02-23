@@ -1,6 +1,6 @@
 if Rails.env.production?
-  require 'exception_notification'
-  require 'exception_notification/rails'
+  require "exception_notification"
+  require "exception_notification/rails"
 
   family_gallery_config = YAML.load_file(Rails.root.join("config", "family_gallery.yml"))
 
@@ -18,11 +18,9 @@ if Rails.env.production?
     # Notifiers =================================================================
 
     # Email notifier sends notifications by email.
-    config.add_notifier :email, {
-      :email_prefix         => '[FamilyGallery] [Exception] ',
-      :sender_address       => family_gallery_config['robot_email'],
-      :exception_recipients => family_gallery_config['notification_emails']
-    }
+    config.add_notifier :email,       email_prefix: "[FamilyGallery] [Exception] ",
+                                      sender_address: family_gallery_config["robot_email"],
+                                      exception_recipients: family_gallery_config["notification_emails"]
 
     # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
     # config.add_notifier :campfire, {

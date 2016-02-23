@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150823172120) do
+ActiveRecord::Schema.define(version: 20160209153626) do
 
   create_table "family_gallery_group_picture_links", force: :cascade do |t|
     t.integer  "group_id",   limit: 4
@@ -139,4 +139,14 @@ ActiveRecord::Schema.define(version: 20150823172120) do
   add_index "family_gallery_users", ["reset_password_token"], name: "index_family_gallery_users_on_reset_password_token", unique: true, using: :btree
   add_index "family_gallery_users", ["unlock_token"], name: "index_family_gallery_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "family_gallery_group_picture_links", "family_gallery_pictures", column: "picture_id"
+  add_foreign_key "family_gallery_group_translations", "family_gallery_groups"
+  add_foreign_key "family_gallery_groups", "family_gallery_users", column: "user_owner_id"
+  add_foreign_key "family_gallery_picture_translations", "family_gallery_pictures"
+  add_foreign_key "family_gallery_pictures", "family_gallery_users", column: "user_owner_id"
+  add_foreign_key "family_gallery_pictures", "family_gallery_users", column: "user_uploaded_id"
+  add_foreign_key "family_gallery_user_roles", "family_gallery_users", column: "user_id"
+  add_foreign_key "family_gallery_user_taggings", "family_gallery_pictures", column: "picture_id"
+  add_foreign_key "family_gallery_user_taggings", "family_gallery_users", column: "tagged_by_id"
+  add_foreign_key "family_gallery_user_taggings", "family_gallery_users", column: "user_id"
 end
