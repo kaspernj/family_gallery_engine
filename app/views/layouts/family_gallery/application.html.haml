@@ -1,7 +1,7 @@
 !!! %
 %html
   %head
-    %title= content_for(:header_title) || "FamilyGallery"
+    %title= content_for(:header_title) || content_for(:header_title_without_headline) || "FamilyGallery"
 
     = stylesheet_link_tag "family_gallery/application", media: "all"
     = javascript_include_tag "family_gallery/application", defer: true

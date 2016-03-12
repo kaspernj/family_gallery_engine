@@ -9,8 +9,7 @@ module FamilyGallery::PicturesHelper
     size = args[:size].presence || 200
     crop_size = size * 2
 
-    rounded_corners_size = (crop_size * 0.05).to_i
-    picture_url = rails_imager_p(picture.image_to_use, smartsize: crop_size, rounded_corners: rounded_corners_size)
+    picture_url = rails_imager_p(picture.image_to_use, smartsize: crop_size)
     width_and_height = picture.smartsize(size)
     image_args = {alt: picture.title_with_fallback, class: "picture-image", width: width_and_height[:width], height: width_and_height[:height]}
 

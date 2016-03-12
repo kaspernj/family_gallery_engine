@@ -1,23 +1,26 @@
 body.controller_pictures {
   &.action_show {
-    .picture-panel-container {
-      .picture-panel {
-        .previous {
-          text-align: left;
-        }
+    .picture-panel-container .picture-panel {
+      .previous {
+        width: 65px;
+      }
 
-        .next {
-          text-align: right;
-        }
+      .picture-title h4 {
+        margin: 2px 0 0;
+        padding: 0;
+      }
 
-        .picture-container {
-          position: relative;
-          display: inline-block;
+      .next {
+        width: 65px;
+      }
 
-          img {
-            border-radius: 5px;
-            border: 1px solid #000;
-          }
+      .picture-container {
+        position: relative;
+        display: inline-block;
+
+        img {
+          border-radius: 5px;
+          border: 1px solid #000;
         }
       }
     }

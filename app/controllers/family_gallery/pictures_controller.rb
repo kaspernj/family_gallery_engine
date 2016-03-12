@@ -1,5 +1,5 @@
 class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
-  before_action :set_group
+  load_and_authorize_resource :group, class: "FamilyGallery::Group"
 
   def show
     @sizes = {
@@ -28,14 +28,10 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
 
 private
 
-  def set_group
-    @group = FamilyGallery::Group.find(params[:group_id]) if params[:group_id]
-  end
-
   def after_assign
     resource_instance.user_uploaded = current_user
     resource_instance.user_owner = current_user
-    resource_instance.groups << FamilyGallery::Group.find(params[:group_id]) if params[:group_id].present?
+    resource_instance.groups << @group if @group
   end
 
   def resource_params

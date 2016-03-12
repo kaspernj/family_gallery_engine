@@ -1,10 +1,12 @@
 - content_for(:header_title) { t(".welcome") }
 
-= bb_panel t(".latest_updated_groups") do
+= bb_panel t(".latest_updated_groups"), class: "welcome-groups" do
   - @groups.each do |group|
-    %h3= link_to_group group
-    - group.pictures.order(:created_at).reverse_order.limit(9).each do |picture|
-      = picture_image_tag picture, group: group, size: 100
+    .well
+      %h3= link_to_group group
+      - group.pictures.order(:created_at).limit(9).each do |picture|
+        = picture_image_tag picture, group: group, size: 100
+
   - if @groups.empty?
     = t(".no_groups_has_been_created_yet")
 

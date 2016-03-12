@@ -1,17 +1,26 @@
-- content_for(:header_title) { @picture.title_with_fallback }
-- content_for(:header_right) do
-  = bb_btn [:rotate, @picture, degrees: 270], icon: "backward", title: t(".rotate_clockwise"), method: :post, small: true if can? :rorate, @picture
-  = bb_btn [:rotate, @picture, degrees: 90], icon: "forward", title: t(".rotate_counter_clockwise"), method: :post, small: true if can? :rorate, @picture
+- content_for(:header_title_without_headline) { @picture.title_with_fallback }
 
 .picture-panel-container
   = bb_panel class: "picture-panel", table: true do
     %tbody
-      - if @previous_picture || @next_picture
-        %tr
-          %td.previous= bb_btn [@group, @previous_picture], mini: true, icon: "chevron-left" if @previous_picture
-          %td.next= bb_btn [@group, @next_picture], mini: true, icon: "chevron-right" if @next_picture
       %tr
-        %td{colspan: 2, align: "center"}
+        %td.previous.text-left
+          - if @previous_picture
+            = bb_btn [@group, @previous_picture], mini: true, icon: "chevron-left"
+          - else
+            = bb_btn "#", mini: true, icon: "chevron-left", class: "disabled"
+
+          = bb_btn [:rotate, @picture, degrees: 270], icon: "refresh", title: t(".rotate_counter_clockwise"), method: :post, small: true if can? :rorate, @picture
+        %td.picture-title.text-center
+          %h4= @picture.title_with_fallback
+        %td.next.text-right
+          = bb_btn [:rotate, @picture, degrees: 90], icon: "refresh", title: t(".rotate_clockwise"), method: :post, small: true if can? :rorate, @picture
+          - if @next_picture
+            = bb_btn [@group, @next_picture], mini: true, icon: "chevron-right"
+          - else
+            = bb_btn "#", mini: true, icon: "chevron-right", class: "disabled"
+      %tr
+        %td{colspan: 3, align: "center"}
           .picture-container{data: {sizes: @sizes}}
             - @picture.user_taggings.joins(:user).each do |user_tagging|
               .tagged-user{class: "tagged-user-#{user_tagging.user_id}", style: "left: #{user_tagging.position_left.to_i}%; top: #{user_tagging.position_top.to_i}%;"}
@@ -30,7 +39,7 @@
           %td.text-right= bb_destroy_btn [@picture, user_tagging], mini: true
 
 - if @picture.groups.any?
-  = bb_panel t("details"), table: true, controls: bb_edit_btn([:edit, @picture], mini: true) do
+  = bb_panel t("details"), table: true, controls: [bb_edit_btn([:edit, @picture], mini: true), bb_destroy_btn(@picture, mini: true)] do
     %tbody
       = bb_attribute_rows @picture, [:user_owner, :user_uploaded, :taken_at]
 

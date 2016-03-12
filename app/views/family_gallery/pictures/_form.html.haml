@@ -1,8 +1,12 @@
-= simple_form_for picture do |f|
-  = hidden_field_tag :group_id, params[:group_id] if params[:group_id].present?
-  = f.input :title, autofocus: true
-  = f.input :description
-  = f.input :taken_at, as: :string, placeholder: "yyyy/mm/dd hh:mm:ss"
-  = f.input :image
-  = f.button :submit, t("save")
-  = bb_destroy_btn picture
+= bb_panel t("details") do
+  = simple_form_for picture do |f|
+    = hidden_field_tag :group_id, params[:group_id] if params[:group_id].present?
+
+    .row
+      .col-md-9= f.input :title, autofocus: true
+      .col-md-3= f.input :taken_at, as: :string, placeholder: "yyyy/mm/dd hh:mm:ss"
+
+    = f.input :description
+    = f.input :image
+    = f.button :submit, t("save")
+    = bb_destroy_btn picture

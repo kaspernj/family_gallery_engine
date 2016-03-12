@@ -25,9 +25,9 @@ $ ->
       window_height = $(window).height()
 
       if big_smartsize <= window_width
-        picture_url = $(container).data('sizes-big-url')
+        picture_url = $(container).data("sizes-big-url")
       else
-        picture_url = $(container).data('sizes-small-url')
+        picture_url = $(container).data("sizes-small-url")
 
       img.attr("src", picture_url) unless img.attr("src") == picture_url
 

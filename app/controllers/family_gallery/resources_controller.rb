@@ -53,7 +53,7 @@ class FamilyGallery::ResourcesController < FamilyGallery::BaseController
   def destroy
     if resource_instance.destroy
       flash[:notice] = controller_t(".resource_was_deleted")
-      redirect_to root_url
+      redirect_to params[:redirect_to].presence || root_url
     else
       flash[:error] = resource_instance.errors.full_messages.join(". ")
       redirect_to resource_instance
