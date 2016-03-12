@@ -32,8 +32,7 @@
               - else
                 = menu_link t(".sign_in"), new_family_gallery_user_session_path
       .container
-        - flash.to_hash.each_value do |value|
-          .alert.alert-dismissible.alert-danger= value
+        = bootstrap_flash
 
         - if content_for?(:header_title) || content_for?(:header_right)
           .row
