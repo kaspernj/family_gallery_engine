@@ -2,8 +2,10 @@
 
 = bb_panel t("filter"), controls: bb_new_btn([:new, :group], mini: true, can: FamilyGallery::Group) do
   = simple_search_form_for @ransack do |f|
-    = f.input :name_cont, autofocus: true
-    = f.input :description_cont
+    .row
+      .col-md-6= f.input :name_cont, autofocus: true
+      .col-md-6= f.input :description_cont
+
     = f.button :submit, t("search")
 
 = bb_panel FamilyGallery::Group.model_name.human(count: 2), table: true do
