@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency "omniauth-facebook"
   s.add_dependency "paperclip", "4.3.5"
   s.add_dependency "exifr", "1.2.0"
-  s.add_dependency "awesome_translations", "~> 0.0.25"
+  # s.add_dependency "awesome_translations", "~> 0.0.25"
   s.add_dependency "will_paginate"
   s.add_dependency "rails_imager", ">= 0.0.30"
   s.add_dependency "rmagick", ">= 2.15.3"

@@ -1,4 +1,23 @@
 GIT
+  remote: git://github.com/kaspernj/awesome_translations.git
+  revision: 73207251bcc3ee049f90199617538383300d959e
+  specs:
+    awesome_translations (0.0.25)
+      active-record-transactioner
+      array_enumerator (~> 0.0.10)
+      auto_autoloader
+      baza (>= 0.0.20)
+      baza_migrations (>= 0.0.1)
+      baza_models (>= 0.0.2)
+      coffee-rails
+      haml-rails
+      jquery-rails
+      rails (>= 3.0.0, < 5.0.0)
+      sass-rails
+      sqlite3
+      string-cases (= 0.0.2)
+
+GIT
   remote: git://github.com/kaspernj/best_practice_project.git
   revision: 9c747dd3b66ee18010c6f5c839e05c36452d44ea
   specs:
@@ -16,7 +35,6 @@ PATH
   remote: .
   specs:
     family_gallery (0.0.8)
-      awesome_translations (~> 0.0.25)
       bootstrap_builders
       cancancan
       coffee-rails (~> 4.1.1)
@@ -86,20 +104,6 @@ GEM
     ast (2.2.0)
     auto_autoloader (0.0.4)
       string-cases
-    awesome_translations (0.0.25)
-      active-record-transactioner
-      array_enumerator (~> 0.0.10)
-      auto_autoloader
-      baza (>= 0.0.20)
-      baza_migrations (>= 0.0.1)
-      baza_models (>= 0.0.2)
-      coffee-rails
-      haml-rails
-      jquery-rails
-      rails (>= 3.0.0, < 5.0.0)
-      sass-rails
-      sqlite3
-      string-cases (= 0.0.2)
     baza (0.0.20)
       array_enumerator (~> 0.0.10)
       datet (~> 0.0.25)
@@ -406,6 +410,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_translations!
   best_practice_project!
   bootstrap_builders!
   codeclimate-test-reporter
