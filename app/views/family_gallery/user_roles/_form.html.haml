@@ -1,3 +1,3 @@
 = simple_form_for [user, user_role] do |f|
-  = f.input :role, collection: FamilyGallery::UserRole.role_options
+  = f.input :role, autofocus: true, collection: FamilyGallery::UserRole.translated_roles
   = f.button :submit, t("save")

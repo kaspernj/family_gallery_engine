@@ -2,7 +2,7 @@
 
 = bb_panel t(".upload_file") do
   = simple_form_for FamilyGallery::Picture.new, url: group_uploads_path(@group), html: {id: "fileupload"}, data: {group_path: group_path(@group)} do |f|
-    = f.input :image, input_html: {multiple: true}
+    = f.input :image, autofocus: true, input_html: {multiple: true}
 
 #progress
   .bar

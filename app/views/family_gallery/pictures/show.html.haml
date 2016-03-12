@@ -1,7 +1,7 @@
 - content_for(:header_title) { @picture.title_with_fallback }
 - content_for(:header_right) do
-  = bb_btn([:rotate, @picture, degrees: 270], icon: "backward", method: :post, small: true) if can? :rorate, @picture
-  = bb_btn([:rotate, @picture, degrees: 90], icon: "forward", method: :post, small: true) if can? :rorate, @picture
+  = bb_btn [:rotate, @picture, degrees: 270], icon: "backward", title: t(".rotate_clockwise"), method: :post, small: true if can? :rorate, @picture
+  = bb_btn [:rotate, @picture, degrees: 90], icon: "forward", title: t(".rotate_counter_clockwise"), method: :post, small: true if can? :rorate, @picture
 
 .picture-panel-container
   = bb_panel class: "picture-panel", table: true do

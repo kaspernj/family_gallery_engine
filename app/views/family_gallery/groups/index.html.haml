@@ -2,28 +2,26 @@
 
 = bb_panel t("filter"), controls: bb_new_btn([:new, :group], mini: true, can: FamilyGallery::Group) do
   = simple_search_form_for @ransack do |f|
-    = f.input :name_cont
+    = f.input :name_cont, autofocus: true
     = f.input :description_cont
     = f.button :submit, t("search")
 
 = bb_panel FamilyGallery::Group.model_name.human(count: 2), table: true do
-  %thead
-    %tr
-      %th= sort_link @ransack, :name
-      %th= sort_link @ransack, :user_owner_first_name, FamilyGallery::Group.human_attribute_name(:user_owner)
-      %th= sort_link @ransack, :date_from
-      %th= sort_link @ransack, :date_to
-      %th= FamilyGallery::Picture.model_name.human(count: 2)
-  %tbody
-    - @groups.each do |group|
+  - if @groups.any?
+    %thead
       %tr
-        %td= link_to_group group
-        %td= link_to_user group.user_owner
-        %td= l(group.date_from) if group.date_from?
-        %td= l(group.date_to) if group.date_to?
-        %td= group.pictures.count
-    - unless @groups.any?
-      %tr
-        %td{colspan: 5}= t("no_results")
+        %th= sort_link @ransack, :name
+        %th= sort_link @ransack, :user_owner_first_name, FamilyGallery::Group.human_attribute_name(:user_owner)
+        %th= sort_link @ransack, :date_from
+        %th= sort_link @ransack, :date_to
+        %th= FamilyGallery::Picture.model_name.human(count: 2)
+    %tbody
+      - @groups.each do |group|
+        %tr
+          %td= link_to_group group
+          %td= link_to_user group.user_owner
+          %td= l(group.date_from) if group.date_from?
+          %td= l(group.date_to) if group.date_to?
+          %td= group.pictures.count
 
 = will_paginate @groups

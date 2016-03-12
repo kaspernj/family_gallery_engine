@@ -1,37 +1,31 @@
 - content_for(:header_title) { t(".show_user", user_name: @user.name) }
+- content_for(:header_right) do
+  = bb_destroy_btn @user, mini: true
 
-= bb_edit_btn [:edit, @user]
-= bb_destroy_btn @user
+= bb_panel t("details"), table: true, controls: bb_edit_btn([:edit, @user], mini: true) do
+  %tbody
+    = bb_attribute_rows @user, [:email, :created_at]
 
-%h2= t(".tagged_on")
-- @user.pictures_tagged_on.each do |picture|
-  = picture_image_tag picture
+= bb_panel t(".tagged_on") do
+  - if @user.pictures_tagged_on.any?
+    - @user.pictures_tagged_on.each do |picture|
+      = picture_image_tag picture
 
-- unless @user.pictures_tagged_on.any?
-  = t(".user_hasnt_been_tagged_on_any_pictures")
-
-%h2= t(".uploaded_pictures")
-- @uploaded_pictures.each do |picture|
-  = picture_image_tag picture
-
-- if @user.uploaded_pictures.empty?
-  = t(".this_user_havent_uploaded_any_pictures")
-
-%br
-%br
+= bb_panel t(".uploaded_pictures") do
+  - if @uploaded_pictures.any?
+    - @uploaded_pictures.each do |picture|
+      = picture_image_tag picture
 
 = will_paginate @uploaded_pictures
 
 = bb_panel FamilyGallery::UserRole.model_name.human(count: 2), table: true, controls: bb_new_btn([:new, @user, :user_role], mini: true, can: FamilyGallery::UserRole) do
-  %thead
-    %tr
-      %th= FamilyGallery::UserRole.human_attribute_name(:role)
-      %th
-  %tbody
-    - @user.user_roles.each do |user_role|
+  - if @user.user_roles.any?
+    %thead
       %tr
-        %td= user_role.role
-        %td= bb_destroy_btn [@user, user_role]
-    - if @user.user_roles.empty?
-      %tr
-        %td{colspan: 2}= t("no_results")
+        %th= FamilyGallery::UserRole.human_attribute_name(:role)
+        %th
+    %tbody
+      - @user.user_roles.each do |user_role|
+        %tr
+          %td= user_role.translated_role
+          %td.text-right= bb_destroy_btn [@user, user_role], mini: true

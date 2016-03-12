@@ -1,5 +1,5 @@
 = simple_form_for [user_tagging.picture, user_tagging] do |f|
-  = f.association :user, collection: FamilyGallery::User.order(:email)
+  = f.association :user, autofocus: true, collection: FamilyGallery::User.order(:email)
   = f.input :position_top, as: :hidden
   = f.input :position_left, as: :hidden
   = f.button :submit, t("save")
