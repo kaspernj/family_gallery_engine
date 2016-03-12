@@ -21,5 +21,7 @@ Bundler::GemHelper.install_tasks
 
 task default: :test
 
-require "best_practice_project"
-BestPracticeProject.load_tasks
+if Rails.env.development? || Rails.env.test?
+  require "best_practice_project"
+  BestPracticeProject.load_tasks
+end
