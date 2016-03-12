@@ -12,12 +12,30 @@ class FamilyGallery::Picture < ActiveRecord::Base
   has_attached_file :image
   validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
 
-  has_attached_file :image_to_show, style: {medium: "900x900", thumb: "120x120"}
+  has_attached_file :image_to_show, styles: {large: ["2200x2200>", :jpg, 90], medium: ["1200x1200>", :jpg, 90], thumbnail: ["200x200>", :jpg, 90]}
   validates_attachment_content_type :image_to_show, content_type: %r{\Aimage/.*\Z}
 
   validates :user_owner, :image, presence: true
   after_create :queue_parse_picture_info
   before_save :set_image_to_show_if_changed
+
+  def thumbnail_ordered_sizes
+    [:large, :medium, :thumbnail]
+  end
+
+  def image_to_show_from_size(size)
+    choose = nil
+    thumbnail_ordered_sizes.reverse.each do |size_i|
+      choose = true if size == size_i
+
+      next unless choose
+
+      image_to_choose = image_to_show.url(size_i)
+      return image_to_choose if image_to_choose.present?
+    end
+
+    raise "Unknown size: #{size}"
+  end
 
   def width_for_height(new_height)
     (width.to_f / (height.to_f / new_height.to_f)).to_i
@@ -181,6 +199,6 @@ private
   end
 
   def set_image_to_show_if_changed
-    self.image_to_show = nil if image_updated_at_changed?
+    self.image_to_show = image if image_updated_at_changed?
   end
 end

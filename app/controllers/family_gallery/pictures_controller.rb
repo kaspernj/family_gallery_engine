@@ -6,12 +6,12 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
       small: {
         size: @picture.smartsize(600),
         smartsize: 600,
-        url: view_context.rails_imager_p(@picture.image_to_use, maxwidth: 1200, maxheight: 1200)
+        url: @picture.image_to_use.url(:medium)
       },
       big: {
         size: @picture.smartsize(1100),
         smartsize: 1100,
-        url: view_context.rails_imager_p(@picture.image_to_use, maxwidth: 2200, maxheight: 2200)
+        url: @picture.image_to_use.url(:large)
       }
     }
 

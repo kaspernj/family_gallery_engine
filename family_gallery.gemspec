@@ -43,6 +43,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-fileupload-rails"
   s.add_dependency "bootstrap_builders"
   s.add_dependency "twitter-bootstrap-rails", "3.2.2"
+  s.add_dependency "progress_bar", "1.0.5"
 
   if RUBY_ENGINE == "jruby"
     s.add_development_dependency "activerecord-jdbc-adapter"
