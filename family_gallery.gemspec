@@ -62,9 +62,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency "coffeelint", "1.14.0"
   s.add_development_dependency "rails_best_practices"
   s.add_development_dependency "haml_lint", "0.16.0"
-
-  # Deploy
-  s.add_development_dependency "capistrano"
-  s.add_development_dependency "capistrano-rails"
-  s.add_development_dependency "capistrano-bundler"
 end
