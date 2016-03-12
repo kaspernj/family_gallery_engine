@@ -18,18 +18,16 @@
             %img{data: {width: @picture.width, height: @picture.height}}
 
 = bb_panel t(".tagged_users"), table: true, class: "tagged-users-list", controls: bb_new_btn([:new, @picture, :user_tagging], mini: true, can: FamilyGallery::UserTagging) do
-  %thead
-    %tr
-      %th= FamilyGallery::UserTagging.human_attribute_name(:user)
-      %th
-  %tbody
-    - @picture.user_taggings.joins(:user).ordered.each do |user_tagging|
+  - if @picture.user_taggings.any?
+    %thead
       %tr
-        %td= link_to_user user_tagging.user
-        %td.text-right= bb_destroy_btn [@picture, user_tagging], mini: true
-    - if @picture.tagged_users.empty?
-      %tr
-        %td{colspan: 2}= t(".no_users_was_tagged")
+        %th= FamilyGallery::UserTagging.human_attribute_name(:user)
+        %th
+    %tbody
+      - @picture.user_taggings.joins(:user).ordered.each do |user_tagging|
+        %tr
+          %td= link_to_user user_tagging.user
+          %td.text-right= bb_destroy_btn [@picture, user_tagging], mini: true
 
 - if @picture.groups.any?
   = bb_panel t("details"), table: true, controls: bb_edit_btn([:edit, @picture], mini: true) do
