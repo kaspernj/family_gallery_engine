@@ -10,43 +10,42 @@
 
     %meta{name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1"}
   %body{class: ["controller_#{controller_name}", "action_#{action_name}"]}
-    %div{style: "height: 100%;"}
-      %nav.navbar.navbar-inverse
-        .container
-          .navbar-header
-            %button.navbar-toggle.collapsed{type: "btn btn-default", data: {toggle: "collapse", target: "#navbar"}, aria: {expanded: "false", controls: "navbar"}}
-              %span.sr-only= t(".toggle_navigation")
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            = link_to "FamilyGallery", root_path, class: "navbar-brand"
-          .collapse.navbar-collapse#navbar
-            %ul.nav.navbar-nav
-              = menu_link t(".frontpage"), root_path
-              = menu_link FamilyGallery::Group.model_name.human(count: 2), groups_path if can? :index, FamilyGallery::Group
-              = menu_link t(".translations"), awesome_translations_path if Rails.env.development?
-              = menu_link FamilyGallery::User.model_name.human(count: 2), users_path if can? :index, FamilyGallery::User
-
-              - if signed_in?
-                = menu_link t(".sign_out"), destroy_family_gallery_user_session_path, method: :delete
-              - else
-                = menu_link t(".sign_in"), new_family_gallery_user_session_path
+    .navbar.navbar-default.navbar-static-top
       .container
-        = bootstrap_flash
+        %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
 
-        - if content_for?(:header_title) || content_for?(:header_right)
-          .row
-            .col-md-9
-              %h1.ellipsis= content_for(:header_title)
-            .col-md-3
-              .pull-right= content_for(:header_right)
+        = link_to "FamilyGallery", root_path, class: "navbar-brand"
 
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          %ul.nav.navbar-nav
+            = menu_link t(".frontpage"), root_path
+            = menu_link FamilyGallery::Group.model_name.human(count: 2), groups_path if can? :index, FamilyGallery::Group
+            = menu_link t(".translations"), awesome_translations_path if Rails.env.development?
+            = menu_link FamilyGallery::User.model_name.human(count: 2), users_path if can? :index, FamilyGallery::User
+
+            - if signed_in?
+              = menu_link t(".sign_out"), destroy_family_gallery_user_session_path, method: :delete
+            - else
+              = menu_link t(".sign_in"), new_family_gallery_user_session_path
+    .container
+      = bootstrap_flash
+
+      - if content_for?(:header_title) || content_for?(:header_right)
         .row
-          .col-md-12
-            = yield
+          .col-md-9
+            %h1.ellipsis= content_for(:header_title)
+          .col-md-3
+            .pull-right= content_for(:header_right)
 
-      %footer.footer
-        .container
-          %p
-            Language:
-            = select_tag "locale", options_for_select(I18n.available_locales.to_a, I18n.locale), data: {url: locales_path}
+      .row
+        .col-md-12
+          = yield
+
+    %footer.footer
+      .container
+        %p
+          Language:
+          = select_tag "locale", options_for_select(I18n.available_locales.to_a, I18n.locale), data: {url: locales_path}

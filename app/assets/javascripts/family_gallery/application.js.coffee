@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery-fileupload/basic
+#= require twitter/bootstrap
 #= require family_gallery/locales
 #= require family_gallery/pictures
 #= require family_gallery/uploads

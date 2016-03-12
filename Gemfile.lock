@@ -39,7 +39,7 @@ PATH
       sass-rails (= 4.0.5)
       simple_form (~> 3.2.1)
       simple_form_ransack (>= 0.0.6)
-      twitter-bootstrap-rails
+      twitter-bootstrap-rails (= 3.2.2)
       will_paginate
 
 GEM
