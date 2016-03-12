@@ -13,14 +13,10 @@
       %th= FamilyGallery::Group.human_attribute_name(:pictures)
       %td= @group.pictures.count
 
-= bb_panel FamilyGallery::Picture.model_name.human(count: 2), table: true do
-  %tbody
-    - groups_of_pictures do |pictures|
-      %tr
-        - pictures.each do |picture|
-          %td= picture_image_tag(picture, size: 100, group: @group)
-    - unless @group.pictures.any?
-      %tr
-        %td{colspan: 1}= t("no_results")
+= bb_panel FamilyGallery::Picture.model_name.human(count: 2) do
+  - groups_of_pictures do |pictures|
+    - pictures.each do |picture|
+      = picture_image_tag(picture, size: 100, group: @group)
+  = t("no_results") if @group.pictures.empty?
 
 = will_paginate @pictures

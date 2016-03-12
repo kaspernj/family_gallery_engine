@@ -14,13 +14,13 @@
     %tr
       %th= sort_link @ransack, :first_name
       %th= sort_link @ransack, :last_name
-      %th= sort_link @ransack, :email
+      %th.hidden-xs-down= sort_link @ransack, :email
   %tbody
     - if @users.any?
       - @users.each do |user|
         %tr
           %td= link_to_user user, title: user.first_name
           %td= link_to_user user, title: user.last_name
-          %td= mail_to user.email
+          %td.hidden-xs-down= mail_to user.email
 
 = will_paginate @users
