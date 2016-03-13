@@ -7,7 +7,7 @@ namespace :family_gallery do
       progress_bar = ProgressBar.new(pictures.count)
 
       pictures.find_each do |picture|
-        picture.update_attributes!(image_to_show: picture.image)
+        picture.update_attributes!(image_to_show: picture.image) unless picture.image_to_show.present?
         progress_bar.increment!
       end
     end

@@ -20,7 +20,7 @@ class FamilyGallery::Picture < ActiveRecord::Base
   before_save :set_image_to_show_if_changed
 
   def thumbnail_ordered_sizes
-    [:large, :medium, :thumbnail]
+    [:original, :large, :medium, :thumbnail]
   end
 
   def image_to_show_from_size(size)

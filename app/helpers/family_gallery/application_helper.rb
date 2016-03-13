@@ -1,7 +1,6 @@
 module FamilyGallery::ApplicationHelper
   include AwesomeTranslations::ApplicationHelper
   include BootstrapBuilders::ApplicationHelper
-  include RailsImager::ImagesHelper
   include SimpleFormRansackHelper
 
   def menu_link(*args, &blk)
