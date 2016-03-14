@@ -40,7 +40,7 @@ describe FamilyGallery::PicturesController do
     created_picture.groups.should eq [group]
     created_picture.user_uploaded.should eq admin
     expect(created_picture.taken_at).to eq Time.zone.parse("1985-06-17 10:30")
-    expect(created_picture.image_to_show_file_name).to eq nil
+    expect(created_picture.image_to_show_file_name).to_not eq nil
     created_picture.width.should_not eq nil
   end
 

@@ -37,12 +37,12 @@ Gem::Specification.new do |s|
   s.add_dependency "exifr", "1.2.0"
   s.add_dependency "awesome_translations", "~> 0.0.25"
   s.add_dependency "will_paginate"
-  s.add_dependency "rails_imager", ">= 0.0.30"
   s.add_dependency "rmagick", ">= 2.15.3"
   s.add_dependency "exception_notification", ">= 4.1.1"
   s.add_dependency "jquery-fileupload-rails"
   s.add_dependency "bootstrap_builders"
   s.add_dependency "twitter-bootstrap-rails", "3.2.2"
+  s.add_dependency "progress_bar", "1.0.5"
 
   if RUBY_ENGINE == "jruby"
     s.add_development_dependency "activerecord-jdbc-adapter"

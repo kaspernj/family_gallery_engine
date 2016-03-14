@@ -12,7 +12,7 @@ class FamilyGallery::Picture < ActiveRecord::Base
   has_attached_file :image
   validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
 
-  has_attached_file :image_to_show, style: {medium: "900x900", thumb: "120x120"}
+  has_attached_file :image_to_show, styles: {large: ["2200x2200>", :jpg, 90], medium: ["1200x1200>", :jpg, 90], thumbnail: ["200x200>", :jpg, 90]}
   validates_attachment_content_type :image_to_show, content_type: %r{\Aimage/.*\Z}
 
   validates :user_owner, :image, presence: true
@@ -181,6 +181,6 @@ private
   end
 
   def set_image_to_show_if_changed
-    self.image_to_show = nil if image_updated_at_changed?
+    self.image_to_show = image if image_updated_at_changed?
   end
 end
