@@ -6,12 +6,12 @@ class FamilyGallery::PicturesController < FamilyGallery::ResourcesController
       small: {
         size: @picture.smartsize(600),
         smartsize: 600,
-        url: @picture.image_to_show_from_size(:medium)
+        url: @picture.image_to_show(:medium)
       },
       big: {
         size: @picture.smartsize(1100),
         smartsize: 1100,
-        url: @picture.image_to_show_from_size(:large)
+        url: @picture.image_to_show(:large)
       }
     }
 

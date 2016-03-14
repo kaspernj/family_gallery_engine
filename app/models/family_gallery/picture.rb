@@ -19,24 +19,6 @@ class FamilyGallery::Picture < ActiveRecord::Base
   after_create :queue_parse_picture_info
   before_save :set_image_to_show_if_changed
 
-  def thumbnail_ordered_sizes
-    [:original, :large, :medium, :thumbnail]
-  end
-
-  def image_to_show_from_size(size)
-    choose = nil
-    thumbnail_ordered_sizes.reverse.each do |size_i|
-      choose = true if size == size_i
-
-      next unless choose
-
-      image_to_choose = image_to_show.url(size_i)
-      return image_to_choose if image_to_choose.present?
-    end
-
-    raise "Unknown size: #{size}"
-  end
-
   def width_for_height(new_height)
     (width.to_f / (height.to_f / new_height.to_f)).to_i
   end

@@ -24,7 +24,8 @@
           .picture-container{data: {sizes: @sizes}}
             - @picture.user_taggings.joins(:user).each do |user_tagging|
               .tagged-user{class: "tagged-user-#{user_tagging.user_id}", style: "left: #{user_tagging.position_left.to_i}%; top: #{user_tagging.position_top.to_i}%;"}
-            %img{data: {width: @picture.width, height: @picture.height}}
+            = link_to @picture.image.url do
+              %img{data: {width: @picture.width, height: @picture.height}}
 
 = bb_panel t(".tagged_users"), table: true, class: "tagged-users-list", controls: bb_new_btn([:new, @picture, :user_tagging], mini: true, can: FamilyGallery::UserTagging) do
   - if @picture.user_taggings.any?

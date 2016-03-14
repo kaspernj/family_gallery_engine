@@ -8,7 +8,7 @@ module FamilyGallery::PicturesHelper
 
     size = args[:size].presence || 200
 
-    picture_url = picture.image_to_show_from_size(:thumbnail)
+    picture_url = picture.image_to_show(:thumbnail)
     width_and_height = picture.smartsize(size)
     image_args = {alt: picture.title_with_fallback, class: "picture-image", width: width_and_height[:width], height: width_and_height[:height]}
 
